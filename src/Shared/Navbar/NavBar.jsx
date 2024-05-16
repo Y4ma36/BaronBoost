@@ -13,9 +13,12 @@ const NavBarWrapper = styled.div`
 `;
 
 const NavBarLeft = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 15px;
+  a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+  }
   img {
     width: 100px;
     height: 100px;
@@ -33,7 +36,6 @@ const NavBarLeft = styled.div`
 const NavBarRight = styled.div`
   display: flex;
   align-items: center;
-
   gap: 20px;
 `;
 
@@ -58,6 +60,7 @@ const NavBarItem = styled.li`
     padding: 15px 15px;
     border: none;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
     &:hover {
       background-color: ${(props) => props.theme.colors.purple};
     }
@@ -75,12 +78,18 @@ const NavBarItem = styled.li`
 
 const NavBarLoginCart = styled.div`
   button {
-    background-color: #f6ebff;
+    background-color: ${(props) => props.theme.colors.purple};
     padding: 15px 25px;
     font-size: ${(props) => props.theme.fontSize.md};
     font-weight: 600;
-    color: ${(props) => props.theme.colors.black};
+    color: ${(props) => props.theme.colors.white};
     border-radius: 10px;
+    border: none;
+    transition: all 0.5s ease-in-out;
+    &:hover {
+      background-color: white;
+      color: ${(props) => props.theme.colors.purple};
+    }
   }
 `;
 
@@ -88,10 +97,12 @@ const NavBar = () => {
   return (
     <NavBarWrapper>
       <NavBarLeft>
-        <img src={Logo} alt="" />
-        <p>
-          <span>B</span>aron<span>B</span>oost
-        </p>
+        <Link to="/">
+          <img src={Logo} alt="" />
+          <p>
+            <span>B</span>aron<span>B</span>oost
+          </p>
+        </Link>
       </NavBarLeft>
       <NavBarRight>
         <NavBarList>

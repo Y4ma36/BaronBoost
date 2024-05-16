@@ -24,6 +24,7 @@ const colors = {
   purple: "#8c7ae6",
   white: "#f5f6fa",
   black: "#2f3640",
+  yellow: "#F9F871",
 };
 
 const theme = {
