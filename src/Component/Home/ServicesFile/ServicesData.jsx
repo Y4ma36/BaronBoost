@@ -1,8 +1,3 @@
-import soloUser from "../../../assets/soloUser.svg";
-import duoUser from "../../../assets/duoUser.svg";
-import netWins from "../../../assets/netWins.svg";
-import userCoaching from "../../../assets/userCoaching.svg";
-
 let servicesList = [
   {
     id: 1,

@@ -27,7 +27,6 @@ const HeroDisplayContainer = styled.div`
 const HeroMainTitle = styled.h1`
   font-size: 4rem;
   font-weight: 800;
-  color: ${(props) => props.theme.colors.white};
   text-align: center;
   text-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
     rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
@@ -41,7 +40,6 @@ const HeroMainTitle = styled.h1`
 const HeroSubTitle = styled.h3`
   font-size: 2rem;
   font-weight: 600;
-  color: ${(props) => props.theme.colors.white};
   text-align: center;
   text-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
     rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,

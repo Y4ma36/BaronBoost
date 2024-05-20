@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import servicesList from "./ServicesList";
-import { delay, motion } from "framer-motion";
+import servicesList from "./ServicesData";
+import { color, delay, easeIn, motion } from "framer-motion";
 
 const ServicesWrapper = styled.div`
-  height: 70vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,7 +36,7 @@ const ServicesItem = styled(motion.div)`
     rgba(0, 0, 0, 0.22) 0px 10px 10px;
 `;
 
-const SerVicesImg = styled.div`
+const ServicesImg = styled(motion.div)`
   svg {
     width: 120px;
     height: 120px;
@@ -61,9 +61,10 @@ const ServicesItemDescription = styled.p`
 
 const ItemVariant = {
   hover: {
-    scale: 1.1,
+    y: -13,
+    borderColor: "#8c7ae6",
     transition: {
-      duration: 0.2,
+      duration: 1,
       type: "spring",
     },
   },
@@ -80,8 +81,9 @@ const Services = () => {
               key={item.id}
               variants={ItemVariant}
               whileHover="hover"
+              transition={{ duration: 0.5 }}
             >
-              <SerVicesImg>{item.Icon()}</SerVicesImg>
+              <ServicesImg>{item.Icon()}</ServicesImg>
               <SerVicesItemTitle>{item.name}</SerVicesItemTitle>
               <ServicesItemDescription>
                 {item.description}

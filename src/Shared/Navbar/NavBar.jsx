@@ -137,7 +137,7 @@ const NavBar = () => {
           </NavBarItem>
           <NavBarItem>
             <Link>
-              <button>Boosters</button>
+              <button>Orders</button>
             </Link>
           </NavBarItem>
           <NavBarItem>
