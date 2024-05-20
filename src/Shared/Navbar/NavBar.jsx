@@ -2,14 +2,21 @@ import React from "react";
 import styled from "styled-components";
 import Logo from "../../assets/sampleLogoNObg.png";
 import { Link } from "react-router-dom";
+import {
+  motion,
+  useAnimation,
+  useMotionValueEvent,
+  useScroll,
+} from "framer-motion";
 
-const NavBarWrapper = styled.div`
+const NavBarWrapper = styled(motion.div)`
   display: flex;
   justify-content: space-around;
   align-items: center;
   position: fixed;
   width: 100%;
   padding: 16px;
+  z-index: 500;
 `;
 
 const NavBarLeft = styled.div`
@@ -59,7 +66,6 @@ const NavBarItem = styled.li`
     border-radius: 5px;
     padding: 15px 15px;
     border: none;
-    cursor: pointer;
     transition: all 0.3s ease-in-out;
     &:hover {
       background-color: ${(props) => props.theme.colors.purple};
@@ -94,8 +100,21 @@ const NavBarLoginCart = styled.div`
 `;
 
 const NavBar = () => {
+  const { scrollY } = useScroll();
+  const navAnimation = useAnimation();
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (latest > 30) {
+      navAnimation.start({
+        backgroundColor: "rgba(0,0,0,1)",
+      });
+    } else {
+      navAnimation.start({
+        backgroundColor: "rgba(0,0,0,0)",
+      });
+    }
+  });
   return (
-    <NavBarWrapper>
+    <NavBarWrapper animate={navAnimation}>
       <NavBarLeft>
         <Link to="/">
           <img src={Logo} alt="" />

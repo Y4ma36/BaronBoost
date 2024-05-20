@@ -1,11 +1,13 @@
 import React from "react";
-import Hero_BackgroundImage from "../../../assets/HeroBackground.jpeg";
+import Hero_BackgroundImage from "../../assets/HeroBackground.jpeg";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const HeroWrapper = styled.div`
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)),
     url(${Hero_BackgroundImage});
+
+  /* 밑에 부분을 더 검하게 줘서 다음 색션과 자연스럽게 이어지도록  */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -19,6 +21,7 @@ const HeroDisplayContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 30px;
 `;
 
 const HeroMainTitle = styled.h1`
@@ -49,20 +52,48 @@ const HeroSubTitle = styled.h3`
 `;
 
 const HeroButtonContainer = styled.div`
-  margin-top: 30px;
+  margin-top: 60px;
   display: flex;
   gap: 30px;
 `;
 
 const HeroButton = styled.button`
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  transition: all 0.5s;
   padding: 20px 0px;
-  width: 300px;
+  width: 250px;
   border: none;
+  border-radius: 5px;
   font-size: ${(props) => props.theme.fontSize.md};
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 600;
   color: ${(props) => props.theme.colors.white};
-  background-color: ${(props) => props.theme.colors.purple};
+  background-color: ${(props) =>
+    props.index === 0
+      ? props.theme.colors.purple
+      : props.theme.colors.lightGreen};
+
+  &:after {
+    content: "»";
+    position: absolute;
+    opacity: 0;
+    font-size: 30px;
+    top: 9px;
+    right: -5px;
+    transition: 0.5s;
+  }
+
+  &:hover {
+    padding-right: 40px;
+    padding-left: 8px;
+  }
+
+  &:hover:after {
+    opacity: 1;
+    right: 20px;
+  }
 `;
 
 const Hero = () => {
@@ -79,10 +110,10 @@ const Hero = () => {
         </HeroSubTitle>
         <HeroButtonContainer>
           <Link>
-            <HeroButton>Rank Up</HeroButton>
+            <HeroButton index={0}>Rank Up</HeroButton>
           </Link>
           <Link>
-            <HeroButton>First Time?</HeroButton>
+            <HeroButton index={1}>First Time?</HeroButton>
           </Link>
         </HeroButtonContainer>
       </HeroDisplayContainer>
