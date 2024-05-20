@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const HeroWrapper = styled.div`
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9)),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1)),
     url(${Hero_BackgroundImage});
 
   /* 밑에 부분을 더 검하게 줘서 다음 색션과 자연스럽게 이어지도록  */
