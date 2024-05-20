@@ -5,7 +5,12 @@ import keyFeaturesList from "./KeyFeaturesData";
 
 const KeyFeaturesRightWrapper = styled.div`
   flex: 2;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 1)
+    ),
     url(${backgroundImg});
   background-size: cover;
   background-position: center;

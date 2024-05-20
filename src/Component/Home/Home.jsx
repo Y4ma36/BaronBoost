@@ -2,6 +2,7 @@ import React from "react";
 import Hero from "./Hero";
 import Services from "./ServicesFile/Services";
 import KeyFeatures from "./KeyFeatures/KeyFeatures";
+import Policy from "./Policy/Policy";
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       <Hero />
       <Services />
       <KeyFeatures />
+      <Policy />
     </div>
   );
 };
