@@ -2,8 +2,8 @@ import React from "react";
 import Hero from "./Hero";
 import Services from "./ServicesFile/Services";
 import KeyFeatures from "./KeyFeatures/KeyFeatures";
-import Policy from "./Policy/Policy";
 import Footer from "../../Shared/Footer/Footer";
+import ExperienceFlow from "./ExperienceFlow/ExperienceFlow";
 
 const Home = () => {
   return (
@@ -11,7 +11,7 @@ const Home = () => {
       <Hero />
       <Services />
       <KeyFeatures />
-      <Footer />
+      <ExperienceFlow />
     </div>
   );
 };

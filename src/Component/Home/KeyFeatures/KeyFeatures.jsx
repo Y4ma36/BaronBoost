@@ -7,6 +7,7 @@ const KeyFeaturesWrapper = styled.div`
   display: flex;
   height: 80vh;
   background-color: black;
+  padding-bottom: 50px;
 `;
 
 // 가격이싸다 24/7 support appear offlinemode 신속함
