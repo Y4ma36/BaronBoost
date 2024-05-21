@@ -20,7 +20,7 @@ const keyFeaturesList = [
     id: 2,
     title: "24/7 Support",
     description:
-      "Our team of dedicated support specialists is available around the clock to provide you with assistance whenever you need it. Whether you have questions, concerns, or require guidance, our friendly and knowledgeable support staff are here to ensure that your experience with BaronBoost is seamless and hassle-free.",
+      "Our team of dedicated support specialists is available around the clock to provide you with assistance whenever you need it. Whether you have questions, concerns, or require guidance, our friendly and knowledgeable support staff are here to ensure that your experience with BaronBoost.",
     Icon: () => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
