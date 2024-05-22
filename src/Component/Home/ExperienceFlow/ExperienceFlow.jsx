@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import experienceFlowData from "./ExperienceFlowData";
+import {
+  motion,
+  useAnimation,
+  useInView,
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 
 const ExperienceFlowWrapper = styled.div`
   height: 90vh;
@@ -18,42 +26,25 @@ const ExperienceFlowBoxContainer = styled.div`
   gap: 10px;
 `;
 
-const ExperienceFlowBox = styled.div`
+const ExperienceFlowBox = styled(motion.div)`
   position: relative;
   overflow: hidden;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   border-radius: 10px;
-`;
-
-const BackgroundImage = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url(${(props) => props.bgImg});
   background-position: center center;
   background-size: cover;
 `;
 
-const ContentContainer = styled.div`
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform: translate(0%, 10%);
-
-  text-align: center;
-  padding: 20px;
-  color: white;
-`;
-
 const ExperienceFlowBoxStep = styled.div`
   font-size: ${(props) => props.theme.fontSize.lg};
   font-weight: 800;
   background-color: ${(props) => props.theme.colors.purple};
+  margin-top: 100px;
   margin-bottom: 50px;
   display: flex;
   align-items: center;
@@ -76,21 +67,33 @@ const ExperienceFlowBoxSubTitle = styled.h3`
 `;
 
 const ExperienceFlow = () => {
+  const { scrollY } = useScroll();
+  const showBox = useAnimation();
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (latest > 1900) {
+      showBox.start({
+        opacity: 1,
+      });
+    }
+  });
+
   return (
     <ExperienceFlowWrapper>
       <ExperienceFlowBoxContainer>
         {experienceFlowData.map((item, index) => (
-          <ExperienceFlowBox key={item.id}>
-            <BackgroundImage bgImg={item.img} />
-            <ContentContainer>
-              <ExperienceFlowBoxStep first={index}>
-                <h1>Step {item.step}</h1>
-              </ExperienceFlowBoxStep>
-              <ExperienceFlowBoxTitle>{item.title}</ExperienceFlowBoxTitle>
-              <ExperienceFlowBoxSubTitle>
-                {item.subtitle}
-              </ExperienceFlowBoxSubTitle>
-            </ContentContainer>
+          <ExperienceFlowBox
+            bgImg={item.img}
+            key={item.id}
+            animate={showBox}
+            initial={{ opacity: 0 }}
+          >
+            <ExperienceFlowBoxStep first={index}>
+              <h1>Step {item.step}</h1>
+            </ExperienceFlowBoxStep>
+            <ExperienceFlowBoxTitle>{item.title}</ExperienceFlowBoxTitle>
+            <ExperienceFlowBoxSubTitle>
+              {item.subtitle}
+            </ExperienceFlowBoxSubTitle>
           </ExperienceFlowBox>
         ))}
       </ExperienceFlowBoxContainer>

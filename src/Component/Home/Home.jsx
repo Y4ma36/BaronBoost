@@ -1,9 +1,9 @@
 import React from "react";
-import Hero from "./Hero";
+import Hero from "./Hero/Hero";
 import Services from "./ServicesFile/Services";
 import KeyFeatures from "./KeyFeatures/KeyFeatures";
-import Footer from "../../Shared/Footer/Footer";
 import ExperienceFlow from "./ExperienceFlow/ExperienceFlow";
+import StartNow from "./StartNow/StartNow";
 
 const Home = () => {
   return (
@@ -12,6 +12,7 @@ const Home = () => {
       <Services />
       <KeyFeatures />
       <ExperienceFlow />
+      <StartNow />
     </div>
   );
 };
