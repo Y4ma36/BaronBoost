@@ -19,9 +19,13 @@ const HeroWrapper = styled.div`
 
 const HeroDisplayContainer = styled.div`
   display: flex;
+
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
+  text-align: center;
+  @media ${(props) => props.theme.device.mobile} {
+    width: 80%;
+  }
 `;
 
 const HeroMainTitle = styled.h1`
@@ -35,6 +39,16 @@ const HeroMainTitle = styled.h1`
   span {
     color: ${(props) => props.theme.colors.yellow};
   }
+  @media ${(props) => props.theme.device.laptop} {
+    font-size: 3rem;
+  }
+  @media ${(props) => props.theme.device.tablet} {
+    font-size: 2.5rem;
+  }
+
+  @media ${(props) => props.theme.device.mobile} {
+    font-size: ${(props) => props.theme.fontSize.lg};
+  }
 `;
 
 const HeroSubTitle = styled.h3`
@@ -47,12 +61,24 @@ const HeroSubTitle = styled.h3`
   span {
     color: ${(props) => props.theme.colors.purple};
   }
+  @media ${(props) => props.theme.device.laptop} {
+    font-size: ${(props) => props.theme.fontSize.lg};
+  }
+  @media ${(props) => props.theme.device.tablet} {
+    font-size: ${(props) => props.theme.fontSize.md};
+  }
+  @media ${(props) => props.theme.device.mobile} {
+    font-size: ${(props) => props.theme.fontSize.base};
+  }
 `;
 
 const HeroButtonContainer = styled.div`
   margin-top: 60px;
   display: flex;
   gap: 30px;
+  @media ${(props) => props.theme.device.mobile} {
+    flex-direction: column;
+  }
 `;
 
 const HeroButton = styled.button`
@@ -91,6 +117,11 @@ const HeroButton = styled.button`
   &:hover:after {
     opacity: 1;
     right: 20px;
+  }
+
+  @media ${(props) => props.theme.device.mobile} {
+    width: 180px;
+    font-size: ${(props) => props.theme.fontSize.base};
   }
 `;
 

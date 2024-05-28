@@ -16,6 +16,12 @@ const ExperienceFlowWrapper = styled.div`
   display: flex;
   justify-content: center;
   padding-bottom: 50px;
+  @media ${(props) => props.theme.device.laptop} {
+    height: 120vh;
+  }
+  @media ${(props) => props.theme.device.tablet} {
+    height: 250vh;
+  }
 `;
 
 const ExperienceFlowBoxContainer = styled.div`
@@ -24,6 +30,13 @@ const ExperienceFlowBoxContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
+  @media ${(props) => props.theme.device.laptop} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media ${(props) => props.theme.device.tablet} {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+  }
 `;
 
 const ExperienceFlowBox = styled(motion.div)`
@@ -38,6 +51,9 @@ const ExperienceFlowBox = styled(motion.div)`
     url(${(props) => props.bgImg});
   background-position: center center;
   background-size: cover;
+  @media ${(props) => props.theme.device.laptop} {
+    height: 60vh;
+  }
 `;
 
 const ExperienceFlowBoxStep = styled.div`

@@ -17,18 +17,34 @@ const KeyFeaturesLeftTitle = styled.h1`
     color: ${(props) => props.theme.colors.purple};
   }
   margin-bottom: 20px;
+
+  @media ${(props) => props.theme.device.laptop} {
+    font-size: 2.3rem;
+  }
+  @media ${(props) => props.theme.device.mobile} {
+    font-size: 1.7rem;
+  }
 `;
 
 const KeyFeaturesLeftSubTitle = styled.h2`
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 20px;
+  @media ${(props) => props.theme.device.laptop} {
+    font-size: ${(props) => props.theme.fontSize.base};
+  }
+  @media ${(props) => props.theme.device.mobile} {
+    font-size: ${(props) => props.theme.fontSize.sm};
+  }
 `;
 
 const KeyFeaturesLeftDescription = styled.p`
   font-size: ${(props) => props.theme.fontSize.base};
   padding: 15px 10px;
   line-height: 25px;
+  @media ${(props) => props.theme.device.laptop} {
+    width: 70%;
+  }
 `;
 
 const KeyFeaturesLeft = () => {

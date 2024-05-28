@@ -2,6 +2,8 @@ import { useState } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./Layout";
 import Home from "./Component/Home/Home";
+import Services from "./Component/Services/Services";
+import Support from "./Component/Support/Support";
 
 // baronboost/coaching
 // baronboost/boosters
@@ -22,6 +24,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/services",
+        element: <Services />,
+      },
+      {
+        path: "/support",
+        element: <Support />,
       },
     ],
   },

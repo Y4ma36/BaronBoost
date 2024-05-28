@@ -5,7 +5,7 @@ import { color } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const StartNowWrapper = styled.div`
-  height: 90vh;
+  height: 70vh;
   background-color: black;
   display: flex;
   justify-content: center;

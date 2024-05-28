@@ -18,18 +18,26 @@ const KeyFeaturesRightWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media ${(props) => props.theme.device.tablet} {
+    width: 100%;
+  }
 `;
 
 const KeyFeaturesList = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 450px);
+  grid-template-columns: repeat(2, 1fr);
+  padding: 15px 60px;
   grid-gap: 40px;
+  @media ${(props) => props.theme.device.tablet} {
+    grid-gap: 80px;
+  }
 `;
 
 const KeyFeaturesItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 `;
 
 const KeyFeaturesItemIcon = styled.div`
@@ -40,17 +48,41 @@ const KeyFeaturesItemIcon = styled.div`
   svg path {
     stroke: ${(props) => props.theme.colors.purple};
   }
+  @media ${(props) => props.theme.device.laptop} {
+    svg {
+      width: 90px;
+      height: 90px;
+    }
+  }
+  @media ${(props) => props.theme.device.tablet} {
+    svg {
+      width: 60px;
+      height: 60px;
+    }
+  }
 `;
 
 const KeyFeaturesItemTitle = styled.h1`
   font-size: 2rem;
   font-weight: 800;
   margin-bottom: 20px;
+  @media ${(props) => props.theme.device.laptop} {
+    font-size: ${(props) => props.theme.fontSize.lg};
+  }
+  @media ${(props) => props.theme.device.tablet} {
+    font-size: ${(props) => props.theme.fontSize.md};
+  }
 `;
 
 const KeyFeaturesItemDescription = styled.p`
   line-height: 20px;
   font-weight: 500;
+  @media ${(props) => props.theme.device.laptop} {
+    width: 50%;
+  }
+  @media ${(props) => props.theme.device.tablet} {
+    display: none;
+  }
 `;
 
 const KeyFeaturesRight = () => {

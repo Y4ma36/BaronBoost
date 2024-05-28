@@ -7,8 +7,8 @@ const fontSize = {
 };
 
 const deviceSizes = {
-  mobile: "375px",
-  tablet: "768px",
+  mobile: "600px",
+  tablet: "800px",
   laptop: "1024px",
   desktop: "1280px",
 };

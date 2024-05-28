@@ -4,15 +4,36 @@ import servicesList from "./ServicesData";
 import { color, delay, easeIn, motion } from "framer-motion";
 
 const ServicesWrapper = styled.div`
-  height: 80vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: black;
+  @media ${(props) => props.theme.device.laptop} {
+    height: 100vh;
+  }
+  @media ${(props) => props.theme.device.mobile} {
+    height: 220vh;
+  }
+
+  @media screen and (max-width: 400px) {
+    height: 240vh;
+  }
+
+  @media screen and (max-width: 350px) {
+    height: 260vh;
+  }
 `;
 const ServicesTitle = styled.h1`
   font-size: 3rem;
   font-weight: 900;
+  text-align: center;
+  @media ${(props) => props.theme.device.laptop} {
+    font-size: 2.5rem;
+  }
+  @media ${(props) => props.theme.device.mobile} {
+    font-size: 2rem;
+  }
 `;
 
 const ServicesItemContainer = styled.div`
@@ -23,6 +44,16 @@ const ServicesList = styled.div`
   display: flex;
   justify-content: center;
   gap: 30px;
+  @media ${(props) => props.theme.device.laptop} {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+  }
+  @media ${(props) => props.theme.device.mobile} {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 50px;
+  }
 `;
 
 const ServicesItem = styled(motion.div)`
@@ -34,6 +65,9 @@ const ServicesItem = styled(motion.div)`
   border: 2px solid white;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
     rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  @media ${(props) => props.theme.device.laptop} {
+    width: 100%;
+  }
 `;
 
 const ServicesImg = styled(motion.div)`
@@ -44,12 +78,21 @@ const ServicesImg = styled(motion.div)`
   svg path {
     stroke: ${(props) => props.theme.colors.purple};
   }
+  @media ${(props) => props.theme.device.laptop} {
+    svg {
+      width: 90px;
+      height: 90px;
+    }
+  }
 `;
 
 const SerVicesItemTitle = styled.h2`
   font-size: ${(props) => props.theme.fontSize.lg};
   margin-top: 10px;
   font-weight: 700;
+  @media ${(props) => props.theme.device.laptop} {
+    font-size: ${(props) => props.theme.fontSize.md};
+  }
 `;
 
 const ServicesItemDescription = styled.p`
@@ -57,6 +100,9 @@ const ServicesItemDescription = styled.p`
   margin-top: 13px;
   line-height: 30px;
   font-weight: 500;
+  @media ${(props) => props.theme.device.laptop} {
+    font-size: ${(props) => props.theme.fontSize.base};
+  }
 `;
 
 const ItemVariant = {
