@@ -137,7 +137,7 @@ const NavBar = () => {
             </p>
           </Link>
         </NavBarTopLeft>
-        <NavBarTopRight />
+        <NavBarTopRight handleMouseEnter={handleMouseEnter} />
         <NavMenuBar isOpen={handleMenu} />
       </NavBarTopContainer>
       <NavBarBottomContainer show={hoveredItem} onMouseLeave={handleMouseLeave}>

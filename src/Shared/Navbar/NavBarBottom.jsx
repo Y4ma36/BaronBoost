@@ -7,7 +7,6 @@ const NavBarBottomList = styled.div`
   justify-content: center;
   width: 100%;
   margin-top: 30px;
-  gap: 20px;
   padding-bottom: 50px;
 `;
 
@@ -18,9 +17,10 @@ const NavBarBottomItemContainer = styled.div`
   align-items: center;
   text-align: center;
   background: ${(props) => props.theme.colors.purple};
-  width: 350px;
+  width: 40%;
   height: 250px;
   border-radius: 10px;
+  margin: 0px 30px;
   cursor: pointer;
 `;
 
@@ -28,11 +28,17 @@ const NavBarBottomItemTitle = styled.h1`
   font-size: 2.5rem;
   font-weight: 900;
   margin-bottom: 10px;
+  @media ${(props) => props.theme.device.laptop} {
+    font-size: 1.5rem;
+  }
 `;
 
 const NavBarBottomeItemSubTitle = styled.h3`
   font-size: ${(props) => props.theme.fontSize.md};
   margin: 0px 10px;
+  @media ${(props) => props.theme.device.laptop} {
+    font-size: ${(props) => props.theme.fontSize.base};
+  }
 `;
 
 const NavBarBottom = ({ nav }) => {

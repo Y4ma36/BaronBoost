@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -76,20 +76,7 @@ const NavBarLoginCart = styled.div`
   }
 `;
 
-const NavMenuIcon = styled.div`
-  display: none;
-  margin-right: 30px;
-  cursor: pointer;
-  img {
-    width: 40px;
-    height: 40px;
-  }
-  @media ${(props) => props.theme.device.tablet} {
-    display: block;
-  }
-`;
-
-const NavBarTopRight = () => {
+const NavBarTopRight = ({ handleMouseEnter }) => {
   return (
     <NavBarRight>
       <NavBarList>
