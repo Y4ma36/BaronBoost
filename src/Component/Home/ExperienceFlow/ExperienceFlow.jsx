@@ -31,10 +31,10 @@ const ExperienceFlowBoxContainer = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   @media ${(props) => props.theme.device.laptop} {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, auto);
   }
   @media ${(props) => props.theme.device.tablet} {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, minmax(300px, auto));
     gap: 20px;
   }
 `;
@@ -51,6 +51,7 @@ const ExperienceFlowBox = styled(motion.div)`
     url(${(props) => props.bgImg});
   background-position: center center;
   background-size: cover;
+
   @media ${(props) => props.theme.device.laptop} {
     height: 60vh;
   }
@@ -75,11 +76,17 @@ const ExperienceFlowBoxTitle = styled.h1`
   font-size: ${(props) => props.theme.fontSize.lg};
   font-weight: 900;
   margin-bottom: 20px;
+  @media ${(props) => props.theme.device.laptop} {
+    font-size: ${(props) => props.theme.fontSize.md};
+  }
 `;
 
 const ExperienceFlowBoxSubTitle = styled.h3`
   font-weight: 600;
   line-height: 23px;
+  @media ${(props) => props.theme.device.tablet} {
+    font-size: ${(props) => props.theme.fontSize.sm};
+  }
 `;
 
 const ExperienceFlow = () => {

@@ -7,6 +7,11 @@ const FooterBottomWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media ${(props) => props.theme.device.mobile} {
+    text-align: center;
+    flex-direction: column;
+    gap: 50px;
+  }
 `;
 
 const FooterBottomLeft = styled.div``;

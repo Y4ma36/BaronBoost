@@ -19,10 +19,6 @@ const ServicesWrapper = styled.div`
   @media screen and (max-width: 400px) {
     height: 240vh;
   }
-
-  @media screen and (max-width: 350px) {
-    height: 260vh;
-  }
 `;
 const ServicesTitle = styled.h1`
   font-size: 3rem;

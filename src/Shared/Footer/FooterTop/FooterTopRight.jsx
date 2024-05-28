@@ -5,6 +5,10 @@ import styled from "styled-components";
 const FooterTopRightWrapper = styled.div`
   display: flex;
   gap: 50px;
+
+  @media ${(props) => props.theme.device.mobile} {
+    flex-direction: column;
+  }
 `;
 
 const FooterTopList = styled.div`
@@ -53,9 +57,6 @@ const FooterTopRight = () => {
             <Link>Coaching</Link>
           </FooterTopItem>
         </ul>
-      </FooterTopList>
-      <FooterTopList>
-        <FooterListTitle>Orders</FooterListTitle>
       </FooterTopList>
       <FooterTopList>
         <FooterListTitle>Contact</FooterListTitle>

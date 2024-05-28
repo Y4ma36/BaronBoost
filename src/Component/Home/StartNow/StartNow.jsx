@@ -28,6 +28,9 @@ const StartNowContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  @media ${(props) => props.theme.device.mobile} {
+    flex-direction: column;
+  }
 `;
 
 const StartNowLeft = styled.div`
@@ -39,6 +42,22 @@ const StartNowLeft = styled.div`
   p {
     font-size: 2rem;
     font-weight: 600;
+  }
+  @media ${(props) => props.theme.device.laptop} {
+    h1 {
+      font-size: 3rem;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+  }
+  @media ${(props) => props.theme.device.tablet} {
+    h1 {
+      font-size: 2.5rem;
+    }
+    p {
+      font-size: 1rem;
+    }
   }
 `;
 
@@ -60,6 +79,17 @@ const StartNowRight = styled.div`
   a {
     text-decoration: none;
     color: inherit;
+  }
+  @media ${(props) => props.theme.device.laptop} {
+    button {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media ${(props) => props.theme.device.tablet} {
+    button {
+      font-size: 1rem;
+    }
   }
 `;
 
