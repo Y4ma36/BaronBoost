@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "../../assets/sampleLogoNObg.png";
+import Logo from "../../assets/BaronBoostLogo.png";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import {
@@ -41,7 +41,7 @@ const NavBarTopLeft = styled.div`
     text-decoration: none;
   }
   img {
-    width: 100px;
+    width: 120px;
     height: 100px;
   }
   p {

@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../../assets/sampleLogoNObg.png";
+import logo from "../../../assets/BaronBoostLogo.png";
 import styled from "styled-components";
 
 const FooterTopLeftWrapper = styled.div``;
@@ -10,7 +10,7 @@ const FooterTopLeftTop = styled.div`
 
   gap: 10px;
   img {
-    width: 50px;
+    width: 60px;
     height: 50px;
     position: relative;
     top: -20px;

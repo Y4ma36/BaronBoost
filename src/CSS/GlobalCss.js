@@ -4,7 +4,7 @@ import reset from "styled-reset";
 const GlobalStyle = createGlobalStyle`
     ${reset}
 
-    li,h1, h2,h3,p{
+    li,h1, h2,h3,p,label{
         font-family: "Noto Sans KR", sans-serif;
         font-optical-sizing: auto;
         font-weight: 400;

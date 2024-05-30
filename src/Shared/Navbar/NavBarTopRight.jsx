@@ -102,7 +102,7 @@ const NavBarTopRight = ({ handleMouseEnter }) => {
         </NavBarItem>
       </NavBarList>
       <NavBarLoginCart>
-        <Link>
+        <Link to="/login">
           <button>Login</button>
         </Link>
       </NavBarLoginCart>

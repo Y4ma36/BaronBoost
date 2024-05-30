@@ -4,6 +4,8 @@ import Layout from "./Layout";
 import Home from "./Component/Home/Home";
 import Services from "./Component/Services/Services";
 import Support from "./Component/Support/Support";
+import Login from "./Component/Login&Signup/Login/Login";
+import SignUp from "./Component/Login&Signup/Signup/SignUp";
 
 // baronboost/coaching
 // baronboost/boosters
@@ -34,6 +36,14 @@ const router = createBrowserRouter([
         element: <Support />,
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
   },
 ]);
 
