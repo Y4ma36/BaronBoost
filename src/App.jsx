@@ -6,6 +6,10 @@ import Services from "./Component/Services/Services";
 import Support from "./Component/Support/Support";
 import Login from "./Component/Login&Signup/Login/Login";
 import SignUp from "./Component/Login&Signup/Signup/SignUp";
+import Solo from "./Component/Services/Solo/Solo";
+import Duo from "./Component/Services/Duo/Duo";
+import NetWins from "./Component/Services/NetWins/NetWins";
+import Coaching from "./Component/Services/Coaching/Coaching";
 
 // baronboost/coaching
 // baronboost/boosters
@@ -28,8 +32,26 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/services",
+        path: "/services/*",
         element: <Services />,
+        children: [
+          {
+            path: "solo",
+            element: <Solo />,
+          },
+          {
+            path: "duo",
+            element: <Duo />,
+          },
+          {
+            path: "netwins",
+            element: <NetWins />,
+          },
+          {
+            path: "coaching",
+            element: <Coaching />,
+          },
+        ],
       },
       {
         path: "/support",

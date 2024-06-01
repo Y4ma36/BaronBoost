@@ -26,18 +26,21 @@ const navBarServicesData = [
     title: "Solo",
     subtitle: "Boost your solo rank with our expert players.",
     button: "Get Solo Boost",
+    link: "/services/solo",
   },
   {
     id: 2,
     title: "Duo",
     subtitle: "Play alongside our boosters to climb the ranks.",
     button: "Get Duo Boost",
+    link: "/services/duo",
   },
   {
     id: 3,
     title: "Net Wins",
     subtitle: "Secure a set number of wins quickly and efficiently.",
     button: "Get Net Wins",
+    link: "/services/netwins",
   },
 ];
 

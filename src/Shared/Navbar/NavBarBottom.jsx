@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { navBarServicesData, navBarSupportData } from "./NavBarData";
+import { Link } from "react-router-dom";
 
 const NavBarBottomList = styled.div`
   display: flex;
@@ -48,10 +49,12 @@ const NavBarBottom = ({ nav }) => {
         {nav === "services"
           ? navBarServicesData.map((item) => (
               <NavBarBottomItemContainer>
-                <NavBarBottomItemTitle>{item.title}</NavBarBottomItemTitle>
-                <NavBarBottomeItemSubTitle>
-                  {item.subtitle}
-                </NavBarBottomeItemSubTitle>
+                <Link to={item.link}>
+                  <NavBarBottomItemTitle>{item.title}</NavBarBottomItemTitle>
+                  <NavBarBottomeItemSubTitle>
+                    {item.subtitle}
+                  </NavBarBottomeItemSubTitle>
+                </Link>
               </NavBarBottomItemContainer>
             ))
           : navBarSupportData.map((item) => (

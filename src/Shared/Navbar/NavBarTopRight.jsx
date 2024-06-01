@@ -81,7 +81,7 @@ const NavBarTopRight = ({ handleMouseEnter }) => {
     <NavBarRight>
       <NavBarList>
         <NavBarItem onMouseEnter={() => handleMouseEnter("services")}>
-          <Link to="/services">
+          <Link to="/services/solo">
             <button>Services</button>
           </Link>
         </NavBarItem>
