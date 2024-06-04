@@ -26,6 +26,7 @@ const ExperienceFlowWrapper = styled.div`
 
 const ExperienceFlowBoxContainer = styled.div`
   width: 100%;
+  min-height: 670px;
   margin: 100px 130px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);

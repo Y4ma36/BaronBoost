@@ -32,7 +32,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/services/*",
+        path: "/services",
         element: <Services />,
         children: [
           {
@@ -46,10 +46,6 @@ const router = createBrowserRouter([
           {
             path: "netwins",
             element: <NetWins />,
-          },
-          {
-            path: "coaching",
-            element: <Coaching />,
           },
         ],
       },
