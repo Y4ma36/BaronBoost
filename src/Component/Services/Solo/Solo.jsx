@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import SoloPrice from "./SoloPrice/SoloPrice";
-import SoloPickRank from "./SoloPickRank/SoloPickRank";
+import SoloPrice from "./SoloPrice";
+import SoloPickRank from "./SoloPickRank";
 
 const SoloWrapper = styled.div`
   display: flex;
