@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import NetWinsPickRank from "./NetWinsPickRank";
-import NetWinsPrice from "./NetWinsPrice";
+
+import TotalPrice from "../ServicesCommon/TotalPrice";
+import DuoPickRank from "./DuoPickRank";
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,13 +14,13 @@ const Wrapper = styled.div`
   min-height: 650px;
 `;
 
-const NetWins = () => {
+const Duo = () => {
   return (
     <Wrapper>
-      <NetWinsPickRank />
-      <NetWinsPrice />
+      <DuoPickRank />
+      <TotalPrice />
     </Wrapper>
   );
 };
 
-export default NetWins;
+export default Duo;

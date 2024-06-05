@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import CurrentRank from "../PickRank/CurrentRank/CurrentRank";
-import DesireRank from "../PickRank/DesireRank/DesireRank";
+import CurrentRank from "../ServicesCommon/PickRank/CurrentRank/CurrentRank";
+import DesireRank from "../ServicesCommon/PickRank/DesireRank/DesireRank";
 
 const Wrapper = styled.div`
   flex: 2;

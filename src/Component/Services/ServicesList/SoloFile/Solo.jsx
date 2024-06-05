@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import DuoPickRank from "./DuoPickRank";
-import DuoPrice from "./DuoPrice";
+import SoloPickRank from "../SoloFile/SoloPickRank";
+import TotalPrice from "../ServicesCommon/TotalPrice";
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,13 +13,13 @@ const Wrapper = styled.div`
   min-height: 650px;
 `;
 
-const Duo = () => {
+const Solo = () => {
   return (
     <Wrapper>
-      <DuoPickRank />
-      <DuoPrice />
+      <SoloPickRank />
+      <TotalPrice />
     </Wrapper>
   );
 };
 
-export default Duo;
+export default Solo;

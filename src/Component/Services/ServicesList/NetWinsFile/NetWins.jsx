@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import SoloPrice from "./SoloPrice";
-import SoloPickRank from "./SoloPickRank";
+import NetWinsPickRank from "./NetWinsPickRank";
 
-const SoloWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   height: 70vh;
   background-color: black;
@@ -13,13 +12,12 @@ const SoloWrapper = styled.div`
   min-height: 650px;
 `;
 
-const Solo = () => {
+const NetWins = () => {
   return (
-    <SoloWrapper>
-      <SoloPickRank />
-      <SoloPrice />
-    </SoloWrapper>
+    <Wrapper>
+      <NetWinsPickRank />
+    </Wrapper>
   );
 };
 
-export default Solo;
+export default NetWins;

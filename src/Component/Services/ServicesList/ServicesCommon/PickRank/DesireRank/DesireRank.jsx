@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import DesireRankHeader from "./DesireRankHeader";
-import DesireRankPick from "./DesireRankPick";
-import DesireRankDivision from "./DesireRankDivision";
-import DesireRankLp from "./DesireRankLp";
+import DesireRankHeader from "../DesireRank/DesireRankHeader";
+import DesireRankPick from "../DesireRank/DesireRankPick";
+import DesireRankDivision from "../DesireRank/DesireRankDivision";
+import DesireRankLp from "../DesireRank/DesireRankLp";
 
 const Wrapper = styled.div`
   display: flex;

@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import CurrentRank from "../PickRank/CurrentRank/CurrentRank";
+import CurrentRank from "../ServicesCommon/PickRank/CurrentRank/CurrentRank";
 
 const Wrapper = styled.div`
   flex: 2;
   display: flex;
+  justify-content: center;
   border: 5px solid white;
   border-radius: 2px;
   background-color: #011638;

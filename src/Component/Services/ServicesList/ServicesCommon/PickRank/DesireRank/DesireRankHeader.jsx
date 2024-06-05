@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import master from "../../../../assets/Rank/master.png";
+import master from "../../../../../../assets/Rank/master.png";
 
 const Wrapper = styled.div`
   display: flex;

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import arrow_down from "../../../../assets/arrowDown.png";
+import arrow_down from "../../../../../../assets/arrowDown.png";
+import { useLocation } from "react-router-dom";
 
 const Wrapper = styled.div`
   display: flex;
@@ -39,6 +40,8 @@ const CurrentLpForm = styled.div`
 `;
 
 const CurrentRankLP = () => {
+  const location = useLocation();
+  const currentLocation = location.pathname.split("/").pop();
   return (
     <Wrapper>
       <CurrentLpContainer>
@@ -62,6 +65,21 @@ const CurrentRankLP = () => {
           </select>
         </CurrentLpForm>
       </CurrentLpContainer>
+      {/* Net Wins Choice */}
+      {currentLocation === "netwins" ? (
+        <CurrentLpContainer>
+          <CurrentLpForm>
+            <label>Net Wins</label>
+            <select name="lpgain" className="arrow">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </CurrentLpForm>
+        </CurrentLpContainer>
+      ) : null}
     </Wrapper>
   );
 };

@@ -8,8 +8,8 @@ const Wrapper = styled.div`
   background-color: #2e294e;
 `;
 
-const SoloPrice = () => {
-  return <Wrapper>SoloPrice</Wrapper>;
+const TotalPrice = () => {
+  return <Wrapper>TotalPrice</Wrapper>;
 };
 
-export default SoloPrice;
+export default TotalPrice;

@@ -23,6 +23,10 @@ const NavBarBottomItemContainer = styled.div`
   border-radius: 10px;
   margin: 0px 30px;
   cursor: pointer;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
 
 const NavBarBottomItemTitle = styled.h1`

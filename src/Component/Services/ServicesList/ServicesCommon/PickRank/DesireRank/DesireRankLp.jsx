@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import arrow_down from "../../../../assets/arrowDown.png";
+import arrow_down from "../../../../../../assets/arrowDown.png";
 
 const Wrapper = styled.div``;
 

@@ -3,6 +3,7 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 import OverView from "./OverView./OverView";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import ServicesFAQ from "./ServicesFAQ/ServicesFAQ";
 
 const ServicesListContainer = styled.div`
   display: flex;
@@ -68,6 +69,7 @@ const Services = () => {
         </ul>
       </ServicesListContainer>
       <Outlet />
+      <ServicesFAQ />
     </div>
   );
 };

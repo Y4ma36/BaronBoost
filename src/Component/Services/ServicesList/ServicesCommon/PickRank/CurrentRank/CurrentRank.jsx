@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import CurrentRankHeader from "./CurrentRankHeader";
-import CurrentRankPick from "./CurrentRankPick";
-import CurrentRankDivision from "./CurrentRankDivision";
-import CurrentRankLP from "./CurrentRankLP";
+import CurrentRankDivision from "../CurrentRank/CurrentRankDivision";
+import CurrentRankLP from "../CurrentRank/CurrentRankLP";
+import CurrentRankHeader from "../CurrentRank/CurrentRankHeader";
+import CurrentRankPick from "../CurrentRank/CurrentRankPick";
 
 const Wrapper = styled.div`
   display: flex;

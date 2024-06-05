@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { createBrowserRouter } from "react-router-dom";
+
+// Home
 import Layout from "./Layout";
 import Home from "./Component/Home/Home";
-import Services from "./Component/Services/Services";
 import Support from "./Component/Support/Support";
 import Login from "./Component/Login&Signup/Login/Login";
 import SignUp from "./Component/Login&Signup/Signup/SignUp";
-import Solo from "./Component/Services/Solo/Solo";
-import Duo from "./Component/Services/Duo/Duo";
-import NetWins from "./Component/Services/NetWins/NetWins";
-import Coaching from "./Component/Services/Coaching/Coaching";
+
+// Services
+import Services from "./Component/Services/Services";
+import Solo from "./Component/Services/ServicesList/SoloFile/Solo";
+import Duo from "./Component/Services/ServicesList/DuoFile/Duo";
+import NetWins from "./Component/Services/ServicesList/NetWinsFile/NetWins";
 
 // baronboost/coaching
 // baronboost/boosters
