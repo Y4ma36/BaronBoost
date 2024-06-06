@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import CurrentRankDivision from "../CurrentRank/CurrentRankDivision";
 import CurrentRankLP from "../CurrentRank/CurrentRankLP";

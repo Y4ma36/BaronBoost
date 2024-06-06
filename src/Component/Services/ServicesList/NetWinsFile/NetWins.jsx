@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import NetWinsPickRank from "./NetWinsPickRank";
+import TotalPrice from "../ServicesCommon/TotalPrice";
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,6 +17,7 @@ const NetWins = () => {
   return (
     <Wrapper>
       <NetWinsPickRank />
+      <TotalPrice />
     </Wrapper>
   );
 };

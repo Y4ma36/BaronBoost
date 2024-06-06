@@ -4,6 +4,8 @@ import OverView from "./OverView./OverView";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import ServicesFAQ from "./ServicesFAQ/ServicesFAQ";
+import ExperienceFlow from "../Home/ExperienceFlow/ExperienceFlow";
+import StartNow from "../Home/StartNow/StartNow";
 
 const ServicesListContainer = styled.div`
   display: flex;
@@ -70,6 +72,8 @@ const Services = () => {
       </ServicesListContainer>
       <Outlet />
       <ServicesFAQ />
+      <ExperienceFlow />
+      <StartNow />
     </div>
   );
 };

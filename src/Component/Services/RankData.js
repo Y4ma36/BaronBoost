@@ -22,49 +22,49 @@ import masterIcon from "../../assets/Rank/masterIcon.png";
 
 const rankData = [
   {
-    id: 1,
+    id: 0,
     name: "Iron",
     img: ironImg,
     icon: ironIcon,
   },
   {
-    id: 2,
+    id: 1,
     name: "Bronze",
     img: bronzeImg,
     icon: bronzeIcon,
   },
   {
-    id: 3,
-    name: " Silver",
+    id: 2,
+    name: "Silver",
     img: silverImg,
     icon: silverIcon,
   },
   {
-    id: 4,
+    id: 3,
     name: "Gold",
     img: goldImg,
     icon: goldIcon,
   },
   {
-    id: 5,
+    id: 4,
     name: "Platinum",
     img: platinumImg,
     icon: platIcon,
   },
   {
-    id: 6,
+    id: 5,
     name: "Emerald",
     img: emeraldImg,
     icon: emeraldIcon,
   },
   {
-    id: 7,
+    id: 6,
     name: "Diamond",
     img: diamondImg,
     icon: diamondIcon,
   },
   {
-    id: 8,
+    id: 7,
     name: "Master",
     img: masterImg,
     icon: masterIcon,

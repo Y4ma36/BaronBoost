@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import master from "../../../../../../assets/Rank/master.png";
+import rankData from "../../../../RankData";
+import { useRecoilValue } from "recoil";
+import { isDesireRank } from "../../../../../../Data/atoms";
 
 const Wrapper = styled.div`
   display: flex;
@@ -28,10 +30,12 @@ const DesireRankTitle = styled.h1`
 const DesireRankSubTitle = styled.h3``;
 
 const DesireRankHeader = () => {
+  const rankDataList = rankData;
+  const desireRank = useRecoilValue(isDesireRank);
   return (
     <Wrapper>
       <DesireRankImg>
-        <img src={master} alt="" />
+        <img src={rankDataList[desireRank].img} alt="" />
       </DesireRankImg>
       <DesireRankContainer>
         <DesireRankTitle>Desire Rank</DesireRankTitle>

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import bgImg from "../../../assets/startNow.jpg";
-import { color } from "framer-motion";
+import { color, m } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const StartNowWrapper = styled.div`
@@ -12,14 +12,8 @@ const StartNowWrapper = styled.div`
 `;
 
 const StartNowContainer = styled.div`
-  margin-top: 200px;
-  background-image: linear-gradient(
-      to left,
-      rgba(0, 0, 0, 0.8),
-      rgba(0, 0, 0, 0.1),
-      rgba(0, 0, 0, 0.8)
-    ),
-    url(${bgImg});
+  margin-top: 100px;
+  background-image: url(${bgImg});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
@@ -94,6 +88,9 @@ const StartNowRight = styled.div`
 `;
 
 const StartNow = () => {
+  const scorllTop = () => {
+    window.scrollTo(0, 0);
+  };
   return (
     <StartNowWrapper>
       <StartNowContainer>
@@ -103,7 +100,9 @@ const StartNow = () => {
         </StartNowLeft>
         <StartNowRight>
           <button>
-            <Link>Order Now</Link>
+            <Link to="/services/solo" onClick={scorllTop}>
+              Order Now
+            </Link>
           </button>
         </StartNowRight>
       </StartNowContainer>

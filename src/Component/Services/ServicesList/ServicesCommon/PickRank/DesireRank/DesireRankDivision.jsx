@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React from "react";
 import styled from "styled-components";
 
@@ -9,7 +10,7 @@ const Wrapper = styled.div`
   gap: 15px;
 `;
 
-const DivisionContainer = styled.div`
+const DivisionContainer = styled(motion.div)`
   background-color: rgb(255, 255, 255, 0.1);
   border-radius: 3px;
   width: 50px;
@@ -17,6 +18,7 @@ const DivisionContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   h1 {
     font-size: ${(props) => props.theme.fontSize.lg};
     font-weight: 500;
@@ -26,16 +28,36 @@ const DivisionContainer = styled.div`
 const DesireRankDivision = () => {
   return (
     <Wrapper>
-      <DivisionContainer>
+      <DivisionContainer
+        whileHover={{
+          y: "-10px",
+          backgroundColor: "rgb(255, 255, 255, 0.3)",
+        }}
+      >
         <h1>IV</h1>
       </DivisionContainer>
-      <DivisionContainer>
+      <DivisionContainer
+        whileHover={{
+          y: "-10px",
+          backgroundColor: "rgb(255, 255, 255, 0.3)",
+        }}
+      >
         <h1>III</h1>
       </DivisionContainer>
-      <DivisionContainer>
+      <DivisionContainer
+        whileHover={{
+          y: "-10px",
+          backgroundColor: "rgb(255, 255, 255, 0.3)",
+        }}
+      >
         <h1>II</h1>
       </DivisionContainer>
-      <DivisionContainer>
+      <DivisionContainer
+        whileHover={{
+          y: "-10px",
+          backgroundColor: "rgb(255, 255, 255, 0.3)",
+        }}
+      >
         <h1>I</h1>
       </DivisionContainer>
     </Wrapper>
