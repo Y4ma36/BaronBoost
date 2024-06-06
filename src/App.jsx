@@ -13,6 +13,7 @@ import Services from "./Component/Services/Services";
 import Solo from "./Component/Services/ServicesList/SoloFile/Solo";
 import Duo from "./Component/Services/ServicesList/DuoFile/Duo";
 import NetWins from "./Component/Services/ServicesList/NetWinsFile/NetWins";
+import Coaching from "./Component/Coaching/Coaching";
 
 // baronboost/coaching
 // baronboost/boosters
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
             element: <NetWins />,
           },
         ],
+      },
+      {
+        path: "/coaching",
+        element: <Coaching />,
       },
       {
         path: "/support",
