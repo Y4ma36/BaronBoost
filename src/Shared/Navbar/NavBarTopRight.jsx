@@ -76,11 +76,14 @@ const NavBarLoginCart = styled.div`
   }
 `;
 
-const NavBarTopRight = ({ handleMouseEnter }) => {
+const NavBarTopRight = ({ handleMouseEnter, handleClick }) => {
   return (
     <NavBarRight>
       <NavBarList>
-        <NavBarItem onMouseEnter={() => handleMouseEnter("services")}>
+        <NavBarItem
+          onMouseEnter={() => handleMouseEnter("services")}
+          onClick={() => handleClick("click")}
+        >
           <Link to="/services/solo">
             <button>Services</button>
           </Link>

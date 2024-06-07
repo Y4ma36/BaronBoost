@@ -2,7 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import arrow_down from "../../../../../../assets/arrowDown.png";
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  @media ${(props) => props.theme.device.mobile} {
+    padding-bottom: 20px;
+  }
+`;
 
 const DesireLpContainer = styled.div``;
 

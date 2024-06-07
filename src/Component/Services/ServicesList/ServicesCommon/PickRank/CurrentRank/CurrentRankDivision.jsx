@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -11,7 +11,8 @@ const Wrapper = styled.div`
 `;
 
 const DivisionContainer = styled(motion.div)`
-  background-color: rgb(255, 255, 255, 0.1);
+  background: ${(props) =>
+    props.isSelected ? props.theme.colors.purple : "rgba(255, 255, 255, 0.1)"};
   border-radius: 3px;
   width: 50px;
   height: 50px;
@@ -26,40 +27,27 @@ const DivisionContainer = styled(motion.div)`
 `;
 
 const CurrentRankDivision = () => {
+  const [selectedDivision, setSelectedDivision] = useState(null);
+
+  const handleClick = (division) => {
+    setSelectedDivision(division);
+  };
+
   return (
     <Wrapper>
-      <DivisionContainer
-        whileHover={{
-          y: "-10px",
-          backgroundColor: "rgb(255, 255, 255, 0.3)",
-        }}
-      >
-        <h1>IV</h1>
-      </DivisionContainer>
-      <DivisionContainer
-        whileHover={{
-          y: "-10px",
-          backgroundColor: "rgb(255, 255, 255, 0.3)",
-        }}
-      >
-        <h1>III</h1>
-      </DivisionContainer>
-      <DivisionContainer
-        whileHover={{
-          y: "-10px",
-          backgroundColor: "rgb(255, 255, 255, 0.3)",
-        }}
-      >
-        <h1>II</h1>
-      </DivisionContainer>
-      <DivisionContainer
-        whileHover={{
-          y: "-10px",
-          backgroundColor: "rgb(255, 255, 255, 0.3)",
-        }}
-      >
-        <h1>I</h1>
-      </DivisionContainer>
+      {["IV", "III", "II", "I"].map((division) => (
+        <DivisionContainer
+          key={division}
+          isSelected={selectedDivision === division}
+          whileHover={{
+            y: "-10px",
+            backgroundColor: "rgb(255, 255, 255, 0.3)",
+          }}
+          onClick={() => handleClick(division)}
+        >
+          <h1>{division}</h1>
+        </DivisionContainer>
+      ))}
     </Wrapper>
   );
 };

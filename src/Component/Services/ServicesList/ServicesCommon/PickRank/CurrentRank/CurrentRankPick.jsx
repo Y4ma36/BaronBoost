@@ -9,8 +9,8 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
   width: 60%;
+  gap: 10px;
 `;
 
 const CurrentRankPickContainer = styled(motion.div)`
@@ -18,6 +18,7 @@ const CurrentRankPickContainer = styled(motion.div)`
   border-radius: 3px;
   padding: 5px 8px;
   cursor: pointer;
+
   img {
     width: 50px;
     height: 50px;

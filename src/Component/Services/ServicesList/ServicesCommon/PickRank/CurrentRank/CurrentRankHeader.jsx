@@ -8,8 +8,11 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 10px;
   margin-top: 30px;
+  @media ${(props) => props.theme.device.mobile} {
+    flex-direction: column;
+  }
 `;
 
 const CurrentRankImg = styled.div`
@@ -25,9 +28,18 @@ const CurrentRankTitle = styled.h1`
   font-size: 2rem;
   font-weight: 800;
   margin-bottom: 5px;
+  @media ${(props) => props.theme.device.mobile} {
+    text-align: center;
+    font-size: ${(props) => props.theme.fontSize.lg};
+  }
 `;
 
-const CurrentRankSubTitle = styled.h3``;
+const CurrentRankSubTitle = styled.h3`
+  @media ${(props) => props.theme.device.mobile} {
+    text-align: center;
+    font-size: ${(props) => props.theme.fontSize.sm};
+  }
+`;
 
 const CurrentRankHeader = () => {
   const rankDataList = rankData;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import OverView from "./OverView./OverView";
+import Overview from "./ServicesHero/OverView";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import ServicesFAQ from "./ServicesFAQ/ServicesFAQ";
@@ -20,24 +20,40 @@ const ServicesListContainer = styled.div`
     width: 100%;
     li {
       font-size: 2rem;
-      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 33%;
       a {
         text-transform: uppercase;
         text-decoration: none;
         color: ${(props) => props.theme.colors.white};
         font-weight: 700;
       }
+      @media ${(props) => props.theme.device.laptop} {
+        font-size: ${(props) => props.theme.fontSize.lg};
+      }
+      @media ${(props) => props.theme.device.mobile} {
+        font-size: ${(props) => props.theme.fontSize.md};
+      }
     }
   }
 `;
 
 const Underline = styled(motion.div)`
-  position: absolute;
-  bottom: -20px;
-  left: -80px;
   width: 250px;
   height: 8px;
   background-color: ${(props) => props.theme.colors.purple};
+  @media ${(props) => props.theme.device.laptop} {
+    width: 180px;
+    height: 6px;
+  }
+  @media ${(props) => props.theme.device.mobile} {
+    width: 100px;
+    height: 4px;
+  }
 `;
 
 const Services = () => {
@@ -46,7 +62,7 @@ const Services = () => {
 
   return (
     <div>
-      <OverView />
+      <Overview />
       <ServicesListContainer>
         <ul>
           <li>
@@ -65,7 +81,7 @@ const Services = () => {
           <li>
             <Link to="netwins">Net Wins</Link>
             {currentLocation === "netwins" ? (
-              <Underline layoutId="underline" style={{ left: "-55px" }} />
+              <Underline layoutId="underline" />
             ) : null}
           </li>
         </ul>

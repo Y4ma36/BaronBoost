@@ -28,38 +28,17 @@ const DivisionContainer = styled(motion.div)`
 const DesireRankDivision = () => {
   return (
     <Wrapper>
-      <DivisionContainer
-        whileHover={{
-          y: "-10px",
-          backgroundColor: "rgb(255, 255, 255, 0.3)",
-        }}
-      >
-        <h1>IV</h1>
-      </DivisionContainer>
-      <DivisionContainer
-        whileHover={{
-          y: "-10px",
-          backgroundColor: "rgb(255, 255, 255, 0.3)",
-        }}
-      >
-        <h1>III</h1>
-      </DivisionContainer>
-      <DivisionContainer
-        whileHover={{
-          y: "-10px",
-          backgroundColor: "rgb(255, 255, 255, 0.3)",
-        }}
-      >
-        <h1>II</h1>
-      </DivisionContainer>
-      <DivisionContainer
-        whileHover={{
-          y: "-10px",
-          backgroundColor: "rgb(255, 255, 255, 0.3)",
-        }}
-      >
-        <h1>I</h1>
-      </DivisionContainer>
+      {["IV", "III", "II", "I"].map((division) => (
+        <DivisionContainer
+          key={division}
+          whileHover={{
+            y: "-10px",
+            backgroundColor: "rgb(255, 255, 255, 0.3)",
+          }}
+        >
+          <h1>{division}</h1>
+        </DivisionContainer>
+      ))}
     </Wrapper>
   );
 };

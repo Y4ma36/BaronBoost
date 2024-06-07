@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { navBarServicesData, navBarSupportData } from "./NavBarData";
 import { Link } from "react-router-dom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { isHoverNav } from "../../Data/atoms";
 
 const NavBarBottomList = styled.div`
-  display: flex;
+  display: ${(props) => (props.show ? "flex" : "none")};
   justify-content: center;
   width: 100%;
   margin-top: 30px;
   padding-bottom: 50px;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
 
 const NavBarBottomItemContainer = styled.div`
@@ -18,15 +24,11 @@ const NavBarBottomItemContainer = styled.div`
   align-items: center;
   text-align: center;
   background: ${(props) => props.theme.colors.purple};
-  width: 40%;
+
   height: 250px;
   border-radius: 10px;
   margin: 0px 30px;
   cursor: pointer;
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
 `;
 
 const NavBarBottomItemTitle = styled.h1`
@@ -47,22 +49,41 @@ const NavBarBottomeItemSubTitle = styled.h3`
 `;
 
 const NavBarBottom = ({ nav }) => {
+  const [isNav, setIsNav] = useState(true);
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = (title) => {
+    if (title) {
+      setIsClicked(true);
+    }
+  };
+
+  useEffect(() => {
+    if (isClicked) {
+      setIsNav(false);
+      setTimeout(() => {
+        setIsNav(true);
+        setIsClicked(false);
+      }, 100);
+    }
+  }, [isClicked]);
+
   return (
     <>
-      <NavBarBottomList>
+      <NavBarBottomList show={isNav}>
         {nav === "services"
           ? navBarServicesData.map((item) => (
-              <NavBarBottomItemContainer>
-                <Link to={item.link}>
+              <Link to={item.link} onClick={() => handleClick(item.title)}>
+                <NavBarBottomItemContainer key={item.id}>
                   <NavBarBottomItemTitle>{item.title}</NavBarBottomItemTitle>
                   <NavBarBottomeItemSubTitle>
                     {item.subtitle}
                   </NavBarBottomeItemSubTitle>
-                </Link>
-              </NavBarBottomItemContainer>
+                </NavBarBottomItemContainer>
+              </Link>
             ))
           : navBarSupportData.map((item) => (
-              <NavBarBottomItemContainer>
+              <NavBarBottomItemContainer key={item.id}>
                 <NavBarBottomItemTitle>{item.title}</NavBarBottomItemTitle>
                 <NavBarBottomeItemSubTitle>
                   {item.subtitle}

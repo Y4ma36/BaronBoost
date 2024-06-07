@@ -12,6 +12,8 @@ import NavBarBottom from "./NavBarBottom";
 import NavMenuBar from "./NavMenuBar";
 import NavBarSideMenu from "./NavBarSideMenu";
 import NavBarTopRight from "./NavBarTopRight";
+import { useRecoilValue } from "recoil";
+import { isHoverNav } from "../../Data/atoms";
 
 const NavBarWrapper = styled(motion.div)`
   display: flex;
@@ -97,6 +99,7 @@ const NavBar = () => {
   const navAnimation = useAnimation();
   const [hoveredItem, setHoveredItem] = useState(false);
   const [sideMenu, setSideMenu] = useState(false);
+
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 30) {
       navAnimation.start({
@@ -126,6 +129,10 @@ const NavBar = () => {
     setSideMenu(value);
   };
 
+  const handleClick = (item) => {
+    setHoveredItem(false);
+  };
+
   return (
     <NavBarWrapper animate={navAnimation} isOpen={sideMenu}>
       <NavBarTopContainer>
@@ -137,7 +144,10 @@ const NavBar = () => {
             </p>
           </Link>
         </NavBarTopLeft>
-        <NavBarTopRight handleMouseEnter={handleMouseEnter} />
+        <NavBarTopRight
+          handleMouseEnter={handleMouseEnter}
+          handleClick={handleClick}
+        />
         <NavMenuBar isOpen={handleMenu} />
       </NavBarTopContainer>
       <NavBarBottomContainer show={hoveredItem} onMouseLeave={handleMouseLeave}>

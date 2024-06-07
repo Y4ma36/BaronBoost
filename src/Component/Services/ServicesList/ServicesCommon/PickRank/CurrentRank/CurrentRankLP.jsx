@@ -6,6 +6,9 @@ import { useLocation } from "react-router-dom";
 const Wrapper = styled.div`
   display: flex;
   gap: 5px;
+  @media ${(props) => props.theme.device.mobile} {
+    flex-direction: column;
+  }
 `;
 
 const CurrentLpContainer = styled.div``;

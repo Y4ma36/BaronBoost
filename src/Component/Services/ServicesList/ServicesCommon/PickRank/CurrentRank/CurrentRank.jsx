@@ -11,6 +11,9 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 30px;
+  @media ${(props) => props.theme.device.desktop} {
+    padding: 30px 0px;
+  }
 `;
 
 const CurrentRank = () => {
