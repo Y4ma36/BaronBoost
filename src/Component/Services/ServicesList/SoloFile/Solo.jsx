@@ -5,7 +5,6 @@ import TotalPrice from "../ServicesCommon/TotalPrice";
 
 const Wrapper = styled.div`
   display: flex;
-  max-height: 70vh;
   background-color: black;
   padding: 30px 40px;
   gap: 10px;
@@ -14,7 +13,7 @@ const Wrapper = styled.div`
   @media ${(props) => props.theme.device.desktop} {
     flex-direction: column;
   }
-  @media ${(props) => props.theme.device.desktop} {
+  @media ${(props) => props.theme.device.laptop} {
     height: 170vh;
   }
 `;

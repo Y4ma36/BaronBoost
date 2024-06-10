@@ -11,6 +11,9 @@ const Wrapper = styled.div`
   gap: 10px;
   box-sizing: border-box;
   min-height: 650px;
+  @media ${(props) => props.theme.device.laptop} {
+    flex-direction: column;
+  }
 `;
 
 const NetWins = () => {
