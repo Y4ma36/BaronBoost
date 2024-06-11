@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { navBarServicesData, navBarSupportData } from "./NavBarData";
+import { navBarServicesData } from "./NavBarData";
 import { Link } from "react-router-dom";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { isHoverNav } from "../../Data/atoms";
 
 const NavBarBottomList = styled.div`
   display: ${(props) => (props.show ? "flex" : "none")};
@@ -71,25 +69,16 @@ const NavBarBottom = ({ nav }) => {
   return (
     <>
       <NavBarBottomList show={isNav}>
-        {nav === "services"
-          ? navBarServicesData.map((item) => (
-              <Link to={item.link} onClick={() => handleClick(item.title)}>
-                <NavBarBottomItemContainer key={item.id}>
-                  <NavBarBottomItemTitle>{item.title}</NavBarBottomItemTitle>
-                  <NavBarBottomeItemSubTitle>
-                    {item.subtitle}
-                  </NavBarBottomeItemSubTitle>
-                </NavBarBottomItemContainer>
-              </Link>
-            ))
-          : navBarSupportData.map((item) => (
-              <NavBarBottomItemContainer key={item.id}>
-                <NavBarBottomItemTitle>{item.title}</NavBarBottomItemTitle>
-                <NavBarBottomeItemSubTitle>
-                  {item.subtitle}
-                </NavBarBottomeItemSubTitle>
-              </NavBarBottomItemContainer>
-            ))}
+        {navBarServicesData.map((item) => (
+          <Link to={item.link} onClick={() => handleClick(item.title)}>
+            <NavBarBottomItemContainer key={item.id}>
+              <NavBarBottomItemTitle>{item.title}</NavBarBottomItemTitle>
+              <NavBarBottomeItemSubTitle>
+                {item.subtitle}
+              </NavBarBottomeItemSubTitle>
+            </NavBarBottomItemContainer>
+          </Link>
+        ))}
       </NavBarBottomList>
     </>
   );

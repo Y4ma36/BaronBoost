@@ -1,24 +1,24 @@
-const navBarSupportData = [
-  {
-    id: 1,
-    title: "Contact Us",
-    subtitle:
-      "Get in touch with our support team for any assistance or inquiries.",
-    button: "Reach Out",
-  },
-  {
-    id: 2,
-    title: "FAQs",
-    subtitle: "Find answers to common questions about our services.",
-    button: "Learn More",
-  },
-  {
-    id: 3,
-    title: "Policy",
-    subtitle: "Read our terms of service and privacy policy.",
-    button: "View Policy",
-  },
-];
+// const navBarSupportData = [
+//   {
+//     id: 1,
+//     title: "Contact Us",
+//     subtitle:
+//       "Get in touch with our support team for any assistance or inquiries.",
+//     button: "Reach Out",
+//   },
+//   {
+//     id: 2,
+//     title: "FAQs",
+//     subtitle: "Find answers to common questions about our services.",
+//     button: "Learn More",
+//   },
+//   {
+//     id: 3,
+//     title: "Policy",
+//     subtitle: "Read our terms of service and privacy policy.",
+//     button: "View Policy",
+//   },
+// ];
 
 const navBarServicesData = [
   {
@@ -44,4 +44,4 @@ const navBarServicesData = [
   },
 ];
 
-export { navBarSupportData, navBarServicesData };
+export { navBarServicesData };

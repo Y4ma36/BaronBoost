@@ -12,8 +12,6 @@ import NavBarBottom from "./NavBarBottom";
 import NavMenuBar from "./NavMenuBar";
 import NavBarSideMenu from "./NavBarSideMenu";
 import NavBarTopRight from "./NavBarTopRight";
-import { useRecoilValue } from "recoil";
-import { isHoverNav } from "../../Data/atoms";
 
 const NavBarWrapper = styled(motion.div)`
   display: flex;
@@ -84,12 +82,11 @@ const NavBarBottomContainer = styled.div`
 const NavBarBottomCover = styled.div`
   background: ${(props) => (props.show || props.isOpen ? "black" : "none")};
   display: ${(props) => (props.show || props.isOpen ? "flex" : "none")};
-  opacity: 0.7;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   z-index: -1;
   transition: opacity 0.3s ease-in-out;
 `;

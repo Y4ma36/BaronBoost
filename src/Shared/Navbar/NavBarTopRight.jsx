@@ -98,7 +98,7 @@ const NavBarTopRight = ({ handleMouseEnter, handleClick }) => {
             <button>Orders</button>
           </Link>
         </NavBarItem>
-        <NavBarItem onMouseEnter={() => handleMouseEnter("support")}>
+        <NavBarItem>
           <Link to="/support">
             <button>Support</button>
           </Link>

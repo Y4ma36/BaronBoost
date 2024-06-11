@@ -15,6 +15,12 @@ import Duo from "./Component/Services/ServicesList/DuoFile/Duo";
 import NetWins from "./Component/Services/ServicesList/NetWinsFile/NetWins";
 import Coaching from "./Component/Coaching/Coaching";
 
+// Support
+import Contact from "./Component/Support/Contact/Contact";
+import Faqs from "./Component/Support/Faqs/Faqs";
+import Policy from "./Component/Support/Policy/Policy";
+import BoosterApplication from "./Component/Support/BoosterApplication/BoosterApplication";
+
 // baronboost/coaching
 // baronboost/boosters
 // baronboost/login
@@ -25,6 +31,12 @@ import Coaching from "./Component/Coaching/Coaching";
 // baronboost/support/contactus
 // baronboost/support/faqs
 // baronboost/support/boosterapplication
+const supportRoutes = [
+  { path: "contact", element: <Contact /> },
+  { path: "faqs", element: <Faqs /> },
+  { path: "policy", element: <Policy /> },
+  { path: "boosterapplication", element: <BoosterApplication /> },
+];
 
 const router = createBrowserRouter([
   {
@@ -61,6 +73,10 @@ const router = createBrowserRouter([
         path: "/support",
         element: <Support />,
       },
+      ...supportRoutes.map((route) => ({
+        path: `/support/${route.path}`,
+        element: route.element,
+      })),
     ],
   },
   {
