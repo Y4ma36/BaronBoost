@@ -22,6 +22,9 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   gap: 50px;
+  @media ${(props) => props.theme.device.laptop} {
+    flex-direction: column;
+  }
 `;
 
 const FooterLeft = styled.div`
@@ -44,6 +47,24 @@ const FooterLeft = styled.div`
     color: black;
     text-align: right;
   }
+  @media ${(props) => props.theme.device.laptop} {
+    width: 450px;
+    h1 {
+      font-size: 2rem;
+    }
+    h3 {
+      font-size: ${(props) => props.theme.fontSize.base};
+    }
+  }
+  @media ${(props) => props.theme.device.mobile} {
+    width: 80%;
+    h1 {
+      font-size: ${(props) => props.theme.fontSize.lg};
+    }
+    h3 {
+      font-size: ${(props) => props.theme.fontSize.base};
+    }
+  }
 `;
 
 const FooterRight = styled.div`
@@ -53,6 +74,9 @@ const FooterRight = styled.div`
   a {
     text-decoration: none;
     color: inherit;
+  }
+  @media ${(props) => props.theme.device.mobile} {
+    width: 90%;
   }
 `;
 
@@ -72,13 +96,18 @@ const LinkButton = styled(motion.div)`
   .icon {
     font-size: 2rem;
   }
+  @media ${(props) => props.theme.device.laptop} {
+    padding: 20px 20px;
+  }
+  @media ${(props) => props.theme.device.mobile} {
+    font-size: ${(props) => props.theme.fontSize.base};
+  }
 `;
 
 const IconBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 5px 5px;
   border-radius: 5px;
   margin-right: 5px;

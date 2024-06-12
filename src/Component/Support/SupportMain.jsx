@@ -6,19 +6,37 @@ import { color } from "framer-motion";
 
 const Wrapper = styled.div`
   background-color: #7f8fa6;
-  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  padding: 100px 0px;
+  @media ${(props) => props.theme.device.laptop} {
+    padding: 50px 20px;
+  }
+  @media ${(props) => props.theme.device.mobile} {
+    padding: 50px 20px;
+  }
 `;
 
 const Container = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 20%);
   justify-content: center;
-  gap: 15px;
+  align-items: center;
+  grid-gap: 10px;
+  padding: 0px 20px;
+
   a {
     text-decoration: none;
     color: inherit;
+  }
+  @media ${(props) => props.theme.device.laptop} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media ${(props) => props.theme.device.mobile} {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 20px;
   }
 `;
 
@@ -27,13 +45,19 @@ const SupportBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 280px;
-  height: 100%;
+  height: 200px;
   border: 2px solid rgba(233, 234, 239, 0.5);
   border-radius: 7px;
   padding: 30px 20px;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   img {
+  }
+  @media ${(props) => props.theme.device.laptop} {
+    padding: 10px 10px;
+    img {
+      width: 60px;
+      height: 60px;
+    }
   }
 `;
 
@@ -43,6 +67,10 @@ const SupportTitle = styled.h2`
   color: ${(props) => props.theme.colors.black};
   margin-top: 10px;
   margin-bottom: 10px;
+  text-align: center;
+  @media ${(props) => props.theme.device.laptop} {
+    font-size: ${(props) => props.theme.fontSize.md};
+  }
 `;
 
 const SupportDescription = styled.h3`

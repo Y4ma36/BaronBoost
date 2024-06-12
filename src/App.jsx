@@ -35,7 +35,7 @@ const supportRoutes = [
   { path: "contact", element: <Contact /> },
   { path: "faqs", element: <Faqs /> },
   { path: "policy", element: <Policy /> },
-  { path: "boosterapplication", element: <BoosterApplication /> },
+  { path: "booster-application", element: <BoosterApplication /> },
 ];
 
 const router = createBrowserRouter([

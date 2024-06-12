@@ -15,12 +15,34 @@ const HeroImg = styled.div`
     width: 250px;
     height: 250px;
   }
+  @media ${(props) => props.theme.device.tablet} {
+    img {
+      width: 200px;
+      height: 200px;
+    }
+  }
+  @media ${(props) => props.theme.device.mobile} {
+    img {
+      width: 150px;
+      height: 150px;
+    }
+  }
 `;
 
 const Title = styled.h1`
   font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 20px;
+  text-align: center;
+  @media ${(props) => props.theme.device.laptop} {
+    font-size: 3rem;
+  }
+  @media ${(props) => props.theme.device.tablet} {
+    font-size: 2rem;
+  }
+  @media ${(props) => props.theme.device.mobile} {
+    font-size: ${(props) => props.theme.fontSize.lg};
+  }
 `;
 
 const SubTitle = styled.h3`
@@ -29,6 +51,12 @@ const SubTitle = styled.h3`
   font-weight: 600;
   width: 35%;
   text-align: center;
+  @media ${(props) => props.theme.device.mobile} {
+    font-size: ${(props) => props.theme.fontSize.sm};
+    font-weight: 700;
+    line-height: 17px;
+    width: 50%;
+  }
 `;
 
 const SupportHero = () => {

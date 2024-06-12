@@ -1,16 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import ContactLeft from "./ContactLeft";
-import ContactRight from "./ContactRight";
+import BoosterMainLeft from "./BoosterMainLeft";
+import BoosterMainRight from "./BoosterMainRight";
+
+// https://forms.gle/3VGXkQWhhWnX1NTJA
 
 const Wrapper = styled.div`
-  padding-top: 130px;
   background-color: black;
-`;
-
-const Container = styled.div`
   display: flex;
-  background-color: white;
   padding: 70px 0px;
   gap: 50px;
   @media ${(props) => props.theme.device.laptop} {
@@ -18,15 +15,13 @@ const Container = styled.div`
   }
 `;
 
-const Contact = () => {
+const BoosterMain = () => {
   return (
     <Wrapper>
-      <Container>
-        <ContactLeft />
-        <ContactRight />
-      </Container>
+      <BoosterMainLeft />
+      <BoosterMainRight />
     </Wrapper>
   );
 };
 
-export default Contact;
+export default BoosterMain;
