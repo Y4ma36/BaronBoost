@@ -6,23 +6,25 @@ import booster_Lottie from "../../../assets/Support/application.json";
 const Wrapper = styled.div`
   flex: 1;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   @media ${(props) => props.theme.device.desktop} {
     justify-content: center;
   }
+  z-index: 2;
 `;
 
 const Container = styled.div`
-  width: 80%;
-  height: 90%;
+  width: 60%;
+  height: 70%;
   border-radius: 10px;
-  background-color: ${(props) => props.theme.colors.purple};
+  background-color: ${(props) => props.theme.colors.white};
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-bottom: 50px;
+  border: 5px solid ${(props) => props.theme.colors.purple};
 `;
 
 const ContactImg = styled.div`

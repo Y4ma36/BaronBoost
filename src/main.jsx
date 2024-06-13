@@ -12,6 +12,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <RecoilRoot>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
+
         <RouterProvider router={router} />
       </ThemeProvider>
     </RecoilRoot>

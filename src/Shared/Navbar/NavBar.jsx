@@ -12,6 +12,7 @@ import NavBarBottom from "./NavBarBottom";
 import NavMenuBar from "./NavMenuBar";
 import NavBarSideMenu from "./NavBarSideMenu";
 import NavBarTopRight from "./NavBarTopRight";
+import ScrolltoTop from "../\bScrolltoTop";
 
 const NavBarWrapper = styled(motion.div)`
   display: flex;
