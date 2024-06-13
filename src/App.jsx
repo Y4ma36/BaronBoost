@@ -20,6 +20,7 @@ import Contact from "./Component/Support/Contact/Contact";
 import Faqs from "./Component/Support/Faqs/Faqs";
 import Policy from "./Component/Support/Policy/Policy";
 import BoosterApplication from "./Component/Support/BoosterApplication/BoosterApplication";
+import Order from "./Component/Order/Order";
 
 // baronboost/coaching
 // baronboost/boosters
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: "/coaching",
         element: <Coaching />,
+      },
+      {
+        path: "/orders",
+        element: <Order />,
       },
       {
         path: "/support",

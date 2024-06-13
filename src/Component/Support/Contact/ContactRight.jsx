@@ -4,7 +4,7 @@ import emailjs from "@emailjs/browser";
 
 const Wrapper = styled.div`
   flex: 1;
-  background-color: ${(props) => props.theme.colors.white};
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +17,6 @@ const Container = styled.div`
   align-items: flex-start;
   height: 90%;
   width: 80%;
-  border-radius: 10px;
   gap: 20px;
   @media ${(props) => props.theme.device.laptop} {
     align-items: center;

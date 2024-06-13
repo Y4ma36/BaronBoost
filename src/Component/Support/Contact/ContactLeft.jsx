@@ -5,7 +5,6 @@ import contact_Lotti from "../../../assets/Support/contactus.json";
 
 const Wrapper = styled.div`
   flex: 1;
-  background-color: ${(props) => props.theme.colors.white};
   display: flex;
   justify-content: flex-end;
   align-items: center;
