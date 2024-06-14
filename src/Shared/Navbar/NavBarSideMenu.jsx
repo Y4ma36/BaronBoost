@@ -12,6 +12,7 @@ const NavBarSideMenuWrapper = styled.div`
   width: 40%;
   height: 100vh;
   margin-left: auto;
+  position: sticky;
   @media ${(props) => props.theme.device.tablet} {
     display: ${(props) => (props.show ? "flex" : "none")};
   }
