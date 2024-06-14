@@ -80,7 +80,8 @@ const NavBarBottomContainer = styled.div`
 `;
 
 const NavBarBottomCover = styled.div`
-  background: ${(props) => (props.show || props.isOpen ? "black" : "none")};
+  background: ${(props) =>
+    props.show || props.isOpen ? "rgba(0,0,0,0.5)" : "none"};
   display: ${(props) => (props.show || props.isOpen ? "flex" : "none")};
   position: absolute;
   top: 0;
@@ -90,7 +91,6 @@ const NavBarBottomCover = styled.div`
   z-index: -1;
   transition: opacity 0.3s ease-in-out;
 `;
-
 const NavBar = () => {
   const { scrollY } = useScroll();
   const navAnimation = useAnimation();
@@ -115,7 +115,7 @@ const NavBar = () => {
   });
 
   const handleMouseEnter = (item) => {
-    if (item == "services") {
+    if (item === "services") {
       setHoveredItem(true);
     } else {
       setHoveredItem(false);
@@ -126,11 +126,11 @@ const NavBar = () => {
     setHoveredItem(false);
   };
 
-  const handleMenu = (value) => {
-    setSideMenu(value);
+  const toggleSideMenu = () => {
+    setSideMenu((prev) => !prev);
   };
 
-  const handleClick = (item) => {
+  const handleClick = () => {
     setHoveredItem(false);
   };
 
@@ -139,11 +139,11 @@ const NavBar = () => {
   };
 
   return (
-    <NavBarWrapper animate={navAnimation} isOpen={sideMenu}>
+    <NavBarWrapper animate={navAnimation}>
       <NavBarTopContainer>
         <NavBarTopLeft>
           <Link to="/" onClick={handleLinkClick}>
-            <img src={Logo} alt="" />
+            <img src={Logo} alt="logo" />
             <p>
               <span>B</span>aron<span>B</span>oost
             </p>
@@ -153,7 +153,7 @@ const NavBar = () => {
           handleMouseEnter={handleMouseEnter}
           handleClick={handleClick}
         />
-        <NavMenuBar isOpen={handleMenu} />
+        <NavMenuBar isOpen={toggleSideMenu} />
       </NavBarTopContainer>
       <NavBarBottomContainer show={hoveredItem} onMouseLeave={handleMouseLeave}>
         <NavBarBottom nav={hoveredItem} />
@@ -164,7 +164,7 @@ const NavBar = () => {
         show={hoveredItem}
         onMouseLeave={handleMouseLeave}
       />
-      <NavBarSideMenu isOpen={sideMenu} />
+      <NavBarSideMenu isOpen={sideMenu} sideMenu={toggleSideMenu} />
       {/*------------------*/}
     </NavBarWrapper>
   );

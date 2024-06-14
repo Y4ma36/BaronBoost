@@ -13,9 +13,6 @@ const Wrapper = styled.div`
   @media ${(props) => props.theme.device.desktop} {
     flex-direction: column;
   }
-  @media ${(props) => props.theme.device.laptop} {
-    height: 170vh;
-  }
 `;
 
 const Solo = () => {

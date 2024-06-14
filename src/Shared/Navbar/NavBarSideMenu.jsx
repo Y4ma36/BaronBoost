@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { AiFillProduct } from "react-icons/ai";
+import { FaRectangleList } from "react-icons/fa6";
+import { MdOutlineQuestionAnswer, MdKeyboardArrowRight } from "react-icons/md";
+import { BsPersonVideo3 } from "react-icons/bs";
 import { color } from "framer-motion";
 
 const NavBarSideMenuWrapper = styled.div`
@@ -8,8 +12,7 @@ const NavBarSideMenuWrapper = styled.div`
   @media ${(props) => props.theme.device.tablet} {
     display: ${(props) => (props.show ? "flex" : "none")};
   }
-
-  width: 50%;
+  width: 40%;
   height: 100vh;
   margin-left: auto;
 `;
@@ -19,27 +22,31 @@ const NavBarSideMenuContainer = styled.div`
   height: 50vh;
   background-color: ${(props) => props.theme.colors.purple};
   border-radius: 5px;
-  margin-right: 50px;
+  display: flex;
+  justify-content: center;
   ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    gap: 50px;
+    gap: 8px;
+    transition: all 0.3s ease-in-out;
   }
-
   li {
-    background-color: black;
-    width: 50%;
+    width: 100%;
     border-radius: 5px;
     text-align: center;
-    transition: all 0.3s ease-in-out;
+
     cursor: pointer;
     &:hover {
-      background: ${(props) => props.theme.colors.white};
       button {
-        color: ${(props) => props.theme.colors.black};
+        color: ${(props) => props.theme.colors.white};
+      }
+      .arrow_Right {
+        color: ${(props) => props.theme.colors.white};
+      }
+      .icon {
+        color: ${(props) => props.theme.colors.white};
       }
     }
   }
@@ -47,12 +54,26 @@ const NavBarSideMenuContainer = styled.div`
   a {
     text-decoration: none;
     color: inherit;
+    display: flex;
+    align-items: center;
+
+    .icon {
+      font-size: 30px;
+      color: ${(props) => props.theme.colors.black};
+      transition: all 0.3s ease-in-out;
+    }
+    .arrow_Right {
+      font-size: 20px;
+      color: #353b48;
+      opacity: 0.7;
+      transition: all 0.3s ease-in-out;
+    }
   }
 
   button {
     font-size: ${(props) => props.theme.fontSize.md};
     font-weight: 600;
-    color: ${(props) => props.theme.colors.white};
+    color: ${(props) => props.theme.colors.black};
     background: inherit;
     border-radius: 5px;
     padding: 15px 15px;
@@ -61,29 +82,59 @@ const NavBarSideMenuContainer = styled.div`
   }
 `;
 
-const NavBarSideMenu = ({ isOpen }) => {
+const UnderLine = styled.hr`
+  width: 60%;
+
+  background-color: black;
+  border: 1px solid black;
+  opacity: 0.2;
+`;
+
+const NavBarSideMenu = ({ isOpen, sideMenu }) => {
+  const [menuOpen, setMenuOpen] = useState(isOpen);
+
+  useEffect(() => {
+    setMenuOpen(isOpen);
+  }, [isOpen]);
+
+  const handleClickMenu = () => {
+    setMenuOpen(false);
+    sideMenu((prev) => !prev);
+  };
+
   return (
-    <NavBarSideMenuWrapper show={isOpen}>
+    <NavBarSideMenuWrapper show={menuOpen}>
       <NavBarSideMenuContainer>
         <ul>
-          <li>
+          <li onClick={handleClickMenu}>
             <Link to="/services">
+              <AiFillProduct className="icon" />
               <button>Services</button>
+              <MdKeyboardArrowRight className="arrow_Right" />
             </Link>
           </li>
-          <li>
+          <UnderLine />
+          <li onClick={handleClickMenu}>
             <Link to="/coaching">
+              <BsPersonVideo3 className="icon" />
               <button>Coaching</button>
+              <MdKeyboardArrowRight className="arrow_Right" />
             </Link>
           </li>
-          <li>
+          <UnderLine />
+          <li onClick={handleClickMenu}>
             <Link to="/orders">
+              <FaRectangleList className="icon" />
               <button>Orders</button>
+              <MdKeyboardArrowRight className="arrow_Right" />
             </Link>
           </li>
-          <li>
+          <UnderLine />
+          <li onClick={handleClickMenu}>
             <Link to="/support">
+              <MdOutlineQuestionAnswer className="icon" />
               <button>Support</button>
+              <MdKeyboardArrowRight className="arrow_Right" />
             </Link>
           </li>
         </ul>
