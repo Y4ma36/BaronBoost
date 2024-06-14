@@ -16,6 +16,9 @@ const NavBarSideMenuWrapper = styled.div`
   @media ${(props) => props.theme.device.tablet} {
     display: ${(props) => (props.show ? "flex" : "none")};
   }
+  @media (min-width: 800px) {
+    display: none;
+  }
   @media ${(props) => props.theme.device.mobile} {
     width: 45%;
   }
@@ -23,11 +26,15 @@ const NavBarSideMenuWrapper = styled.div`
 
 const NavBarSideMenuContainer = styled.div`
   width: 100%;
-  height: 50vh;
+  max-height: 50%;
   background-color: ${(props) => props.theme.colors.purple};
   border-radius: 5px;
   display: flex;
+  overflow: auto;
   justify-content: center;
+  @media ${(props) => props.theme.device.mobile} {
+    padding: 20px 0px;
+  }
   ul {
     display: flex;
     flex-direction: column;
@@ -71,6 +78,9 @@ const NavBarSideMenuContainer = styled.div`
       font-size: ${(props) => props.theme.fontSize.base};
       color: ${(props) => props.theme.colors.black};
       transition: all 0.3s ease-in-out;
+      @media ${(props) => props.theme.device.mobile} {
+        font-size: ${(props) => props.theme.fontSize.md};
+      }
     }
     .arrow_Right {
       font-size: ${(props) => props.theme.fontSize.base};
@@ -105,6 +115,17 @@ const UnderLine = styled.hr`
 
 const NavBarSideMenu = ({ isOpen, sideMenu }) => {
   const [menuOpen, setMenuOpen] = useState(isOpen);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     setMenuOpen(isOpen);

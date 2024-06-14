@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../../assets/BaronBoostLogo.png";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -18,9 +18,17 @@ const NavBarWrapper = styled(motion.div)`
   flex-direction: column;
   position: fixed;
   width: 100%;
-  padding: 16px;
   z-index: 500;
   overflow-x: hidden;
+`;
+
+const NavContainer = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  padding: 16px;
 `;
 
 const NavBarTopContainer = styled.div`
@@ -114,6 +122,19 @@ const NavBar = () => {
     }
   });
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setSideMenu(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const handleMouseEnter = (item) => {
     if (item === "services") {
       setHoveredItem(true);
@@ -140,32 +161,37 @@ const NavBar = () => {
 
   return (
     <NavBarWrapper animate={navAnimation}>
-      <NavBarTopContainer>
-        <NavBarTopLeft>
-          <Link to="/" onClick={handleLinkClick}>
-            <img src={Logo} alt="logo" />
-            <p>
-              <span>B</span>aron<span>B</span>oost
-            </p>
-          </Link>
-        </NavBarTopLeft>
-        <NavBarTopRight
-          handleMouseEnter={handleMouseEnter}
-          handleClick={handleClick}
+      <NavContainer>
+        <NavBarTopContainer>
+          <NavBarTopLeft>
+            <Link to="/" onClick={handleLinkClick}>
+              <img src={Logo} alt="logo" />
+              <p>
+                <span>B</span>aron<span>B</span>oost
+              </p>
+            </Link>
+          </NavBarTopLeft>
+          <NavBarTopRight
+            handleMouseEnter={handleMouseEnter}
+            handleClick={handleClick}
+          />
+          <NavMenuBar isOpen={toggleSideMenu} />
+        </NavBarTopContainer>
+        <NavBarBottomContainer
+          show={hoveredItem}
+          onMouseLeave={handleMouseLeave}
+        >
+          <NavBarBottom nav={hoveredItem} />
+        </NavBarBottomContainer>
+        {/* cover & sidemenu */}
+        <NavBarBottomCover
+          isOpen={sideMenu}
+          show={hoveredItem}
+          onMouseLeave={handleMouseLeave}
         />
-        <NavMenuBar isOpen={toggleSideMenu} />
-      </NavBarTopContainer>
-      <NavBarBottomContainer show={hoveredItem} onMouseLeave={handleMouseLeave}>
-        <NavBarBottom nav={hoveredItem} />
-      </NavBarBottomContainer>
-      {/* cover & menu */}
-      <NavBarBottomCover
-        isOpen={sideMenu}
-        show={hoveredItem}
-        onMouseLeave={handleMouseLeave}
-      />
-      <NavBarSideMenu isOpen={sideMenu} sideMenu={toggleSideMenu} />
-      {/*------------------*/}
+        <NavBarSideMenu isOpen={sideMenu} sideMenu={toggleSideMenu} />
+        {/*------------------*/}
+      </NavContainer>
     </NavBarWrapper>
   );
 };

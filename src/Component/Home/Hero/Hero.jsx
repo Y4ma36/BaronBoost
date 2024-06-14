@@ -138,7 +138,7 @@ const Hero = () => {
           delivering the ultimate League of Legends experience.
         </HeroSubTitle>
         <HeroButtonContainer>
-          <Link>
+          <Link to="/services/solo">
             <HeroButton index={0}>Rank Up</HeroButton>
           </Link>
           <Link>
