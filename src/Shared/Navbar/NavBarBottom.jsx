@@ -22,7 +22,6 @@ const NavBarBottomItemContainer = styled.div`
   align-items: center;
   text-align: center;
   background: ${(props) => props.theme.colors.purple};
-
   height: 250px;
   border-radius: 10px;
   margin: 0px 30px;

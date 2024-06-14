@@ -89,7 +89,7 @@ const NavBarBottomContainer = styled.div`
 
 const NavBarBottomCover = styled.div`
   background: ${(props) =>
-    props.show || props.isOpen ? "rgba(0,0,0,0.5)" : "none"};
+    props.show || props.isOpen ? "rgba(0,0,0,1)" : "none"};
   display: ${(props) => (props.show || props.isOpen ? "flex" : "none")};
   position: absolute;
   top: 0;
