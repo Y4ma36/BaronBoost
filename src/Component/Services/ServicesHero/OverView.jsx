@@ -47,6 +47,7 @@ const OverViewLeft = styled.div`
 
 const OverViewLeftTitle = styled.div`
   margin-bottom: 20px;
+  text-align: center;
   span {
     font-family: "Noto Sans KR", sans-serif;
     color: ${(props) => props.theme.colors.white};

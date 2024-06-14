@@ -9,12 +9,15 @@ import { color } from "framer-motion";
 
 const NavBarSideMenuWrapper = styled.div`
   display: none;
-  @media ${(props) => props.theme.device.tablet} {
-    display: ${(props) => (props.show ? "flex" : "none")};
-  }
   width: 40%;
   height: 100vh;
   margin-left: auto;
+  @media ${(props) => props.theme.device.tablet} {
+    display: ${(props) => (props.show ? "flex" : "none")};
+  }
+  @media ${(props) => props.theme.device.mobile} {
+    width: 45%;
+  }
 `;
 
 const NavBarSideMenuContainer = styled.div`
@@ -31,13 +34,16 @@ const NavBarSideMenuContainer = styled.div`
     align-items: center;
     gap: 8px;
     transition: all 0.3s ease-in-out;
+    @media ${(props) => props.theme.device.mobile} {
+      gap: 0px;
+    }
   }
   li {
     width: 100%;
     border-radius: 5px;
     text-align: center;
-
     cursor: pointer;
+
     &:hover {
       button {
         color: ${(props) => props.theme.colors.white};
@@ -56,14 +62,17 @@ const NavBarSideMenuContainer = styled.div`
     color: inherit;
     display: flex;
     align-items: center;
-
+    @media ${(props) => props.theme.device.mobile} {
+      display: flex;
+      flex-direction: column;
+    }
     .icon {
-      font-size: 30px;
+      font-size: ${(props) => props.theme.fontSize.base};
       color: ${(props) => props.theme.colors.black};
       transition: all 0.3s ease-in-out;
     }
     .arrow_Right {
-      font-size: 20px;
+      font-size: ${(props) => props.theme.fontSize.base};
       color: #353b48;
       opacity: 0.7;
       transition: all 0.3s ease-in-out;
@@ -79,6 +88,9 @@ const NavBarSideMenuContainer = styled.div`
     padding: 15px 15px;
     border: none;
     transition: all 0.3s ease-in-out;
+    @media ${(props) => props.theme.device.mobile} {
+      font-size: ${(props) => props.theme.fontSize.base};
+    }
   }
 `;
 
@@ -107,7 +119,7 @@ const NavBarSideMenu = ({ isOpen, sideMenu }) => {
       <NavBarSideMenuContainer>
         <ul>
           <li onClick={handleClickMenu}>
-            <Link to="/services">
+            <Link to="/services/solo">
               <AiFillProduct className="icon" />
               <button>Services</button>
               <MdKeyboardArrowRight className="arrow_Right" />

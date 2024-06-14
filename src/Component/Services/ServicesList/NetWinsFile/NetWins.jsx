@@ -5,7 +5,6 @@ import TotalPrice from "../ServicesCommon/TotalPrice";
 
 const Wrapper = styled.div`
   display: flex;
-  height: 70vh;
   background-color: black;
   padding: 30px 40px;
   gap: 10px;
