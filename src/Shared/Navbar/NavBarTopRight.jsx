@@ -77,6 +77,9 @@ const NavBarLoginCart = styled.div`
 `;
 
 const NavBarTopRight = ({ handleMouseEnter, handleClick }) => {
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
   return (
     <NavBarRight>
       <NavBarList>
@@ -84,22 +87,22 @@ const NavBarTopRight = ({ handleMouseEnter, handleClick }) => {
           onMouseEnter={() => handleMouseEnter("services")}
           onClick={() => handleClick("click")}
         >
-          <Link to="/services/solo">
+          <Link to="/services/solo" onClick={handleLinkClick}>
             <button>Services</button>
           </Link>
         </NavBarItem>
-        <NavBarItem>
-          <Link to="/coaching">
+        <NavBarItem onMouseEnter={() => handleMouseEnter("false")}>
+          <Link to="/coaching" onClick={handleLinkClick}>
             <button>Coaching</button>
           </Link>
         </NavBarItem>
-        <NavBarItem>
-          <Link to="/orders">
+        <NavBarItem onMouseEnter={() => handleMouseEnter("false")}>
+          <Link to="/orders" onClick={handleLinkClick}>
             <button>Orders</button>
           </Link>
         </NavBarItem>
-        <NavBarItem>
-          <Link to="/support">
+        <NavBarItem onMouseEnter={() => handleMouseEnter("false")}>
+          <Link to="/support" onClick={handleLinkClick}>
             <button>Support</button>
           </Link>
         </NavBarItem>

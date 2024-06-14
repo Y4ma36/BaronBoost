@@ -102,9 +102,11 @@ const SignUpLeft = () => {
   const onValid = (data) => {};
   return (
     <SignUpLeftWrappar>
-      <SignUpImg>
-        <img src={img} alt="" />
-      </SignUpImg>
+      <Link to="/">
+        <SignUpImg>
+          <img src={img} alt="" />
+        </SignUpImg>
+      </Link>
       <SignUpLeftTitleContainer>
         <SignUpLeftTitle>Welcome</SignUpLeftTitle>
         <SignUpLeftSubTitle>Join Us Today!</SignUpLeftSubTitle>

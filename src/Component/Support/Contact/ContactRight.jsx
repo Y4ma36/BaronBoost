@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import emailjs from "@emailjs/browser";
 
@@ -99,12 +99,24 @@ const ContactArea = styled.div`
   }
 `;
 
+const ContactButton = styled.div`
+  span {
+    color: ${(props) => (props.message === "Success!" ? "red" : "green")};
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    font-size: ${(props) => props.theme.fontSize.md};
+    margin-left: 10px;
+  }
+`;
+
 const ContactRight = () => {
   const emailJSConfig = {
     apikey: import.meta.env.VITE_EMAIL_JS_API_KEY,
     templateKey: import.meta.env.VITE_EMAIL_JS_TEMPLATE_ID_KEY,
     serviceKey: import.meta.env.VITE_EMAIL_JS_SERVICE_KEY,
   };
+  const [message, setMessage] = useState("");
+  console.log(message == "Success!");
 
   const form = useRef();
 
@@ -119,10 +131,10 @@ const ContactRight = () => {
       )
       .then(
         (result) => {
-          console.log(result.text);
+          setMessage("Success!");
         },
         (error) => {
-          console.log(error.text);
+          setMessage("Failed...");
         }
       );
   };
@@ -147,7 +159,10 @@ const ContactRight = () => {
               <textarea name="message" required />
             </label>
           </ContactArea>
-          <button type="submit">SUBMIT</button>
+          <ContactButton>
+            <button type="submit">SUBMIT</button>
+            <span message={message}>{message}</span>
+          </ContactButton>
         </ContactForm>
       </Container>
     </Wrapper>

@@ -95,9 +95,11 @@ const LoginLeft = () => {
   const { register, handleSubmit, watch } = useForm();
   return (
     <LoginLeftWrapper>
-      <LoginLeftImg>
-        <img src={img} alt="" />
-      </LoginLeftImg>
+      <Link to="/">
+        <LoginLeftImg>
+          <img src={img} alt="" />
+        </LoginLeftImg>
+      </Link>
       <LoginLeftTitleContainer>
         <LoginLeftTitle>Welcome Back</LoginLeftTitle>
         <LoginLeftSubTitle>please enter your detail</LoginLeftSubTitle>

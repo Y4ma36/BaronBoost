@@ -12,7 +12,6 @@ import NavBarBottom from "./NavBarBottom";
 import NavMenuBar from "./NavMenuBar";
 import NavBarSideMenu from "./NavBarSideMenu";
 import NavBarTopRight from "./NavBarTopRight";
-import ScrolltoTop from "../\bScrolltoTop";
 
 const NavBarWrapper = styled(motion.div)`
   display: flex;
@@ -116,7 +115,11 @@ const NavBar = () => {
   });
 
   const handleMouseEnter = (item) => {
-    setHoveredItem(item);
+    if (item == "services") {
+      setHoveredItem(true);
+    } else {
+      setHoveredItem(false);
+    }
   };
 
   const handleMouseLeave = () => {
@@ -131,11 +134,15 @@ const NavBar = () => {
     setHoveredItem(false);
   };
 
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <NavBarWrapper animate={navAnimation} isOpen={sideMenu}>
       <NavBarTopContainer>
         <NavBarTopLeft>
-          <Link to="/">
+          <Link to="/" onClick={handleLinkClick}>
             <img src={Logo} alt="" />
             <p>
               <span>B</span>aron<span>B</span>oost

@@ -39,22 +39,33 @@ const FooterTopItem = styled.li`
 `;
 
 const FooterTopRight = () => {
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
   return (
     <FooterTopRightWrapper>
       <FooterTopList>
         <FooterListTitle>Services</FooterListTitle>
         <ul>
           <FooterTopItem>
-            <Link>Solo Wins</Link>
+            <Link to="/services/solo" onClick={handleLinkClick}>
+              Solo Wins
+            </Link>
           </FooterTopItem>
           <FooterTopItem>
-            <Link>Duo Wins</Link>
+            <Link to="/services/duo" onClick={handleLinkClick}>
+              Duo Wins
+            </Link>
           </FooterTopItem>
           <FooterTopItem>
-            <Link>Net Wins</Link>
+            <Link to="/services/netwins" onClick={handleLinkClick}>
+              Net Wins
+            </Link>
           </FooterTopItem>
           <FooterTopItem>
-            <Link>Coaching</Link>
+            <Link to="/coaching" onClick={handleLinkClick}>
+              Coaching
+            </Link>
           </FooterTopItem>
         </ul>
       </FooterTopList>
@@ -62,10 +73,14 @@ const FooterTopRight = () => {
         <FooterListTitle>Contact</FooterListTitle>
         <ul>
           <FooterTopItem>
-            <Link>Contact</Link>
+            <Link to="/support/contact" onClick={handleLinkClick}>
+              Contact
+            </Link>
           </FooterTopItem>
           <FooterTopItem>
-            <Link>Job</Link>
+            <Link to="/support/booster-application" onClick={handleLinkClick}>
+              Job
+            </Link>
           </FooterTopItem>
         </ul>
       </FooterTopList>
@@ -73,10 +88,14 @@ const FooterTopRight = () => {
         <FooterListTitle>Support</FooterListTitle>
         <ul>
           <FooterTopItem>
-            <Link>FAQs</Link>
+            <Link to="/support/faqs" onClick={handleLinkClick}>
+              FAQs
+            </Link>
           </FooterTopItem>
           <FooterTopItem>
-            <Link>Policy</Link>
+            <Link to="/support/policy" onClick={handleLinkClick}>
+              Policy
+            </Link>
           </FooterTopItem>
           <FooterTopItem>
             <Link>Term of Service</Link>
