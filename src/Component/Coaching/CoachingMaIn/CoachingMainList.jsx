@@ -9,6 +9,12 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
+  @media ${(props) => props.theme.device.desktop} {
+    grid-template-columns: repeat(2, 50%);
+  }
+  @media ${(props) => props.theme.device.tablet} {
+    grid-template-columns: repeat(1, 100%);
+  }
 `;
 
 const CoachingBox = styled.div`
@@ -26,14 +32,17 @@ const CoachingBox = styled.div`
 const CoachingNameContainer = styled.div`
   display: flex;
   align-items: center;
-  width: 100%;
+  justify-content: center;
+  margin-right: 30px;
   gap: 5px;
+  @media ${(props) => props.theme.device.tablet} {
+  }
 `;
 
 const CoachingNameImg = styled.div`
   img {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
   }
 `;
