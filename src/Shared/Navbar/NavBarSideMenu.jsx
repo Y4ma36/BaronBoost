@@ -136,11 +136,20 @@ const NavBarSideMenu = ({ isOpen, sideMenu }) => {
     sideMenu((prev) => !prev);
   };
 
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <NavBarSideMenuWrapper show={menuOpen}>
       <NavBarSideMenuContainer>
         <ul>
-          <li onClick={handleClickMenu}>
+          <li
+            onClick={() => {
+              handleClickMenu();
+              handleLinkClick();
+            }}
+          >
             <Link to="/services/solo">
               <AiFillProduct className="icon" />
               <button>Services</button>
@@ -148,7 +157,12 @@ const NavBarSideMenu = ({ isOpen, sideMenu }) => {
             </Link>
           </li>
           <UnderLine />
-          <li onClick={handleClickMenu}>
+          <li
+            onClick={() => {
+              handleClickMenu();
+              handleLinkClick();
+            }}
+          >
             <Link to="/coaching">
               <BsPersonVideo3 className="icon" />
               <button>Coaching</button>
@@ -156,7 +170,12 @@ const NavBarSideMenu = ({ isOpen, sideMenu }) => {
             </Link>
           </li>
           <UnderLine />
-          <li onClick={handleClickMenu}>
+          <li
+            onClick={() => {
+              handleClickMenu();
+              handleLinkClick();
+            }}
+          >
             <Link to="/orders">
               <FaRectangleList className="icon" />
               <button>Orders</button>
@@ -164,7 +183,12 @@ const NavBarSideMenu = ({ isOpen, sideMenu }) => {
             </Link>
           </li>
           <UnderLine />
-          <li onClick={handleClickMenu}>
+          <li
+            onClick={() => {
+              handleClickMenu();
+              handleLinkClick();
+            }}
+          >
             <Link to="/support">
               <MdOutlineQuestionAnswer className="icon" />
               <button>Support</button>

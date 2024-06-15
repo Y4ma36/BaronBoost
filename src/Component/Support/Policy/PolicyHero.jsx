@@ -8,11 +8,14 @@ const Wrapper = styled.div`
   background-position: 10% 30%;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 40vh;
+  min-height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  @media ${(props) => props.theme.device.mobile} {
+    background-position: center;
+  }
 `;
 
 const Title = styled.h1`

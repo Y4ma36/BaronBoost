@@ -13,6 +13,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  @media ${(props) => props.theme.device.mobile} {
+    background-position: center;
+  }
 `;
 
 const Title = styled.h1`

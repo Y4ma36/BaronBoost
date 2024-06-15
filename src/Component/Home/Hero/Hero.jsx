@@ -11,7 +11,7 @@ const HeroWrapper = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 90vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
