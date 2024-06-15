@@ -11,17 +11,10 @@ import {
 } from "framer-motion";
 
 const ExperienceFlowWrapper = styled.div`
-  height: 90vh;
   background: black;
   display: flex;
   justify-content: center;
   padding-bottom: 50px;
-  @media ${(props) => props.theme.device.laptop} {
-    height: 120vh;
-  }
-  @media ${(props) => props.theme.device.tablet} {
-    height: 250vh;
-  }
 `;
 
 const ExperienceFlowBoxContainer = styled.div`

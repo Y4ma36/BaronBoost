@@ -3,6 +3,7 @@ import styled from "styled-components";
 import img from "../../../assets/loginPage.jpg";
 import { FaDiscord, FaHeadset, FaUsers, FaTrello } from "react-icons/fa6";
 import { color, motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const LoginRIghtWrapper = styled.div`
   flex: 1;
@@ -20,6 +21,10 @@ const LoginRightContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
 
 const LoginRightList = styled(motion.div)`
@@ -80,42 +85,50 @@ const LoginRIght = () => {
   return (
     <LoginRIghtWrapper>
       <LoginRightContainer>
-        <LoginRightList whileHover={{ scale: 1.1 }}>
-          <LoginRightItemIcon>
-            <FaDiscord className="icon" />
-          </LoginRightItemIcon>
-          <LoginRightItem>
-            <h3>Join our Discord</h3>
-            <span>Connect with our community for updates and support.</span>
-          </LoginRightItem>
-        </LoginRightList>
-        <LoginRightList whileHover={{ scale: 1.1 }}>
-          <LoginRightItemIcon>
-            <FaHeadset className="icon" />
-          </LoginRightItemIcon>
-          <LoginRightItem>
-            <h3>Visit our Support Center</h3>
-            <span>Get help and find answers to common questions.</span>
-          </LoginRightItem>
-        </LoginRightList>
-        <LoginRightList whileHover={{ scale: 1.1 }}>
-          <LoginRightItemIcon>
-            <FaTrello className="icon" />
-          </LoginRightItemIcon>
-          <LoginRightItem>
-            <h3>Check out Our Services</h3>
-            <span>Explore our range of boosting and coaching services.</span>
-          </LoginRightItem>
-        </LoginRightList>
-        <LoginRightList whileHover={{ scale: 1.1 }}>
-          <LoginRightItemIcon>
-            <FaUsers className="icon" />
-          </LoginRightItemIcon>
-          <LoginRightItem>
-            <h3>Want to be Booster?</h3>
-            <span>Apply now to join our team.</span>
-          </LoginRightItem>
-        </LoginRightList>
+        <Link to="https://discord.gg/WnBcfvc9bJ">
+          <LoginRightList whileHover={{ scale: 1.1 }}>
+            <LoginRightItemIcon>
+              <FaDiscord className="icon" />
+            </LoginRightItemIcon>
+            <LoginRightItem>
+              <h3>Join our Discord</h3>
+              <span>Connect with our community for updates and support.</span>
+            </LoginRightItem>
+          </LoginRightList>
+        </Link>
+        <Link to="/support">
+          <LoginRightList whileHover={{ scale: 1.1 }}>
+            <LoginRightItemIcon>
+              <FaHeadset className="icon" />
+            </LoginRightItemIcon>
+            <LoginRightItem>
+              <h3>Visit our Support Center</h3>
+              <span>Get help and find answers to common questions.</span>
+            </LoginRightItem>
+          </LoginRightList>
+        </Link>
+        <Link to="/services/solo">
+          <LoginRightList whileHover={{ scale: 1.1 }}>
+            <LoginRightItemIcon>
+              <FaTrello className="icon" />
+            </LoginRightItemIcon>
+            <LoginRightItem>
+              <h3>Check out Our Services</h3>
+              <span>Explore our range of boosting and coaching services.</span>
+            </LoginRightItem>
+          </LoginRightList>
+        </Link>
+        <Link to="/support/booster-application">
+          <LoginRightList whileHover={{ scale: 1.1 }}>
+            <LoginRightItemIcon>
+              <FaUsers className="icon" />
+            </LoginRightItemIcon>
+            <LoginRightItem>
+              <h3>Want to be Booster?</h3>
+              <span>Apply now to join our team.</span>
+            </LoginRightItem>
+          </LoginRightList>
+        </Link>
       </LoginRightContainer>
     </LoginRIghtWrapper>
   );

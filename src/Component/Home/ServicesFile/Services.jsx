@@ -4,21 +4,11 @@ import servicesList from "./ServicesData";
 import { color, delay, easeIn, motion } from "framer-motion";
 
 const ServicesWrapper = styled.div`
-  height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: black;
-  @media ${(props) => props.theme.device.laptop} {
-    height: 100vh;
-  }
-  @media ${(props) => props.theme.device.mobile} {
-    height: 220vh;
-  }
-
-  @media screen and (max-width: 400px) {
-    height: 240vh;
-  }
+  padding: 100px 0px;
 `;
 const ServicesTitle = styled.h1`
   font-size: 3rem;

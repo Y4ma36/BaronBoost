@@ -5,18 +5,11 @@ import KeyFeaturesRight from "./KeyFeaturesRight";
 
 const KeyFeaturesWrapper = styled.div`
   display: flex;
-  height: 90vh;
   background-color: black;
-  padding: 50px 0px;
-
+  padding: 150px 0px;
   @media ${(props) => props.theme.device.laptop} {
-    padding-top: 150px;
     gap: 60px;
-    height: 150vh;
     flex-direction: column;
-  }
-  @media ${(props) => props.theme.device.tablet} {
-    height: 130vh;
   }
 `;
 

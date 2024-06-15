@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FaDiscord, FaInstagram, FaXTwitter } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const FooterBottomWrapper = styled.div`
   padding: 40px 0px;
@@ -47,9 +48,11 @@ const FooterBottom = () => {
         <p>CopyRight &#169; 2024 BaronBoost. All rights reserved.</p>
       </FooterBottomLeft>
       <FooterBottomRight>
-        <FooterSNSIconBox>
-          <FaDiscord className="icon" />
-        </FooterSNSIconBox>
+        <Link to="https://discord.gg/WnBcfvc9bJ">
+          <FooterSNSIconBox>
+            <FaDiscord className="icon" />
+          </FooterSNSIconBox>
+        </Link>
         <FooterSNSIconBox>
           <FaInstagram className="icon" />
         </FooterSNSIconBox>
