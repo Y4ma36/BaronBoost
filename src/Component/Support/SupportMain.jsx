@@ -80,12 +80,15 @@ const SupportDescription = styled.h3`
 `;
 
 const SupportMain = () => {
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
   return (
     <Wrapper>
       <Container>
         {supportData.map((item, index) => (
           <Link to={item.link}>
-            <SupportBox key={index}>
+            <SupportBox key={index} onClick={handleLinkClick}>
               <img src={item.icon}></img>
               <SupportTitle>{item.name}</SupportTitle>
               <SupportDescription>{item.description}</SupportDescription>

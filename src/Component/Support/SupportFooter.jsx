@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Footer_Img from "../../assets/Support/supportFooter.jpg";
 import { FaDiscord } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
-import CurrentRank from "../Services/ServicesList/ServicesCommon/PickRank/CurrentRank/CurrentRank";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -123,7 +122,7 @@ const SupportFooter = () => {
           <h3>Chat with us or send us email</h3>
         </FooterLeft>
         <FooterRight>
-          <Link>
+          <Link to="https://discord.gg/ptY5rxBxnP">
             <LinkButton whileHover={{ y: -10 }}>
               <IconBox>
                 <FaDiscord className="icon" />
@@ -131,10 +130,9 @@ const SupportFooter = () => {
               Chat With Us
             </LinkButton>
           </Link>
-          <Link>
+          <Link to="/support/contact">
             <LinkButton whileHover={{ y: -10 }}>
               <IconBox>
-                {" "}
                 <MdEmail className="icon" />
               </IconBox>
               Send Us An Email
