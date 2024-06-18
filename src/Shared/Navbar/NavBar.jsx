@@ -18,6 +18,7 @@ const NavBarWrapper = styled(motion.div)`
   flex-direction: column;
   position: fixed;
   width: 100%;
+  height: 100%;
   z-index: 500;
   overflow-x: hidden;
 `;
@@ -26,6 +27,7 @@ const NavContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
   overflow-x: hidden;
   position: relative;
   padding: 16px;
@@ -84,18 +86,17 @@ const NavBarTopLeft = styled.div`
 const NavBarBottomContainer = styled.div`
   display: ${(props) => (props.show ? "flex" : "none")};
   justify-content: center;
-  background-color: black;
 `;
 
 const NavBarBottomCover = styled.div`
   background: ${(props) =>
-    props.show || props.isOpen ? "rgba(0,0,0,1)" : "none"};
+    props.show || props.isOpen ? "rgba(0,0,0,0.8)" : "none"};
   display: ${(props) => (props.show || props.isOpen ? "flex" : "none")};
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: -1;
   transition: opacity 0.3s ease-in-out;
 `;
@@ -184,14 +185,13 @@ const NavBar = () => {
           <NavBarBottom nav={hoveredItem} />
         </NavBarBottomContainer>
         {/* cover & sidemenu */}
-        <NavBarBottomCover
-          isOpen={sideMenu}
-          show={hoveredItem}
-          onMouseLeave={handleMouseLeave}
-        />
         <NavBarSideMenu isOpen={sideMenu} sideMenu={toggleSideMenu} />
-        {/*------------------*/}
       </NavContainer>
+      <NavBarBottomCover
+        isOpen={sideMenu}
+        show={hoveredItem}
+        onMouseLeave={handleMouseLeave}
+      />
     </NavBarWrapper>
   );
 };

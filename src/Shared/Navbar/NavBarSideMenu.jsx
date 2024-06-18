@@ -10,17 +10,17 @@ import { color } from "framer-motion";
 const NavBarSideMenuWrapper = styled.div`
   display: none;
   width: 40%;
-  height: 100vh;
+  height: 100%;
   margin-left: auto;
-  position: sticky;
+  position: absolute;
+  right: 0;
+  margin-top: 100px;
+
   @media ${(props) => props.theme.device.tablet} {
     display: ${(props) => (props.show ? "flex" : "none")};
   }
   @media (min-width: 800px) {
     display: none;
-  }
-  @media ${(props) => props.theme.device.mobile} {
-    width: 45%;
   }
 `;
 
@@ -44,6 +44,7 @@ const NavBarSideMenuContainer = styled.div`
     transition: all 0.3s ease-in-out;
     @media ${(props) => props.theme.device.mobile} {
       gap: 0px;
+      justify-content: flex-start;
     }
   }
   li {
