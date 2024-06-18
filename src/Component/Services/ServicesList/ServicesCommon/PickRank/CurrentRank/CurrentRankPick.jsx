@@ -14,14 +14,20 @@ const Wrapper = styled.div`
 `;
 
 const CurrentRankPickContainer = styled(motion.div)`
-  background-color: rgb(255, 255, 255, 0.1);
+  background: ${(props) =>
+    props.isSelected ? "rgb(140, 122, 230,0.6)" : "rgba(255, 255, 255, 0.1)"};
   border-radius: 3px;
   padding: 5px 8px;
   cursor: pointer;
-
+  transition: transform 0.3s ease;
   img {
     width: 50px;
     height: 50px;
+  }
+  &:hover {
+    transform: translateY(-10px);
+    background-color: ${(props) =>
+      props.isSelected ? props.theme.colors.purple : "rgb(255, 255, 255, 0.3)"};
   }
 `;
 
@@ -31,7 +37,7 @@ const CurrentRankPick = () => {
 
   useEffect(() => {
     if (currentRank > desireRank) {
-      setCurrentRank(currentRank);
+      setCurrentRank(desireRank);
     }
   }, [currentRank, desireRank]);
 
@@ -47,11 +53,8 @@ const CurrentRankPick = () => {
       {rankData.map((item, index) => (
         <CurrentRankPickContainer
           key={item.id}
-          whileHover={{
-            y: "-10px",
-            backgroundColor: "rgb(255, 255, 255, 0.7)",
-          }}
           onClick={() => clickRank(item.id)}
+          isSelected={currentRank == item.id}
         >
           <img src={item.icon} />
         </CurrentRankPickContainer>

@@ -4,7 +4,9 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import {
   isCurrentDivision,
+  isCurrentRank,
   isDesireDivision,
+  isDesireRank,
 } from "../../../../../../Data/atoms";
 
 const Wrapper = styled.div`
@@ -41,13 +43,26 @@ const DesireRankDivision = () => {
   const [selectedDivision, setSelectedDivision] = useState(null);
   const setDesireRankDivision = useSetRecoilState(isDesireDivision);
   const currentRankDivision = useRecoilValue(isCurrentDivision);
-  const handleClick = (division, index) => {
-    if (index <= currentRankDivision) {
-      return;
-    } else {
-      setSelectedDivision(division);
-      setDesireRankDivision(division);
+  const currentRank = useRecoilValue(isCurrentRank);
+  const desireRank = useRecoilValue(isDesireRank);
+
+  useEffect(() => {
+    if (desireRank > currentRank) {
+      setSelectedDivision(null);
+      setDesireRankDivision(null);
     }
+  }, [desireRank, currentRank, setDesireRankDivision]);
+
+  const handleClick = (division, index) => {
+    const divisionIndex = divisionList.indexOf(division);
+    const currentDivisionIndex = divisionList.indexOf(currentRankDivision);
+
+    if (desireRank <= currentRank && divisionIndex <= currentDivisionIndex) {
+      return;
+    }
+
+    setSelectedDivision(division);
+    setDesireRankDivision(division);
   };
 
   const divisionList = ["IV", "III", "II", "I"];
@@ -58,6 +73,7 @@ const DesireRankDivision = () => {
         <DivisionContainer
           onClick={() => handleClick(division, index)}
           isSelected={selectedDivision == division}
+          key={index}
         >
           <h1>{division}</h1>
         </DivisionContainer>

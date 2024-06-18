@@ -10,14 +10,16 @@ export const isCurrentRank = atom({
   default: 0,
 });
 
+const divisionList = ["IV", "III", "II", "I"];
+
 export const isDesireDivision = atom({
   key: "isDesireVision",
-  default: 1,
+  default: divisionList[0],
 });
 
 export const isCurrentDivision = atom({
   key: "isCurrentDivison",
-  default: 4,
+  default: divisionList[0],
 });
 
 export const isHoverNav = atom({

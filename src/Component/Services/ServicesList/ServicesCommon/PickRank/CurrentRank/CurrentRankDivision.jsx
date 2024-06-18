@@ -1,10 +1,12 @@
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import {
   isCurrentDivision,
+  isCurrentRank,
   isDesireDivision,
+  isDesireRank,
 } from "../../../../../../Data/atoms";
 
 const Wrapper = styled.div`
@@ -40,14 +42,23 @@ const CurrentRankDivision = () => {
   const [selectedDivision, setSelectedDivision] = useState();
   const setCurrentRankDivision = useSetRecoilState(isCurrentDivision);
   const desireRankDivision = useRecoilValue(isDesireDivision);
+  const currentRank = useRecoilValue(isCurrentRank);
+  const desireRank = useRecoilValue(isDesireRank);
 
   const handleClick = (division, index) => {
-    if (index >= desireRankDivision) {
-      return;
-    } else {
-      setSelectedDivision(division);
-      setCurrentRankDivision(index);
+    if (desireRankDivision !== null) {
+      const currentDivisionIndex = divisionList.indexOf(division);
+      const desiredDivisionIndex = divisionList.indexOf(desireRankDivision);
+
+      if (
+        currentRank === desireRank &&
+        currentDivisionIndex >= desiredDivisionIndex
+      ) {
+        return;
+      }
     }
+    setSelectedDivision(division);
+    setCurrentRankDivision(division);
   };
 
   const divisionList = ["IV", "III", "II", "I"];
@@ -58,6 +69,7 @@ const CurrentRankDivision = () => {
         <DivisionContainer
           onClick={() => handleClick(division, index)}
           isSelected={selectedDivision == division}
+          key={index}
         >
           <h1>{division}</h1>
         </DivisionContainer>
