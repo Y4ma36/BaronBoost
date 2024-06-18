@@ -11,7 +11,7 @@ const KeyFeaturesLeftWrapper = styled.div`
 `;
 
 const KeyFeaturesLeftTitle = styled.h1`
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   font-weight: 900;
   span {
     color: ${(props) => props.theme.colors.purple};
@@ -27,7 +27,7 @@ const KeyFeaturesLeftTitle = styled.h1`
 `;
 
 const KeyFeaturesLeftSubTitle = styled.h2`
-  font-size: 1.5rem;
+  font-size: ${(props) => props.theme.fontSize.md};
   font-weight: 700;
   margin-bottom: 20px;
   @media ${(props) => props.theme.device.laptop} {
@@ -42,6 +42,7 @@ const KeyFeaturesLeftDescription = styled.p`
   font-size: ${(props) => props.theme.fontSize.base};
   padding: 15px 10px;
   line-height: 25px;
+  width: 80%;
   @media ${(props) => props.theme.device.laptop} {
     width: 70%;
   }

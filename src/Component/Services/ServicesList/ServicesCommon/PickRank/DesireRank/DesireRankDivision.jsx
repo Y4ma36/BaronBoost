@@ -23,7 +23,7 @@ const DivisionContainer = styled(motion.div)`
   border-radius: 3px;
   width: 50px;
   height: 50px;
-  display: flex;
+  display: ${(props) => (props.isCurrent ? "none" : "flex")};
   justify-content: center;
   align-items: center;
   cursor: pointer;
@@ -73,6 +73,7 @@ const DesireRankDivision = () => {
         <DivisionContainer
           onClick={() => handleClick(division, index)}
           isSelected={selectedDivision == division}
+          isCurrent={desireRank === 7}
           key={index}
         >
           <h1>{division}</h1>

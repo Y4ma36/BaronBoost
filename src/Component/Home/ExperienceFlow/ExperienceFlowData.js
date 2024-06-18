@@ -30,7 +30,7 @@ const experienceFlowData = [
     id: 4,
     title: "Sit Back and Enjoy Your Experience",
     subtitle:
-      "With your order in progress, you can sit back and relax while our booster works tirelessly to achieve your desired results. Throughout the process, we provide regular updates on your order's progress, ensuring a seamless and hassle-free experience. Once your order is complete, enjoy the benefits of your enhanced gaming experience courtesy of BaronBoost.",
+      "With your order in progress, you can sit back and relax while our booster works tirelessly to achieve your desired results. Once your order is complete, enjoy the benefits of your enhanced gaming experience courtesy of BaronBoost.",
     img: nid,
     step: 3,
   },

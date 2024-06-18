@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
+import { isCoachingRegion, isCoachingRoles } from "../../../Data/atoms";
 
 const Wrapper = styled.div`
   display: flex;
@@ -26,29 +28,48 @@ const CoachingSelect = styled.select`
 `;
 
 const CoachingMainSort = () => {
+  const setRegion = useSetRecoilState(isCoachingRegion);
+  const setRoles = useSetRecoilState(isCoachingRoles);
+  const [selectedRegion, setSelectedRegion] = useState("");
+  const [selectedRoles, setSelectedRoles] = useState("");
+
+  const handleRegionSelect = (e) => {
+    const selectedValue = e.target.value;
+    setSelectedRegion(selectedValue);
+    setRegion(selectedValue === "all" ? "" : selectedValue);
+  };
+
+  const handleRolesSelect = (e) => {
+    const selectedValue = e.target.value;
+    setSelectedRoles(selectedValue);
+    setRoles(selectedValue === "all" ? "" : selectedValue);
+  };
+
   return (
     <Wrapper>
       <SortContainer>
         <CoachingLabel>Region</CoachingLabel>
-        <CoachingSelect>
-          <option value="" disabled selected>
+        <CoachingSelect onChange={handleRegionSelect} value={selectedRegion}>
+          <option disabled selected>
             --Select--
           </option>
+          <option value="all">All</option>
           <option value="na">NA</option>
           <option value="euw">EUW</option>
         </CoachingSelect>
       </SortContainer>
       <SortContainer>
         <CoachingLabel>Roles</CoachingLabel>
-        <CoachingSelect>
+        <CoachingSelect onChange={handleRolesSelect} value={selectedRoles}>
           <option value="" disabled selected>
             --Select--
           </option>
-          <option value="">Top</option>
-          <option value="">Jungle</option>
-          <option value="">Mid</option>
-          <option value="">Adc</option>
-          <option value="">Support</option>
+          <option value="all">All</option>
+          <option value="top">Top</option>
+          <option value="jungle">Jungle</option>
+          <option value="mid">Mid</option>
+          <option value="adc">Adc</option>
+          <option value="support">Support</option>
         </CoachingSelect>
       </SortContainer>
     </Wrapper>

@@ -8,7 +8,7 @@ const ServicesWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   background: black;
-  padding: 100px 0px;
+  padding: 60px 0px;
 `;
 const ServicesTitle = styled.h1`
   font-size: 3rem;

@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   text-align: center;
   @media ${(props) => props.theme.device.mobile} {
     background-position: center;

@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import coachingData from "../\bCoachingData";
 import { color } from "framer-motion";
+import { useRecoilValue } from "recoil";
+import { isCoachingRegion, isCoachingRoles } from "../../../Data/atoms";
 
 const Wrapper = styled.div`
   display: grid;
@@ -82,9 +84,21 @@ const CoachingOrderButton = styled.button`
 `;
 
 const CoachingMainList = () => {
+  const currentRegion = useRecoilValue(isCoachingRegion);
+  const currentRoles = useRecoilValue(isCoachingRoles);
+
+  const filteredData = coachingData.filter((item) => {
+    // region과 roles이 모두 선택되지 않았거나 선택된 값과 일치하는 경우 필터링
+    return (
+      (!currentRegion ||
+        item.server.toLowerCase() === currentRegion.toLowerCase()) &&
+      (!currentRoles || item.role.toLowerCase() === currentRoles.toLowerCase())
+    );
+  });
+
   return (
     <Wrapper>
-      {coachingData.map((item, index) => (
+      {filteredData.map((item, index) => (
         <CoachingBox>
           <CoachingNameContainer>
             <CoachingNameImg>

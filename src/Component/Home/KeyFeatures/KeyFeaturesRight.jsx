@@ -77,6 +77,7 @@ const KeyFeaturesItemTitle = styled.h1`
 const KeyFeaturesItemDescription = styled.p`
   line-height: 20px;
   font-weight: 500;
+  width: 70%;
   @media ${(props) => props.theme.device.laptop} {
     width: 50%;
   }

@@ -3,7 +3,7 @@ const keyFeaturesList = [
     id: 1,
     title: "Low Price",
     description:
-      "Enjoy budget-friendly pricing options that offer exceptional value compared to other boosting websites, without compromising on quality. We understand the importance of affordability, and our competitive rates ensure that you get the most out of your investment in boosting services.",
+      "Enjoy budget-friendly prices that offer exceptional value compared to other boosting websites, without compromising quality. Our competitive rates ensure you get the most out of your investment in boosting services.",
     Icon: () => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +20,7 @@ const keyFeaturesList = [
     id: 2,
     title: "24/7 Support",
     description:
-      "Our team of dedicated support specialists is available around the clock to provide you with assistance whenever you need it. Whether you have questions, concerns, or require guidance, our friendly and knowledgeable support staff are here to ensure that your experience with BaronBoost.",
+      "Our dedicated support team is available 24/7 to assist you with any questions or concerns. Our friendly and knowledgeable staff ensure a smooth experience with BaronBoost.",
     Icon: () => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +37,7 @@ const keyFeaturesList = [
     id: 3,
     title: "Appear Offline",
     description:
-      "Maintain your privacy and discretion with our Appear Offline feature. When you choose BaronBoost for your boosting needs, you can rest assured that your gaming activity remains confidential. Our boosters work discreetly in the background, allowing you to stay incognito while achieving your desired rank.",
+      "Maintain your privacy with our Appear Offline feature. With BaronBoost, your gaming activity remains confidential as our boosters work discreetly, allowing you to stay incognito while achieving your desired rank.",
     Icon: () => (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +54,7 @@ const keyFeaturesList = [
     id: 4,
     title: "Safe & Swiftly",
     description:
-      "Experience peace of mind knowing that your account is in safe hands with BaronBoost. Our team of skilled professionals prioritizes account security and employs strict safety measures to ensure that your account remains protected throughout the boosting process. Additionally, our services are designed for efficiency, delivering swift results without compromising on safety or quality.",
+      "Feel confident with BaronBoost. Our skilled team keeps your account safe with strict security measures. We provide fast, efficient results without sacrificing safety or quality.",
     Icon: () => (
       <svg
         xmlns="http://www.w3.org/2000/svg"

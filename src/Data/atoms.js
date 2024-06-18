@@ -1,5 +1,7 @@
 import { atom } from "recoil";
 
+//Services
+
 export const isDesireRank = atom({
   key: "isDesireRank",
   default: 7,
@@ -22,7 +24,21 @@ export const isCurrentDivision = atom({
   default: divisionList[0],
 });
 
+//Nav
+
 export const isHoverNav = atom({
   key: "isHoverNav",
   default: false,
+});
+
+//Coaching
+
+export const isCoachingRegion = atom({
+  key: "isCoachingRegion",
+  default: "",
+});
+
+export const isCoachingRoles = atom({
+  key: "isCoachingRoles",
+  default: "",
 });
