@@ -80,9 +80,8 @@ const Container = styled.div`
 
 const ServicesFAQList = styled.div`
   background: rgba(73, 69, 84, 0.6);
-  padding: 20px 30px;
+  padding: 30px 30px;
   border-radius: 10px;
-  height: 300px;
 `;
 
 const ServicesFAQTitleBox = styled.div`
