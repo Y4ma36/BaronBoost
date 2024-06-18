@@ -4,6 +4,7 @@ import rankData from "../../../../RankData";
 import { motion } from "framer-motion";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { isCurrentRank, isDesireRank } from "../../../../../../Data/atoms";
+import { useLocation } from "react-router-dom";
 
 const Wrapper = styled.div`
   display: flex;
@@ -34,6 +35,9 @@ const CurrentRankPickContainer = styled(motion.div)`
 const CurrentRankPick = () => {
   const [currentRank, setCurrentRank] = useRecoilState(isCurrentRank);
   const desireRank = useRecoilValue(isDesireRank);
+  const location = useLocation();
+
+  location.pathname.split("/").pop();
 
   useEffect(() => {
     if (currentRank > desireRank) {

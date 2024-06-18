@@ -4,6 +4,7 @@ import rankData from "../../../../RankData";
 import { motion } from "framer-motion";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { isCurrentRank, isDesireRank } from "../../../../../../Data/atoms";
+import { useLocation } from "react-router-dom";
 
 const Wrapper = styled.div`
   display: flex;
@@ -34,6 +35,8 @@ const DesireRankPickContainer = styled(motion.div)`
 const DesireRankPick = () => {
   const [desireRank, setDesireRank] = useRecoilState(isDesireRank);
   const currentRank = useRecoilValue(isCurrentRank);
+  const location = useLocation();
+  const currentLocaiton = location.pathname.split("/").pop();
 
   const clickRank = (id) => {
     if (id < currentRank) {
@@ -41,6 +44,12 @@ const DesireRankPick = () => {
     }
     setDesireRank(id);
   };
+
+  if (currentLocaiton !== "duo" && currentLocaiton !== "solo") {
+    setDesireRank(0);
+  } else {
+    setDesireRank(7);
+  }
 
   return (
     <Wrapper>

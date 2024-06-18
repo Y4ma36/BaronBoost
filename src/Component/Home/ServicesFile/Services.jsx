@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import servicesList from "./ServicesData";
 import { color, delay, easeIn, motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const ServicesWrapper = styled.div`
   display: flex;
@@ -53,6 +54,10 @@ const ServicesItem = styled(motion.div)`
     rgba(0, 0, 0, 0.22) 0px 10px 10px;
   @media ${(props) => props.theme.device.laptop} {
     width: 100%;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
   }
 `;
 
@@ -115,11 +120,13 @@ const Services = () => {
               whileHover="hover"
               transition={{ duration: 0.5 }}
             >
-              <ServicesImg>{item.Icon()}</ServicesImg>
-              <SerVicesItemTitle>{item.name}</SerVicesItemTitle>
-              <ServicesItemDescription>
-                {item.description}
-              </ServicesItemDescription>
+              <Link to={item.link}>
+                <ServicesImg>{item.Icon()}</ServicesImg>
+                <SerVicesItemTitle>{item.name}</SerVicesItemTitle>
+                <ServicesItemDescription>
+                  {item.description}
+                </ServicesItemDescription>
+              </Link>
             </ServicesItem>
           ))}
         </ServicesList>

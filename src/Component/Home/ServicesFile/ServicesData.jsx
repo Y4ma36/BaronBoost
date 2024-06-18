@@ -21,6 +21,7 @@ let servicesList = [
         />
       </svg>
     ),
+    link: "/services/solo",
   },
   {
     id: 2,
@@ -44,6 +45,7 @@ let servicesList = [
         />
       </svg>
     ),
+    link: "/services/duo",
   },
   {
     id: 3,
@@ -67,6 +69,7 @@ let servicesList = [
         />
       </svg>
     ),
+    link: "/services/netwins",
   },
   {
     id: 4,
@@ -90,6 +93,7 @@ let servicesList = [
         />
       </svg>
     ),
+    link: "/coaching",
   },
 ];
 
