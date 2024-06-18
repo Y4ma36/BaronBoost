@@ -7,8 +7,8 @@ const FooterTopLeftWrapper = styled.div``;
 const FooterTopLeftTop = styled.div`
   display: flex;
   justify-content: flex-start;
-
   gap: 10px;
+
   img {
     width: 60px;
     height: 50px;
@@ -24,6 +24,9 @@ const FooterTopLeftTop = styled.div`
 const FooterTopLeftBottom = styled.div`
   line-height: 20px;
   margin-top: -10px;
+  @media ${(props) => props.theme.device.mobile} {
+    text-align: center;
+  }
 `;
 
 const FooterTopLeft = () => {

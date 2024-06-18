@@ -80,8 +80,9 @@ const Container = styled.div`
 
 const ServicesFAQList = styled.div`
   background: rgba(73, 69, 84, 0.6);
-  padding: 40px 20px;
+  padding: 20px 30px;
   border-radius: 10px;
+  height: 300px;
 `;
 
 const ServicesFAQTitleBox = styled.div`
@@ -150,7 +151,7 @@ const IconCircle = styled.div`
 const ServicesFAQ = () => {
   return (
     <Wrapper>
-      <Title>League of Legends Boosting Quick FAQs</Title>
+      <Title>Quick FAQs</Title>
       <Container>
         {servicesFAQData.map((item, index) => (
           <ServicesFAQList key={item.id}>

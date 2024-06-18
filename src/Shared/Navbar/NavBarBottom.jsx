@@ -69,7 +69,11 @@ const NavBarBottom = ({ nav }) => {
     <>
       <NavBarBottomList show={isNav}>
         {navBarServicesData.map((item) => (
-          <Link to={item.link} onClick={() => handleClick(item.title)}>
+          <Link
+            to={item.link}
+            onClick={() => handleClick(item.title)}
+            key={item.id}
+          >
             <NavBarBottomItemContainer key={item.id}>
               <NavBarBottomItemTitle>{item.title}</NavBarBottomItemTitle>
               <NavBarBottomeItemSubTitle>

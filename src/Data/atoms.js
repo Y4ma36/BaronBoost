@@ -10,6 +10,16 @@ export const isCurrentRank = atom({
   default: 0,
 });
 
+export const isDesireDivision = atom({
+  key: "isDesireVision",
+  default: 1,
+});
+
+export const isCurrentDivision = atom({
+  key: "isCurrentDivison",
+  default: 4,
+});
+
 export const isHoverNav = atom({
   key: "isHoverNav",
   default: false,

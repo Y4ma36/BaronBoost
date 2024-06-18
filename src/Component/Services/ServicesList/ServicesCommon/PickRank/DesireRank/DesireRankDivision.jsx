@@ -1,6 +1,11 @@
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
+import {
+  isCurrentDivision,
+  isDesireDivision,
+} from "../../../../../../Data/atoms";
 
 const Wrapper = styled.div`
   display: flex;
@@ -11,7 +16,8 @@ const Wrapper = styled.div`
 `;
 
 const DivisionContainer = styled(motion.div)`
-  background-color: rgb(255, 255, 255, 0.1);
+  background: ${(props) =>
+    props.isSelected ? props.theme.colors.purple : "rgba(255, 255, 255, 0.1)"};
   border-radius: 3px;
   width: 50px;
   height: 50px;
@@ -19,22 +25,39 @@ const DivisionContainer = styled(motion.div)`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: transform 0.3s ease;
   h1 {
     font-size: ${(props) => props.theme.fontSize.lg};
     font-weight: 500;
   }
+  &:hover {
+    transform: translateY(-10px);
+    background-color: ${(props) =>
+      props.isSelected ? props.theme.colors.purple : "rgb(255, 255, 255, 0.3)"};
+  }
 `;
 
 const DesireRankDivision = () => {
+  const [selectedDivision, setSelectedDivision] = useState(null);
+  const setDesireRankDivision = useSetRecoilState(isDesireDivision);
+  const currentRankDivision = useRecoilValue(isCurrentDivision);
+  const handleClick = (division, index) => {
+    if (index <= currentRankDivision) {
+      return;
+    } else {
+      setSelectedDivision(division);
+      setDesireRankDivision(division);
+    }
+  };
+
+  const divisionList = ["IV", "III", "II", "I"];
+
   return (
     <Wrapper>
-      {["IV", "III", "II", "I"].map((division) => (
+      {divisionList.map((division, index) => (
         <DivisionContainer
-          key={division}
-          whileHover={{
-            y: "-10px",
-            backgroundColor: "rgb(255, 255, 255, 0.3)",
-          }}
+          onClick={() => handleClick(division, index)}
+          isSelected={selectedDivision == division}
         >
           <h1>{division}</h1>
         </DivisionContainer>

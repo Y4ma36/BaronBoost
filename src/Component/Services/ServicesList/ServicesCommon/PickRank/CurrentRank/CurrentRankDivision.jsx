@@ -1,12 +1,16 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
+import {
+  isCurrentDivision,
+  isDesireDivision,
+} from "../../../../../../Data/atoms";
 
 const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  flex-wrap: wrap;
   gap: 15px;
 `;
 
@@ -20,30 +24,40 @@ const DivisionContainer = styled(motion.div)`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: transform 0.3s ease;
   h1 {
     font-size: ${(props) => props.theme.fontSize.lg};
     font-weight: 500;
   }
+  &:hover {
+    transform: translateY(-10px);
+    background-color: ${(props) =>
+      props.isSelected ? props.theme.colors.purple : "rgb(255, 255, 255, 0.3)"};
+  }
 `;
 
 const CurrentRankDivision = () => {
-  const [selectedDivision, setSelectedDivision] = useState(null);
+  const [selectedDivision, setSelectedDivision] = useState();
+  const setCurrentRankDivision = useSetRecoilState(isCurrentDivision);
+  const desireRankDivision = useRecoilValue(isDesireDivision);
 
-  const handleClick = (division) => {
-    setSelectedDivision(division);
+  const handleClick = (division, index) => {
+    if (index >= desireRankDivision) {
+      return;
+    } else {
+      setSelectedDivision(division);
+      setCurrentRankDivision(index);
+    }
   };
+
+  const divisionList = ["IV", "III", "II", "I"];
 
   return (
     <Wrapper>
-      {["IV", "III", "II", "I"].map((division) => (
+      {divisionList.map((division, index) => (
         <DivisionContainer
-          key={division}
-          isSelected={selectedDivision === division}
-          whileHover={{
-            y: "-10px",
-            backgroundColor: "rgb(255, 255, 255, 0.3)",
-          }}
-          onClick={() => handleClick(division)}
+          onClick={() => handleClick(division, index)}
+          isSelected={selectedDivision == division}
         >
           <h1>{division}</h1>
         </DivisionContainer>

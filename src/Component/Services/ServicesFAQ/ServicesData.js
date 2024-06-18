@@ -9,7 +9,7 @@ const servicesFAQData = [
     id: 2,
     name: "Can someone find out about the boosting service?",
     description:
-      "There might be differences between your match history and the booster’s, but the boosters will never disclose any information about the service. Additionally, we match your preferences for lane, champions, spell positions, and item positions, making it hard for others to notice. If you are still concerned, we offer the option to play solo without a duo partner for solo boosting, and the option to change duo accounts every game for duo boosting.",
+      "There might be differences between your match history and the booster’s, but the boosters will never disclose any information about the service.",
   },
   {
     id: 3,
