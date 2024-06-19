@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex: 1;
   gap: 30px;
   @media ${(props) => props.theme.device.desktop} {
     padding: 30px 0px;

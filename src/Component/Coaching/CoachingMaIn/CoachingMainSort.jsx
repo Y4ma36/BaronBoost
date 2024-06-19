@@ -6,6 +6,13 @@ import { isCoachingRegion, isCoachingRoles } from "../../../Data/atoms";
 const Wrapper = styled.div`
   display: flex;
   gap: 10px;
+  @media ${(props) => props.theme.device.tablet} {
+    justify-content: center;
+  }
+  @media ${(props) => props.theme.device.mobile} {
+    flex-direction: column;
+    gap: 20px;
+  }
 `;
 
 const SortContainer = styled.div`

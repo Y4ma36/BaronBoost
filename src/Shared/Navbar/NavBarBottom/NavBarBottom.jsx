@@ -1,10 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { navBarServicesData } from "./NavBarData";
+import { navBarServicesData } from "../NavBarData";
 import { Link } from "react-router-dom";
+import { handleLinkClick } from "../../../Utils/LinkClick";
+import { useRecoilState } from "recoil";
+import { isNavHover } from "../../../Data/atoms";
+
+const Wrapper = styled.div`
+  display: ${(props) => (props.isnavshow ? "flex" : "none")};
+  justify-content: center;
+  background-color: black;
+`;
 
 const NavBarBottomList = styled.div`
-  display: ${(props) => (props.show ? "flex" : "none")};
+  display: flex;
   justify-content: center;
   width: 100%;
   margin-top: 30px;
@@ -45,33 +54,27 @@ const NavBarBottomeItemSubTitle = styled.h3`
   }
 `;
 
-const NavBarBottom = ({ nav }) => {
-  const [isNav, setIsNav] = useState(true);
-  const [isClicked, setIsClicked] = useState(false);
+const NavBarBottom = () => {
+  const [isNavShow, setIsNavShow] = useRecoilState(isNavHover);
 
-  const handleClick = (title) => {
-    if (title) {
-      setIsClicked(true);
-    }
+  const handleClick = () => {
+    setIsNavShow(false);
   };
 
-  useEffect(() => {
-    if (isClicked) {
-      setIsNav(false);
-      setTimeout(() => {
-        setIsNav(true);
-        setIsClicked(false);
-      }, 100);
-    }
-  }, [isClicked]);
+  const handleMouseLeave = () => {
+    setIsNavShow(false);
+  };
 
   return (
-    <>
-      <NavBarBottomList show={isNav}>
+    <Wrapper isnavshow={isNavShow} onMouseLeave={handleMouseLeave}>
+      <NavBarBottomList>
         {navBarServicesData.map((item) => (
           <Link
             to={item.link}
-            onClick={() => handleClick(item.title)}
+            onClick={() => {
+              handleLinkClick();
+              handleClick();
+            }}
             key={item.id}
           >
             <NavBarBottomItemContainer key={item.id}>
@@ -83,7 +86,7 @@ const NavBarBottom = ({ nav }) => {
           </Link>
         ))}
       </NavBarBottomList>
-    </>
+    </Wrapper>
   );
 };
 

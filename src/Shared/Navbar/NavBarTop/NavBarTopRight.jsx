@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { isNavHover } from "../../../Data/atoms";
 
 const NavBarRight = styled.div`
   display: flex;
@@ -76,7 +78,20 @@ const NavBarLoginCart = styled.div`
   }
 `;
 
-const NavBarTopRight = ({ handleMouseEnter, handleClick }) => {
+const NavBarTopRight = () => {
+  const setHoveredItem = useSetRecoilState(isNavHover);
+
+  const handleMouseEnter = (item) => {
+    if (item === "services") {
+      setHoveredItem(true);
+    } else {
+      setHoveredItem(false);
+    }
+  };
+
+  const handleClick = () => {
+    setHoveredItem(false);
+  };
   const handleLinkClick = () => {
     window.scrollTo(0, 0);
   };
@@ -85,7 +100,7 @@ const NavBarTopRight = ({ handleMouseEnter, handleClick }) => {
       <NavBarList>
         <NavBarItem
           onMouseEnter={() => handleMouseEnter("services")}
-          onClick={() => handleClick("click")}
+          onClick={() => handleClick()}
         >
           <Link to="/services/solo" onClick={handleLinkClick}>
             <button>Services</button>

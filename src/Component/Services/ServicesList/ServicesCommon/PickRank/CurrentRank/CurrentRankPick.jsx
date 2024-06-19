@@ -35,9 +35,6 @@ const CurrentRankPickContainer = styled(motion.div)`
 const CurrentRankPick = () => {
   const [currentRank, setCurrentRank] = useRecoilState(isCurrentRank);
   const desireRank = useRecoilValue(isDesireRank);
-  const location = useLocation();
-
-  location.pathname.split("/").pop();
 
   useEffect(() => {
     if (currentRank > desireRank) {
@@ -52,9 +49,12 @@ const CurrentRankPick = () => {
       return;
     }
   };
+
+  const rankDataExceptLast = rankData.slice(0, rankData.length - 1);
+
   return (
     <Wrapper>
-      {rankData.map((item, index) => (
+      {rankDataExceptLast.map((item, index) => (
         <CurrentRankPickContainer
           key={item.id}
           onClick={() => clickRank(item.id)}

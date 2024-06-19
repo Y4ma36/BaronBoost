@@ -42,3 +42,15 @@ export const isCoachingRoles = atom({
   key: "isCoachingRoles",
   default: "",
 });
+
+//Navigation
+
+export const isNavHover = atom({
+  key: "isNavHover",
+  default: false,
+});
+
+export const isSideNavClick = atom({
+  key: "isSideNavClick",
+  default: false,
+});

@@ -95,8 +95,8 @@ const FaqsMain = () => {
         <QuestionBox>
           <h2>How do I sign up as a booster?</h2>
           <p>
-            We only accept applications if your rank is Diamond and above.
-            Please visit this page
+            We only accept applications if your rank is Master and above. Please
+            visit this page
             <Link to="/support/booster-application"> Booster-Application </Link>
             to learn more.
           </p>

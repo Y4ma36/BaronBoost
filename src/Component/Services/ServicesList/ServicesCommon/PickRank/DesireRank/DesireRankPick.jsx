@@ -48,7 +48,7 @@ const DesireRankPick = () => {
   if (currentLocaiton !== "duo" && currentLocaiton !== "solo") {
     setDesireRank(0);
   } else {
-    setDesireRank(7);
+    setDesireRank(desireRank);
   }
 
   return (
