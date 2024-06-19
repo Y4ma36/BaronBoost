@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   align-items: center;
   gap: 20px;
   @media ${(props) => props.theme.device.mobile} {
-    height: 30%;
+    min-height: 100px;
   }
 `;
 

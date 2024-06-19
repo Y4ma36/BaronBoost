@@ -21,7 +21,7 @@ const Wrapper = styled.div`
     margin-top: 50px;
     gap: 30px;
     @media ${(props) => props.theme.device.mobile} {
-      gap: 5px;
+      gap: 10px;
       margin-top: 0px;
     }
   }
@@ -55,15 +55,16 @@ const Wrapper = styled.div`
       font-size: ${(props) => props.theme.fontSize.lg};
       color: ${(props) => props.theme.colors.white};
       transition: all 0.3s ease-in-out;
+
       @media ${(props) => props.theme.device.mobile} {
-        font-size: ${(props) => props.theme.fontSize.base};
+        font-size: ${(props) => props.theme.fontSize.lg};
         margin-bottom: 5px;
       }
     }
   }
 
   button {
-    font-size: ${(props) => props.theme.fontSize.lg};
+    font-size: ${(props) => props.theme.fontSize.md};
     font-weight: 600;
     color: ${(props) => props.theme.colors.white};
     background: inherit;
@@ -71,7 +72,7 @@ const Wrapper = styled.div`
     border: none;
     transition: all 0.3s ease-in-out;
     @media ${(props) => props.theme.device.mobile} {
-      font-size: ${(props) => props.theme.fontSize.sm};
+      font-size: ${(props) => props.theme.fontSize.base};
     }
   }
 `;

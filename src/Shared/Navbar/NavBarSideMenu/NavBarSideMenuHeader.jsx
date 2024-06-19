@@ -14,12 +14,12 @@ const Wrapper = styled.div`
     font-size: 2rem;
     cursor: pointer;
     @media ${(props) => props.theme.device.mobile} {
-      font-size: ${(props) => props.theme.fontSize.md};
+      font-size: ${(props) => props.theme.fontSize.lg};
     }
   }
   @media ${(props) => props.theme.device.mobile} {
     font-size: ${(props) => props.theme.fontSize.md};
-    padding: 0px 5px;
+    align-items: center;
   }
 `;
 
@@ -30,7 +30,7 @@ const Title = styled.h1`
     color: ${(props) => props.theme.colors.purple};
   }
   @media ${(props) => props.theme.device.mobile} {
-    font-size: ${(props) => props.theme.fontSize.base};
+    font-size: ${(props) => props.theme.fontSize.md};
   }
 `;
 

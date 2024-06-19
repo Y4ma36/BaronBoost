@@ -9,7 +9,7 @@ import {
 } from "framer-motion";
 import NavBarBottom from "./NavBarBottom/NavBarBottom";
 import NavBarTop from "./NavBarTop/NavBarTop";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { isNavHover, isSideNavClick } from "../../Data/atoms";
 import NavBarSideMenu from "./NavBarSideMenu/NavBarSideMenu";
 
@@ -53,39 +53,20 @@ const NavMenuIcon = styled.div`
 const NavBar = () => {
   const { scrollY } = useScroll();
   const navAnimation = useAnimation();
-  const [sideMenu, setSideMenu] = useState(false);
   const isNavShow = useRecoilValue(isNavHover);
-  const [isSideNavShow, setisSideNavShow] = useRecoilState(isSideNavClick);
+  const setisSideNavShow = useSetRecoilState(isSideNavClick);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 30) {
       navAnimation.start({
         backgroundColor: "rgba(0,0,0,1)",
       });
-      if (sideMenu) {
-        navAnimation.start({
-          backgroundColor: "rgba(0,0,0,0)",
-        });
-      }
     } else {
       navAnimation.start({
         backgroundColor: "rgba(0,0,0,0)",
       });
     }
   });
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setSideMenu(false);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const hanldeSideNavClick = () => {
     setisSideNavShow((prev) => !prev);

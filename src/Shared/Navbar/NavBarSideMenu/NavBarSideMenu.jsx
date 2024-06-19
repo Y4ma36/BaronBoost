@@ -9,7 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const NavBarSideMenuWrapper = styled(motion.div)`
   display: none;
-  width: 45%;
+  width: 300px;
   position: absolute;
   height: 100vh;
   right: 0px;
@@ -18,6 +18,9 @@ const NavBarSideMenuWrapper = styled(motion.div)`
   @media ${(props) => props.theme.device.tablet} {
     display: flex;
     flex-direction: column;
+  }
+  @media ${(props) => props.theme.device.mobile} {
+    width: 200px;
   }
 `;
 
@@ -44,16 +47,6 @@ const variants = {
 
 const NavBarSideMenu = () => {
   const isSideNavShow = useRecoilValue(isSideNavClick);
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setMenuOpen(false);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   return (
     <AnimatePresence>
