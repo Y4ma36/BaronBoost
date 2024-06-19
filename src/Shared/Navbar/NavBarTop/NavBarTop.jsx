@@ -36,7 +36,7 @@ const NavBarTopLeft = styled.div`
   }
   @media ${(props) => props.theme.device.laptop} {
     img {
-      width: 80px;
+      width: 90px;
       height: 80px;
     }
     p {
@@ -46,7 +46,7 @@ const NavBarTopLeft = styled.div`
 
   @media ${(props) => props.theme.device.mobile} {
     img {
-      width: 40px;
+      width: 50px;
       height: 40px;
     }
     p {
