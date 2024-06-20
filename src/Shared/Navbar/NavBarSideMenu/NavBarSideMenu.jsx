@@ -15,7 +15,10 @@ const NavBarSideMenuWrapper = styled(motion.div)`
   right: 0px;
   top: 0px;
   bottom: 0px;
-
+  overflow-y: scroll;
+  scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
   background-color: ${(props) => props.theme.colors.black};
   @media ${(props) => props.theme.device.tablet} {
     display: flex;
