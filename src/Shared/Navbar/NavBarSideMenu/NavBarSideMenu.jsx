@@ -14,6 +14,8 @@ const NavBarSideMenuWrapper = styled(motion.div)`
   height: 100vh;
   right: 0px;
   top: 0px;
+  bottom: 0px;
+
   background-color: ${(props) => props.theme.colors.black};
   @media ${(props) => props.theme.device.tablet} {
     display: flex;
@@ -27,7 +29,7 @@ const NavBarSideMenuWrapper = styled(motion.div)`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 30px;
+  padding-top: 40px;
   height: 100%;
   @media ${(props) => props.theme.device.mobile} {
     padding: 0px;

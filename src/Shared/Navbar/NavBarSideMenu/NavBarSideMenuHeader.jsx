@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0px 20px;
-  height: 10%;
+  min-height: 50px;
   .icon {
     color: ${(props) => props.theme.colors.white};
     font-size: 2rem;

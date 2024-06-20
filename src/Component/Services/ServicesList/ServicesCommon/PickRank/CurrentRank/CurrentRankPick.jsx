@@ -4,14 +4,14 @@ import rankData from "../../../../RankData";
 import { motion } from "framer-motion";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { isCurrentRank, isDesireRank } from "../../../../../../Data/atoms";
-import { useLocation } from "react-router-dom";
 
 const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 60%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
+  @media ${(props) => props.theme.device.mobile} {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const CurrentRankPickContainer = styled(motion.div)`

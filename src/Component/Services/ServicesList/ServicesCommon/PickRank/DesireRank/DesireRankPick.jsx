@@ -7,10 +7,12 @@ import { isCurrentRank, isDesireRank } from "../../../../../../Data/atoms";
 import { useLocation } from "react-router-dom";
 
 const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
+  @media ${(props) => props.theme.device.mobile} {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const DesireRankPickContainer = styled(motion.div)`

@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   align-items: center;
   position: relative;
   @media ${(props) => props.theme.device.tablet} {
-    justify-content: space-between;
+    justify-content: flex-start;
   }
 `;
 
@@ -21,6 +21,8 @@ const NavBarTopLeft = styled.div`
     align-items: center;
     gap: 15px;
     text-decoration: none;
+    @media ${(props) => props.theme.device.mobile} {
+    }
   }
   img {
     width: 120px;
@@ -45,12 +47,8 @@ const NavBarTopLeft = styled.div`
   }
 
   @media ${(props) => props.theme.device.mobile} {
-    img {
-      width: 50px;
-      height: 40px;
-    }
     p {
-      font-size: ${(props) => props.theme.fontSize.lg};
+      visibility: hidden;
     }
   }
 `;

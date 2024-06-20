@@ -12,17 +12,16 @@ import { isSideNavClick } from "../../../Data/atoms";
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  height: 85%;
+  height: 100%;
+  padding-top: 30px;
   ul {
     display: flex;
     flex-direction: column;
     align-items: center;
     transition: all 0.3s ease-in-out;
-    margin-top: 50px;
     gap: 30px;
     @media ${(props) => props.theme.device.mobile} {
       gap: 10px;
-      margin-top: 0px;
     }
   }
   li {
@@ -30,6 +29,7 @@ const Wrapper = styled.div`
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+
     &:hover {
       background-color: ${(props) => props.theme.colors.purple};
       button {

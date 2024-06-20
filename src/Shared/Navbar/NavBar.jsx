@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import menuIcon from "../../assets/menu.png";
 import {
@@ -9,7 +9,7 @@ import {
 } from "framer-motion";
 import NavBarBottom from "./NavBarBottom/NavBarBottom";
 import NavBarTop from "./NavBarTop/NavBarTop";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { isNavHover, isSideNavClick } from "../../Data/atoms";
 import NavBarSideMenu from "./NavBarSideMenu/NavBarSideMenu";
 
@@ -20,6 +20,8 @@ const NavBarWrapper = styled(motion.div)`
   z-index: 500;
   align-items: center;
   background-color: ${(props) => (props.isnavshow ? "black" : "inherit")};
+  @media ${(props) => props.theme.device.mobile} {
+  }
 `;
 
 const Container = styled.div`
@@ -28,21 +30,29 @@ const Container = styled.div`
   width: 100%;
   position: relative;
   padding: 16px;
+  @media ${(props) => props.theme.device.mobile} {
+    width: 20%;
+    padding-left: 0px;
+  }
 `;
 
 const NavMenuIcon = styled.div`
   display: none;
-  margin-right: 40px;
-  margin-top: 5px;
+  padding: 16px;
+
   cursor: pointer;
   img {
     width: 45px;
     height: 45px;
   }
   @media ${(props) => props.theme.device.tablet} {
-    display: block;
+    display: flex;
   }
   @media ${(props) => props.theme.device.mobile} {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
     img {
       width: 30px;
       height: 30px;
@@ -55,6 +65,12 @@ const NavBar = () => {
   const navAnimation = useAnimation();
   const isNavShow = useRecoilValue(isNavHover);
   const setisSideNavShow = useSetRecoilState(isSideNavClick);
+
+  useEffect(() => {
+    navAnimation.start({
+      backgroundColor: isNavShow ? "black" : "inherit",
+    });
+  }, [isNavShow, navAnimation]);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 30) {
