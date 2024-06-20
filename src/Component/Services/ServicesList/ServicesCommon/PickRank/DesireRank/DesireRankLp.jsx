@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   @media ${(props) => props.theme.device.mobile} {
     padding-bottom: 20px;
   }
+  margin-bottom: 50px;
 `;
 
 const DesireLpContainer = styled.div``;

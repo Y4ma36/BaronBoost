@@ -79,7 +79,15 @@ const NavBarLoginCart = styled.div`
 `;
 
 const NavBarTopRight = () => {
-  const setHoveredItem = useSetRecoilState(isNavHover);
+  const [hoverdItem, setHoveredItem] = useRecoilState(isNavHover);
+
+  useEffect(() => {
+    if (hoverdItem === "services") {
+      setHoveredItem(true);
+    } else {
+      setHoveredItem(false);
+    }
+  }, []);
 
   const handleMouseEnter = (item) => {
     if (item === "services") {

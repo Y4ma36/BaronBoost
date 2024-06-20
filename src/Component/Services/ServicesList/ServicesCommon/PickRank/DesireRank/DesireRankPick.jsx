@@ -11,7 +11,6 @@ const Wrapper = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
-  width: 60%;
 `;
 
 const DesireRankPickContainer = styled(motion.div)`

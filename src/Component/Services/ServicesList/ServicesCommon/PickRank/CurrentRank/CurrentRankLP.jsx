@@ -51,11 +51,8 @@ const CurrentRankLP = () => {
         <CurrentLpForm>
           <label>Current LP</label>
           <select name="currentLP" className="arrow">
-            <option value="0-20">0-20</option>
-            <option value="21-40">21-40</option>
-            <option value="41-60">41-60</option>
-            <option value="61-80">61-80</option>
-            <option value="81-100">81-100</option>
+            <option value="low">0-49</option>
+            <option value="hight">50-99</option>
           </select>
         </CurrentLpForm>
       </CurrentLpContainer>
@@ -63,8 +60,9 @@ const CurrentRankLP = () => {
         <CurrentLpForm>
           <label>Lp Gain</label>
           <select name="lpgain" className="arrow">
-            <option value="NA"></option>
-            <option value="EUW">EUW</option>
+            <option value="low">0~14</option>
+            <option value="middle">15~17</option>
+            <option value="hight">18 or More</option>
           </select>
         </CurrentLpForm>
       </CurrentLpContainer>
