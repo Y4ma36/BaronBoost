@@ -11,14 +11,11 @@ const NavBarSideMenuWrapper = styled(motion.div)`
   display: none;
   width: 300px;
   position: absolute;
-  height: 100vh;
+  height: ${(props) => props.height};
+  overflow-y: scroll;
   right: 0px;
   top: 0px;
   bottom: 0px;
-  overflow-y: scroll;
-  scroll-snap-type: y proximity;
-  scroll-behavior: smooth;
-  overflow-x: hidden;
   background-color: ${(props) => props.theme.colors.black};
   @media ${(props) => props.theme.device.tablet} {
     display: flex;
@@ -53,6 +50,20 @@ const variants = {
 const NavBarSideMenu = () => {
   const isSideNavShow = useRecoilValue(isSideNavClick);
 
+  const [height, setHeight] = useState(window.innerHeight + "px");
+
+  useEffect(() => {
+    const handleResize = () => {
+      setHeight(window.innerHeight + "px");
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <AnimatePresence>
       {isSideNavShow && (
@@ -61,6 +72,7 @@ const NavBarSideMenu = () => {
           initial="close"
           animate="open"
           exit="close"
+          height={height}
         >
           <Container>
             <NavBarSideMenuHeader />
