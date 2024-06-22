@@ -26,7 +26,7 @@ const LoginContextProvider = (props) => {
   */
 
   //check login
-  const [isLogin, setLogin] = useState(false);
+  const [isLogin, setLogin] = useState(!!localStorage.getItem("accessToken"));
 
   //user information
   const [userInfo, setUserInfo] = useState();
@@ -60,6 +60,7 @@ const LoginContextProvider = (props) => {
 
     if (status === 200) {
       Cookies.set("accessToken", accessToken);
+      localStorage.setItem("accessToken", accessToken);
       loginCheck(userInfo.username);
     }
   };
@@ -97,10 +98,12 @@ const LoginContextProvider = (props) => {
   };
 
   useEffect(() => {
-    const token = Cookies.get("accessToken");
-    if (token) {
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    // Check if there's a token in localStorage or Cookie to determine login status
+    const accessToken =
+      localStorage.getItem("accessToken") || Cookies.get("accessToken");
+    if (accessToken) {
       setLogin(true);
+      // Optionally fetch and set user info based on accessToken
     }
   }, []);
 
