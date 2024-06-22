@@ -87,6 +87,8 @@ const LoginContextProvider = (props) => {
     api.defaults.headers.common.Authorization = undefined;
     //쿠키 초기화
     Cookies.remove("accessToken");
+
+    localStorage.removeItem("accessToken");
     // 로그인 여부 false
     setLogin(false);
     // 유저 정보 초기화
