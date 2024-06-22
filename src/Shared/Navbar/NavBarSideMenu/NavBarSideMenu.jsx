@@ -16,6 +16,7 @@ const NavBarSideMenuWrapper = styled(motion.div)`
   right: 0px;
   top: 0px;
   bottom: 0px;
+  z-index: 500;
   background-color: ${(props) => props.theme.colors.black};
   @media ${(props) => props.theme.device.tablet} {
     display: flex;

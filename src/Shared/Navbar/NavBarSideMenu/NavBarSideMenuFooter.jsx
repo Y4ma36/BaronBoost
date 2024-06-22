@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { LoginContext } from "../../../Context/LoginContext";
+import { FaRegUser } from "react-icons/fa";
 
 const Wrapper = styled.div`
   background-color: ${(props) => props.theme.colors.purple};
@@ -24,6 +26,22 @@ const Title = styled.h1`
   }
 `;
 
+const LoginContainer = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 10px 0px;
+
+  .icon {
+    transition: all 0.5s ease-in-out;
+    font-size: 2.5rem;
+    color: ${(props) => props.theme.colors.white};
+    margin-left: 10px;
+    &:hover {
+      color: ${(props) => props.theme.colors.black};
+    }
+  }
+`;
+
 const LoginButton = styled.button`
   background-color: ${(props) => props.theme.colors.black};
   padding: 15px 25px;
@@ -37,18 +55,29 @@ const LoginButton = styled.button`
     background-color: white;
     color: ${(props) => props.theme.colors.purple};
   }
+
   @media ${(props) => props.theme.device.mobile} {
     font-size: ${(props) => props.theme.fontSize.base};
   }
 `;
 
 const NavBarSideMenuFooter = () => {
+  const { isLogin, logout } = useContext(LoginContext);
   return (
     <Wrapper>
       <Title>Login to Your Account</Title>
-      <Link to="/login">
-        <LoginButton>LogIn</LoginButton>
-      </Link>
+      {isLogin ? (
+        <LoginContainer>
+          <LoginButton onClick={() => logout()}>Log Out</LoginButton>
+          <Link to="/user-dashboard/profile">
+            <FaRegUser className="icon" />
+          </Link>
+        </LoginContainer>
+      ) : (
+        <Link to="/login">
+          <LoginButton>Login</LoginButton>
+        </Link>
+      )}
     </Wrapper>
   );
 };

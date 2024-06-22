@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import img from "../../../assets/LoginBaron.png";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import { color } from "framer-motion";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const SignUpLeftWrappar = styled.div`
   flex: 1;
@@ -13,6 +13,9 @@ const SignUpLeftWrappar = styled.div`
   align-items: center;
   flex-direction: column;
   background: ${(props) => props.theme.colors.purple};
+  @media ${(props) => props.theme.device.tablet} {
+    padding: 20px 0px;
+  }
 `;
 
 const SignUpImg = styled.div`
@@ -21,6 +24,10 @@ const SignUpImg = styled.div`
   img {
     width: 250px;
     height: 250px;
+    @media ${(props) => props.theme.device.mobile} {
+      width: 180px;
+      height: 150px;
+    }
   }
 `;
 
@@ -34,6 +41,9 @@ const SignUpLeftTitle = styled.h1`
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 5px;
+  @media ${(props) => props.theme.device.mobile} {
+    font-size: 2rem;
+  }
 `;
 
 const SignUpLeftSubTitle = styled.h2`
@@ -46,6 +56,9 @@ const SignUpLeftForm = styled.form`
   flex-direction: column;
   color: ${(props) => props.theme.colors.black};
   width: 300px;
+  @media ${(props) => props.theme.device.mobile} {
+    width: 200px;
+  }
 
   label {
     font-size: ${(props) => props.theme.fontSize.base};
@@ -59,14 +72,7 @@ const SignUpLeftForm = styled.form`
     border: none;
     margin-bottom: 15px;
   }
-  ::placeholder {
-  }
-  span {
-    color: #d63031;
-    font-weight: 600;
-    font-family: "Noto Sans KR", sans-serif;
-    margin-bottom: 10px;
-  }
+
   button {
     background: ${(props) => props.theme.colors.black};
     color: ${(props) => props.theme.colors.white};
@@ -78,8 +84,18 @@ const SignUpLeftForm = styled.form`
   }
 `;
 
+const ErrorMessage = styled.span`
+  color: #d63031;
+  font-weight: 600;
+  font-family: "Noto Sans KR", sans-serif;
+  margin-bottom: 10px;
+`;
+
 const SignUpLeftNoAccount = styled.div`
   font-family: "Noto Sans KR", sans-serif;
+  @media ${(props) => props.theme.device.mobile} {
+    text-align: center;
+  }
   a {
     text-decoration: none;
     color: inherit;
@@ -92,6 +108,8 @@ const SignUpLeftNoAccount = styled.div`
 `;
 
 const SignUpLeft = () => {
+  const [nameCheck, setNameCheck] = useState("");
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -99,7 +117,29 @@ const SignUpLeft = () => {
     getValues,
   } = useForm();
 
-  const onValid = (data) => {};
+  const getHost = "http://localhost:8080";
+  const onValid = async (data) => {
+    let user = {
+      username: data.username,
+      password: data.password,
+      email: data.email,
+      role: "CUSTOMER",
+      boostStatus: "NONE",
+    };
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/authenticate/signup",
+        user,
+        {
+          "Content-Type": "application/json",
+        }
+      );
+      navigate("/signup/successful");
+    } catch (error) {
+      console.error("error", error.message);
+    }
+  };
+
   return (
     <SignUpLeftWrappar>
       <Link to="/">
@@ -120,16 +160,35 @@ const SignUpLeft = () => {
         />
         <label>UserName</label>
         <input
-          {...register("username", { required: true, minLength: 4 })}
+          {...register("username", {
+            required: true,
+            minLength: {
+              value: 4,
+              message: "Please enter at least 4 characters.",
+            },
+          })}
           placeholder="UserName"
           type="text"
         />
+        {errors?.username ? (
+          <ErrorMessage>{errors.username.message}</ErrorMessage>
+        ) : null}
         <label>Password</label>
         <input
-          {...register("password", { required: true })}
+          {...register("password", {
+            required: true,
+            minLength: {
+              value: 6,
+              message: "Please enter at least 6 characters.",
+            },
+          })}
           placeholder="Password"
           type="password"
         />
+        {errors?.password ? (
+          <ErrorMessage>{errors.password.message}</ErrorMessage>
+        ) : null}
+        {nameCheck ? <ErrorMessage>{nameCheck}</ErrorMessage> : null}
         <label>Confirm Password</label>
         <input
           {...register("passwordConfirm", {
@@ -146,7 +205,7 @@ const SignUpLeft = () => {
           type="password"
         />
         {errors.passwordConfirm && (
-          <span r>{errors.passwordConfirm.message}</span>
+          <ErrorMessage>{errors.passwordConfirm.message}</ErrorMessage>
         )}
         <button>Sign In</button>
       </SignUpLeftForm>

@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { isNavHover } from "../../../Data/atoms";
+import { LoginContext } from "../../../Context/LoginContext";
+import { FaRegUser } from "react-icons/fa";
 
 const NavBarRight = styled.div`
   display: flex;
@@ -57,6 +59,8 @@ const NavBarItem = styled.li`
 `;
 
 const NavBarLoginCart = styled.div`
+  display: flex;
+  align-items: center;
   button {
     background-color: ${(props) => props.theme.colors.purple};
     padding: 15px 25px;
@@ -71,6 +75,15 @@ const NavBarLoginCart = styled.div`
       color: ${(props) => props.theme.colors.purple};
     }
   }
+  .icon {
+    transition: all 0.5s ease-in-out;
+    font-size: 2rem;
+    color: ${(props) => props.theme.colors.white};
+    margin-right: 15px;
+    &:hover {
+      color: ${(props) => props.theme.colors.purple};
+    }
+  }
   @media ${(props) => props.theme.device.laptop} {
     button {
       font-size: ${(props) => props.theme.fontSize.base};
@@ -80,6 +93,8 @@ const NavBarLoginCart = styled.div`
 
 const NavBarTopRight = () => {
   const [hoverdItem, setHoveredItem] = useRecoilState(isNavHover);
+
+  const { isLogin, logout } = useContext(LoginContext);
 
   useEffect(() => {
     if (hoverdItem === "services") {
@@ -131,9 +146,18 @@ const NavBarTopRight = () => {
         </NavBarItem>
       </NavBarList>
       <NavBarLoginCart>
-        <Link to="/login">
-          <button>Login</button>
-        </Link>
+        {isLogin ? (
+          <>
+            <Link to="user-dashboard/profile">
+              <FaRegUser className="icon" />
+            </Link>
+            <button onClick={() => logout()}>Log Out</button>
+          </>
+        ) : (
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
+        )}
       </NavBarLoginCart>
     </NavBarRight>
   );

@@ -1,5 +1,11 @@
-import { useState } from "react";
-import { createBrowserRouter } from "react-router-dom";
+import { useContext, useState } from "react";
+import {
+  BrowserRouter,
+  Route,
+  Router,
+  Routes,
+  createBrowserRouter,
+} from "react-router-dom";
 
 // Home
 import Layout from "./Layout";
@@ -21,6 +27,13 @@ import Faqs from "./Component/Support/Faqs/Faqs";
 import Policy from "./Component/Support/Policy/Policy";
 import BoosterApplication from "./Component/Support/BoosterApplication/BoosterApplication";
 import Order from "./Component/Order/Order";
+import SignUpSuccess from "./Component/Login&Signup/SignUpSuccess/SignUpSuccess";
+
+import LoginContextProvider, { LoginContext } from "./Context/LoginContext";
+import UserDashboard from "./Component/Dashboard/UserDashboard/UserDashboard";
+import UserProfile from "./Component/Dashboard/UserDashboard/UserDashboardMain/UserProfile/UserProfile";
+import UserOrderHistory from "./Component/Dashboard/UserDashboard/UserDashboardMain/UserOrderHistory/UserOrderHistory";
+import ProtectedRoutes from "./Utils/ProtectedRoutes";
 
 // baronboost/coaching
 // baronboost/boosters
@@ -39,59 +52,40 @@ const supportRoutes = [
   { path: "booster-application", element: <BoosterApplication /> },
 ];
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/services",
-        element: <Services />,
-        children: [
-          {
-            path: "solo",
-            element: <Solo />,
-          },
-          {
-            path: "duo",
-            element: <Duo />,
-          },
-          {
-            path: "netwins",
-            element: <NetWins />,
-          },
-        ],
-      },
-      {
-        path: "/coaching",
-        element: <Coaching />,
-      },
-      {
-        path: "/orders",
-        element: <Order />,
-      },
-      {
-        path: "/support",
-        element: <Support />,
-      },
-      ...supportRoutes.map((route) => ({
-        path: `/support/${route.path}`,
-        element: route.element,
-      })),
-    ],
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/signup",
-    element: <SignUp />,
-  },
-]);
+const App = () => {
+  return (
+    <BrowserRouter>
+      <LoginContextProvider>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="services/:servicesId" element={<Services />}>
+              <Route path="solo" element={<Solo />} />
+              <Route path="duo" element={<Duo />} />
+              <Route path="netwins" element={<NetWins />} />
+            </Route>
+            <Route path="coaching" element={<Coaching />} />
+            <Route path="orders" element={<Order />} />
+            <Route path="support" element={<Support />} />
+            {supportRoutes.map((route) => (
+              <Route
+                key={route.path}
+                path={`support/${route.path}`}
+                element={route.element}
+              />
+            ))}
 
-export default router;
+            <Route path="user-dashboard" element={<UserDashboard />}>
+              <Route path="profile" element={<UserProfile />} />
+              <Route path="order-history" element={<UserOrderHistory />} />
+            </Route>
+          </Route>
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<SignUp />} />
+          <Route path="signup/successful" element={<SignUpSuccess />} />
+        </Routes>
+      </LoginContextProvider>
+    </BrowserRouter>
+  );
+};
+export default App;

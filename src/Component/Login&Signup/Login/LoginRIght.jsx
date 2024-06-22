@@ -25,6 +25,14 @@ const LoginRightContainer = styled.div`
     text-decoration: none;
     color: inherit;
   }
+  @media ${(props) => props.theme.device.tablet} {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media ${(props) => props.theme.device.mobile} {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 20px 20px;
+  }
 `;
 
 const LoginRightList = styled(motion.div)`
@@ -75,9 +83,15 @@ const LoginRightItem = styled.div`
   h3 {
     margin-bottom: 10px;
     font-weight: 700;
+    @media ${(props) => props.theme.device.tablet} {
+      margin-bottom: 0px;
+    }
   }
   span {
     opacity: 0.7;
+    @media ${(props) => props.theme.device.tablet} {
+      display: none;
+    }
   }
 `;
 

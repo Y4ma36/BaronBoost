@@ -30,6 +30,7 @@ const Container = styled.div`
   width: 100%;
   position: relative;
   padding: 16px;
+
   @media ${(props) => props.theme.device.mobile} {
     width: 20%;
     padding-left: 0px;
@@ -39,8 +40,8 @@ const Container = styled.div`
 const NavMenuIcon = styled.div`
   display: none;
   padding: 16px;
-
   cursor: pointer;
+  z-index: 5;
   img {
     width: 45px;
     height: 45px;
@@ -52,10 +53,9 @@ const NavMenuIcon = styled.div`
     display: flex;
     justify-content: flex-end;
     width: 100%;
-
     img {
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
     }
   }
 `;

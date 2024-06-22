@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Hero from "./Hero/Hero";
 import Services from "./ServicesFile/Services";
 import KeyFeatures from "./KeyFeatures/KeyFeatures";
