@@ -28,6 +28,8 @@ const LoginContextProvider = (props) => {
   //check login
   const [isLogin, setLogin] = useState(!!localStorage.getItem("accessToken"));
 
+  const [userName, setUsername] = useState("");
+
   //user information
   const [userInfo, setUserInfo] = useState();
 
@@ -42,6 +44,8 @@ const LoginContextProvider = (props) => {
   // ✅login Check
   const loginCheck = async (username) => {
     const accessToken = Cookies.get("accessToken");
+    //store userInfo
+
     loginSetting(accessToken, username);
   };
 
@@ -61,6 +65,7 @@ const LoginContextProvider = (props) => {
     if (status === 200) {
       Cookies.set("accessToken", accessToken);
       localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("username", userInfo.username);
       loginCheck(userInfo.username);
     }
   };
@@ -72,10 +77,10 @@ const LoginContextProvider = (props) => {
 
     setLogin(true);
 
-    setUserInfo(username);
+    setUsername(username);
     //use info Update
-    // const updatedUserInfo = { userId, username, roles };
-    // setUserInfo(updatedUserInfo);
+
+    getUserInfo(username);
 
     //roles info setting - do it later -
     const updatedRoles = { isUser: false, isBooster: false };
@@ -89,14 +94,40 @@ const LoginContextProvider = (props) => {
     Cookies.remove("accessToken");
 
     localStorage.removeItem("accessToken");
+
+    localStorage.removeItem("username");
     // 로그인 여부 false
     setLogin(false);
     // 유저 정보 초기화
+    setUsername(null);
+
     setUserInfo(null);
     // 권한 정보 초기화
     setRoles(null);
 
     location.reload(true);
+  };
+
+  //saveUser Information
+
+  const getUserInfo = async (username) => {
+    const accessToken =
+      localStorage.getItem("accessToken") || Cookies.get("accessToken");
+    if (accessToken) {
+      const response = await auth.info(username);
+      const data = response.data;
+      localStorage.setItem("userInfo", JSON.stringify(data));
+    }
+  };
+
+  //reset password
+
+  const resetPassword = async () => {
+    const accessToken =
+      localStorage.getItem("accessToken") || Cookies.get("accessToken");
+    if (accessToken) {
+      const response = await auth.resetPassword(newPassword);
+    }
   };
 
   useEffect(() => {
@@ -113,7 +144,7 @@ const LoginContextProvider = (props) => {
     login,
     logout,
     isLogin,
-    userInfo,
+    resetPassword,
   };
 
   return (

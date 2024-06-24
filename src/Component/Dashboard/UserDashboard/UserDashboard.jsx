@@ -15,6 +15,8 @@ const Container = styled.div``;
 const UserDashboard = () => {
   const { isLogin } = useContext(LoginContext);
 
+  console.log(isLogin);
+
   return isLogin ? (
     <Wrapper>
       <UserDashboardHero />

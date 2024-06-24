@@ -1,14 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import experienceFlowData from "./ExperienceFlowData";
-import {
-  motion,
-  useAnimation,
-  useInView,
-  useMotionValueEvent,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 
 const ExperienceFlowWrapper = styled.div`
   background: black;
@@ -85,25 +78,12 @@ const ExperienceFlowBoxSubTitle = styled.h3`
 
 const ExperienceFlow = () => {
   const { scrollY } = useScroll();
-  const showBox = useAnimation();
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 1900) {
-      showBox.start({
-        opacity: 1,
-      });
-    }
-  });
 
   return (
     <ExperienceFlowWrapper>
       <ExperienceFlowBoxContainer>
         {experienceFlowData.map((item, index) => (
-          <ExperienceFlowBox
-            bgImg={item.img}
-            key={item.id}
-            animate={showBox}
-            initial={{ opacity: 0 }}
-          >
+          <ExperienceFlowBox bgImg={item.img} key={item.id}>
             <ExperienceFlowBoxStep first={index}>
               <h1>Step {item.step}</h1>
             </ExperienceFlowBoxStep>

@@ -5,7 +5,8 @@ import { ImProfile, ImHistory } from "react-icons/im";
 
 const Wrapper = styled.div`
   display: flex;
-  height: 80vh;
+  justify-content: center;
+  height: 50vh;
   background-color: black;
   padding: 30px 20px;
   gap: 10px;
@@ -16,6 +17,7 @@ const DashBoardList = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   background-color: ${(props) => props.theme.colors.purple};
   border-radius: 13px;
@@ -25,7 +27,6 @@ const DashBoardList = styled.div`
       align-items: center;
       text-decoration: none;
       color: inherit;
-
       font-size: ${(props) => props.theme.fontSize.md};
       font-weight: 600;
       .icon {
@@ -34,7 +35,6 @@ const DashBoardList = styled.div`
       }
     }
     li {
-      margin-top: 50px;
       padding: 20px 30px;
       border-radius: 10px;
       width: 100%;
@@ -45,12 +45,25 @@ const DashBoardList = styled.div`
         background-color: ${(props) => props.theme.colors.white};
         color: ${(props) => props.theme.colors.black};
       }
+      &:last-child {
+        margin-top: 10px;
+      }
     }
   }
 `;
 
-const MainContainer = styled.div`
+const DashBoardBorder = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90%;
   width: 90%;
+  border: 3px solid white;
+  border-radius: 10px;
+`;
+
+const MainContainer = styled.div`
+  width: 40%;
   height: 100%;
   display: flex;
   background-color: ${(props) => props.theme.colors.purple};
@@ -59,6 +72,7 @@ const MainContainer = styled.div`
 
 const TitleContainer = styled.div`
   margin-top: 20px;
+  margin-bottom: 20px;
 `;
 
 const Title = styled.h1`
@@ -72,27 +86,29 @@ const UserDashboardMain = () => {
   return (
     <Wrapper>
       <DashBoardList>
-        <TitleContainer>
-          {currentLocation === "profile" ? (
-            <Title>Profile</Title>
-          ) : (
-            <Title>Order History</Title>
-          )}
-        </TitleContainer>
-        <ul>
-          <Link to="profile">
-            <li>
-              <ImProfile className="icon" />
-              User Profile
-            </li>
-          </Link>
-          <Link to="order-history">
-            <li>
-              <ImHistory className="icon" />
-              Order History
-            </li>
-          </Link>
-        </ul>
+        <DashBoardBorder>
+          <TitleContainer>
+            {currentLocation === "profile" ? (
+              <Title>Profile</Title>
+            ) : (
+              <Title>Order History</Title>
+            )}
+          </TitleContainer>
+          <ul>
+            <Link to="profile">
+              <li>
+                <ImProfile className="icon" />
+                User Profile
+              </li>
+            </Link>
+            <Link to="order-history">
+              <li>
+                <ImHistory className="icon" />
+                Order History
+              </li>
+            </Link>
+          </ul>
+        </DashBoardBorder>
       </DashBoardList>
       <MainContainer>
         <Outlet />

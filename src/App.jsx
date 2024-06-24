@@ -59,7 +59,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="services/:servicesId" element={<Services />}>
+            <Route path="services" element={<Services />}>
               <Route path="solo" element={<Solo />} />
               <Route path="duo" element={<Duo />} />
               <Route path="netwins" element={<NetWins />} />
