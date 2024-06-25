@@ -99,7 +99,7 @@ const CoachingMainList = () => {
   return (
     <Wrapper>
       {filteredData.map((item, index) => (
-        <CoachingBox>
+        <CoachingBox key={index}>
           <CoachingNameContainer>
             <CoachingNameImg>
               <img src={item.img} alt="" />

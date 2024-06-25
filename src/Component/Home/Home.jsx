@@ -10,7 +10,6 @@ import { isLoginSelector } from "../../Data/atomsLogin";
 const Home = () => {
   const isLogin = useRecoilValue(isLoginSelector);
 
-  console.log(isLogin);
   return (
     <div>
       <Hero />

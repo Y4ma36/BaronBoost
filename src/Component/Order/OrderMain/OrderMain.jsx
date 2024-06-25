@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px 0px;
 `;
 
 const Container = styled.div`
@@ -18,6 +19,8 @@ const Container = styled.div`
     rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
     rgba(0, 0, 0, 0.09) 0px 32px 16px;
   border-radius: 10px;
+  padding-bottom: 10px;
+  border: 2px solid white;
 `;
 
 const OrderMain = () => {
