@@ -39,7 +39,7 @@ const DivisionContainer = styled(motion.div)`
 `;
 
 const CurrentRankDivision = () => {
-  const [selectedDivision, setSelectedDivision] = useState();
+  const [selectedDivision, setSelectedDivision] = useState("IV");
   const setCurrentRankDivision = useSetRecoilState(isCurrentDivision);
   const desireRankDivision = useRecoilValue(isDesireDivision);
   const currentRank = useRecoilValue(isCurrentRank);

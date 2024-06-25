@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import {
   isCurrentDivision,
@@ -40,18 +40,17 @@ const DivisionContainer = styled(motion.div)`
 `;
 
 const DesireRankDivision = () => {
-  const [selectedDivision, setSelectedDivision] = useState(null);
+  const [selectedDivision, setSelectedDivision] = useState("I");
   const setDesireRankDivision = useSetRecoilState(isDesireDivision);
   const currentRankDivision = useRecoilValue(isCurrentDivision);
-  const currentRank = useRecoilValue(isCurrentRank);
+  const [currentRank, setCurrentRank] = useRecoilState(isCurrentRank);
   const desireRank = useRecoilValue(isDesireRank);
 
   useEffect(() => {
     if (desireRank > currentRank) {
-      setSelectedDivision(null);
-      setDesireRankDivision(null);
+      setSelectedDivision("I");
     }
-  }, [desireRank, currentRank, setDesireRankDivision]);
+  }, [desireRank, currentRank]);
 
   const handleClick = (division, index) => {
     const divisionIndex = divisionList.indexOf(division);
@@ -72,7 +71,7 @@ const DesireRankDivision = () => {
       {divisionList.map((division, index) => (
         <DivisionContainer
           onClick={() => handleClick(division, index)}
-          isSelected={selectedDivision == division}
+          isSelected={selectedDivision === division}
           isCurrent={desireRank === 7}
           key={index}
         >

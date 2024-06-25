@@ -4,8 +4,13 @@ import Services from "./ServicesFile/Services";
 import KeyFeatures from "./KeyFeatures/KeyFeatures";
 import ExperienceFlow from "./ExperienceFlow/ExperienceFlow";
 import StartNow from "./StartNow/StartNow";
+import { useRecoilValue } from "recoil";
+import { isLoginSelector } from "../../Data/atomsLogin";
 
 const Home = () => {
+  const isLogin = useRecoilValue(isLoginSelector);
+
+  console.log(isLogin);
   return (
     <div>
       <Hero />

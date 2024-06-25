@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import NetWinsPickRank from "./NetWinsPickRank";
-import TotalPrice from "../ServicesCommon/TotalPrice";
+import TotalPrice from "../ServicesCommon/TotalPrice/TotalPrice";
 
 const Wrapper = styled.div`
   display: flex;

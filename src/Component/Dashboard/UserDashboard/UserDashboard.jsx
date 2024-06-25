@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import { Navigate } from "react-router-dom";
+import React from "react";
+
 import styled from "styled-components";
-import { Outlet } from "react-router-dom";
 import UserDashboardHero from "./UserDashboardHero";
 import UserDashboardMain from "./UserDashboardMain/UserDashboardMain";
-import { LoginContext } from "../../../Context/LoginContext";
+import { accessToken, isLoginSelector } from "../../../Data/atomsLogin";
+import { useRecoilValue } from "recoil";
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,17 +13,11 @@ const Wrapper = styled.div`
 const Container = styled.div``;
 
 const UserDashboard = () => {
-  const { isLogin } = useContext(LoginContext);
-
-  console.log(isLogin);
-
-  return isLogin ? (
+  return (
     <Wrapper>
       <UserDashboardHero />
       <UserDashboardMain />
     </Wrapper>
-  ) : (
-    <Navigate to="/login" />
   );
 };
 

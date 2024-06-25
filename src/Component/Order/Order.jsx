@@ -1,24 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import heroImg from "../../assets/orderHero.jpg";
+import OrderHero from "./OrderHero";
+import OrderMain from "./OrderMain/OrderMain";
 
-const Wrapper = styled.div`
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)),
-    url(${heroImg});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 10% 20%;
-  min-height: 70vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  @media ${(props) => props.theme.device.laptop} {
-    background-position: center;
-  }
-`;
+const Wrapper = styled.div``;
 
 const Order = () => {
-  return <Wrapper>Order</Wrapper>;
+  return (
+    <Wrapper>
+      <OrderHero />
+      <OrderMain />
+    </Wrapper>
+  );
 };
 
 export default Order;

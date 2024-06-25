@@ -29,11 +29,13 @@ import BoosterApplication from "./Component/Support/BoosterApplication/BoosterAp
 import Order from "./Component/Order/Order";
 import SignUpSuccess from "./Component/Login&Signup/SignUpSuccess/SignUpSuccess";
 
-import LoginContextProvider, { LoginContext } from "./Context/LoginContext";
+// User Dashboard
 import UserDashboard from "./Component/Dashboard/UserDashboard/UserDashboard";
 import UserProfile from "./Component/Dashboard/UserDashboard/UserDashboardMain/UserProfile/UserProfile";
 import UserOrderHistory from "./Component/Dashboard/UserDashboard/UserDashboardMain/UserOrderHistory/UserOrderHistory";
 import ProtectedRoutes from "./Utils/ProtectedRoutes";
+import ForgotPassword from "./Component/Login&Signup/ForgotPassword/ForgotPassword";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // baronboost/coaching
 // baronboost/boosters
@@ -52,10 +54,12 @@ const supportRoutes = [
   { path: "booster-application", element: <BoosterApplication /> },
 ];
 
+const queryClient = new QueryClient();
+
 const App = () => {
   return (
-    <BrowserRouter>
-      <LoginContextProvider>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
@@ -75,17 +79,23 @@ const App = () => {
               />
             ))}
 
-            <Route path="user-dashboard" element={<UserDashboard />}>
-              <Route path="profile" element={<UserProfile />} />
-              <Route path="order-history" element={<UserOrderHistory />} />
+            <Route element={<ProtectedRoutes />}>
+              <Route path="user-dashboard" element={<UserDashboard />}>
+                <Route path="profile" element={<UserProfile />} />
+                <Route path="order-history" element={<UserOrderHistory />} />
+              </Route>
             </Route>
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="signup/successful" element={<SignUpSuccess />} />
+          <Route
+            path="login/forgot-password"
+            element={<ForgotPassword />}
+          ></Route>
         </Routes>
-      </LoginContextProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 };
 export default App;

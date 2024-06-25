@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import TotalPrice from "../ServicesCommon/TotalPrice";
 import DuoPickRank from "./DuoPickRank";
+import TotalPrice from "../ServicesCommon/TotalPrice/TotalPrice";
 
 const Wrapper = styled.div`
   display: flex;

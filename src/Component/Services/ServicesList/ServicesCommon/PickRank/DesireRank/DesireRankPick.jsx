@@ -2,8 +2,14 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import rankData from "../../../../RankData";
 import { motion } from "framer-motion";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { isCurrentRank, isDesireRank } from "../../../../../../Data/atoms";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  isCurrentDivision,
+  isCurrentRank,
+  isDesireDivision,
+  isDesireRank,
+  setDesirePickRank,
+} from "../../../../../../Data/atoms";
 import { useLocation } from "react-router-dom";
 
 const Wrapper = styled.div`
@@ -35,15 +41,20 @@ const DesireRankPickContainer = styled(motion.div)`
 
 const DesireRankPick = () => {
   const [desireRank, setDesireRank] = useRecoilState(isDesireRank);
+  const setDesireRankName = useSetRecoilState(setDesirePickRank);
   const currentRank = useRecoilValue(isCurrentRank);
+  const desireDivision = useRecoilValue(isDesireDivision);
+  const currentDivision = useRecoilValue(isCurrentDivision);
   const location = useLocation();
   const currentLocaiton = location.pathname.split("/").pop();
 
-  const clickRank = (id) => {
+  const clickRank = (id, rank) => {
     if (id < currentRank) {
       return;
     }
+
     setDesireRank(id);
+    setDesireRankName(rank);
   };
 
   if (currentLocaiton !== "duo" && currentLocaiton !== "solo") {
@@ -57,7 +68,7 @@ const DesireRankPick = () => {
       {rankData.map((item, index) => (
         <DesireRankPickContainer
           key={index}
-          onClick={() => clickRank(item.id)}
+          onClick={() => clickRank(item.id, item.name)}
           isSelected={desireRank == item.id}
         >
           <img src={item.icon} />

@@ -1,7 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import * as auth from "../../../../../Utils/auth.jsX";
-import { LoginContext } from "../../../../../Context/LoginContext";
+import { useRecoilValue } from "recoil";
+import { accessToken, userInfoAtom } from "../../../../../Data/atomsLogin";
+import axios from "axios";
+import useAuth from "../../../../../Context/LoginContext";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -30,9 +33,13 @@ const Title = styled.h1`
 const SubTitleBox = styled.div`
   margin-top: 30px;
   width: 90%;
-  padding: 40px 10px;
+  padding: 0px 10px;
+  height: 60%;
   background-color: ${(props) => props.theme.colors.purple};
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const SubTitle = styled.h3`
@@ -48,93 +55,58 @@ const LoadingWrapper = styled.div`
 `;
 
 const PasswordResetContainer = styled.div`
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  label {
-    color: black;
-    font-size: ${(props) => props.theme.fontSize.base};
-    font-weight: 600;
-    margin-top: 10px;
-    margin-bottom: 5px;
-  }
-  input {
-    padding: 5px 5px;
-    width: 200px;
-  }
+  margin-top: 30px;
+  width: 90%;
+  padding: 0px 10px;
+  height: 60%;
+  background-color: ${(props) => props.theme.colors.purple};
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   button {
-    align-self: center;
-    margin-top: 10px;
-    padding: 5px 50px;
-    background-color: ${(props) => props.theme.colors.purple};
+    width: 60%;
+    padding: 15px 0px;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
     font-weight: 600;
-    font-size: ${(props) => props.theme.fontSize.md};
+  }
+  span {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: ${(props) => props.theme.fontSize.sm};
+    opacity: 0.7;
+    margin-top: 10px;
   }
 `;
 const UserProfile = () => {
-  const [userData, setUserData] = useState(null);
-  const { isLogin, resetPassword } = useContext(LoginContext);
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const userInfo = useRecoilValue(userInfoAtom);
+
   useEffect(() => {
-    const fetchData = async () => {
-      const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-      setUserData(userInfo);
-    };
-
-    if (isLogin) {
-      fetchData();
+    if (!userInfo) {
+      return <LoadingWrapper>Loading...</LoadingWrapper>;
     }
-  }, [isLogin]);
-
-  if (!userData) {
-    return <LoadingWrapper>Loading...</LoadingWrapper>;
-  }
-
-  const handleResetPassword = () => {
-    resetPassword(confirmPassword);
-  };
+  }, [userInfo]);
 
   return (
     <Wrapper>
       <InfoBox>
         <Title>Username</Title>
         <SubTitleBox>
-          <SubTitle>{userData.username}</SubTitle>
+          <SubTitle>{userInfo.username}</SubTitle>
         </SubTitleBox>
       </InfoBox>
       <InfoBox>
         <Title>Email</Title>
         <SubTitleBox>
-          <SubTitle>{userData.email}</SubTitle>
+          <SubTitle>{userInfo.email}</SubTitle>
         </SubTitleBox>
       </InfoBox>
       <InfoBox>
         <Title>Role</Title>
         <SubTitleBox>
-          <SubTitle>{userData.role}</SubTitle>
+          <SubTitle>{userInfo.role}</SubTitle>
         </SubTitleBox>
-      </InfoBox>
-      <InfoBox>
-        <Title>Reset Password</Title>
-        <PasswordResetContainer>
-          <form action="" onSubmit={handleResetPassword}>
-            <label htmlFor="password">Password</label>
-            <input type="password" id="password" required />
-            <label htmlFor="">Confirm Password</label>
-            <input
-              type="text"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e)}
-              required
-            />
-
-            <button type="submit">Sumbit</button>
-          </form>
-        </PasswordResetContainer>
       </InfoBox>
     </Wrapper>
   );

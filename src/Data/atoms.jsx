@@ -2,6 +2,7 @@ import { atom } from "recoil";
 
 //Services
 
+/*---------------------[Rank Image]------------------------*/
 export const isDesireRank = atom({
   key: "isDesireRank",
   default: 7,
@@ -12,10 +13,43 @@ export const isCurrentRank = atom({
   default: 0,
 });
 
+export const setDesirePickRank = atom({
+  key: "desireRankName",
+  default: "MASTER",
+});
+
+export const setCurrentPickRank = atom({
+  key: "currentRankName",
+  default: "BRONZE",
+});
+
+/*-------------------------------------------------------*/
+
+/*---------------------[Rank Detail]------------------------*/
+
+export const setLpGain = atom({
+  key: "setLpGain",
+  default: 20,
+});
+
+export const setCurrentLp = atom({
+  key: "setCurrentLp",
+  default: 60,
+});
+
+export const setNetWins = atom({
+  key: "setNetWins",
+  default: 1,
+});
+
+/*-------------------------------------------------------*/
+
+/*---------------------[Rank Division]------------------------*/
+
 const divisionList = ["IV", "III", "II", "I"];
 
 export const isDesireDivision = atom({
-  key: "isDesireVision",
+  key: "isDesireDivision",
   default: divisionList[0],
 });
 
@@ -24,14 +58,9 @@ export const isCurrentDivision = atom({
   default: divisionList[0],
 });
 
-//Nav
+/*-------------------------------------------------------*/
 
-export const isHoverNav = atom({
-  key: "isHoverNav",
-  default: false,
-});
-
-//Coaching
+/*---------------------[Coaching]------------------------*/
 
 export const isCoachingRegion = atom({
   key: "isCoachingRegion",
@@ -43,7 +72,14 @@ export const isCoachingRoles = atom({
   default: "",
 });
 
+/*-------------------------------------------------------*/
+
 //Navigation
+
+export const isHoverNav = atom({
+  key: "isHoverNav",
+  default: false,
+});
 
 export const isNavHover = atom({
   key: "isNavHover",

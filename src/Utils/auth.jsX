@@ -17,19 +17,29 @@ export const update = (data) => api.put(`users`, data);
 
 //user reset password
 
-export const resetPassword = (newPassword) =>
-  api.put("updatePassword/resetPassword", newPassword);
+export const resetPassword = (username) =>
+  api.post("updatePassword/forgotPassword", username, {
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+  });
 
 //user delete
 export const remove = (username) =>
   api.delete(`users/username/${username}`, username);
 
+//user SingUp
+
+export const signUp = (userInfo) => api.post(`authenticate/signup`, userInfo);
 /*---------------------------------------------------*/
 
 /*--------------------Price Data-----------------------*/
 
-export const soloPrice = () => api.get("api/leaguePrices/soloOrder");
+export const soloPrice = (orderInfo) =>
+  api.post("api/leaguePrices/soloOrder", orderInfo);
 
-export const duoPrice = () => api.get("api/leaguePrices/duoOrder");
+export const duoPrice = (orderInfo) =>
+  api.post("api/leaguePrices/duoOrder", orderInfo);
 
-export const netwinsPrice = () => api.get("api/leaguePrices/netWinOrder");
+export const netwinsPrice = (orderInfo) =>
+  api.post("api/leaguePrices/netWinOrder", orderInfo);

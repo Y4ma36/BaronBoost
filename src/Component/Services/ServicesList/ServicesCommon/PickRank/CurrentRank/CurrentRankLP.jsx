@@ -2,6 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import arrow_down from "../../../../../../assets/arrowDown.png";
 import { useLocation } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import {
+  setCurrentLp,
+  setLpGain,
+  setNetWins,
+} from "../../../../../../Data/atoms";
 
 const Wrapper = styled.div`
   display: flex;
@@ -45,24 +51,40 @@ const CurrentLpForm = styled.div`
 const CurrentRankLP = () => {
   const location = useLocation();
   const currentLocation = location.pathname.split("/").pop();
+  const setCurrentRankLp = useSetRecoilState(setCurrentLp);
+  const setLpRankGain = useSetRecoilState(setLpGain);
+  const setNetWinsGame = useSetRecoilState(setNetWins);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    const convertValue = Number(value);
+    if (name === "currentLP") {
+      setCurrentRankLp(convertValue);
+    } else if (name === "lpgain") {
+      setLpRankGain(convertValue);
+    } else if (name === "netwins") {
+      setNetWinsGame(convertValue);
+    }
+  };
+
   return (
     <Wrapper>
       <CurrentLpContainer>
         <CurrentLpForm>
           <label>Current LP</label>
-          <select name="currentLP" className="arrow">
-            <option value="low">0-49</option>
-            <option value="hight">50-99</option>
+          <select name="currentLP" className="arrow" onChange={handleChange}>
+            <option value="20">0-49</option>
+            <option value="60">50-99</option>
           </select>
         </CurrentLpForm>
       </CurrentLpContainer>
       <CurrentLpContainer>
         <CurrentLpForm>
           <label>Lp Gain</label>
-          <select name="lpgain" className="arrow">
-            <option value="low">0~14</option>
-            <option value="middle">15~17</option>
-            <option value="hight">18 or More</option>
+          <select name="lpgain" className="arrow" onChange={handleChange}>
+            <option value="5">0~14</option>
+            <option value="16">15~17</option>
+            <option value="20">18 or More</option>
           </select>
         </CurrentLpForm>
       </CurrentLpContainer>
@@ -71,7 +93,7 @@ const CurrentRankLP = () => {
         <CurrentLpContainer>
           <CurrentLpForm>
             <label>Net Wins</label>
-            <select name="lpgain" className="arrow">
+            <select name="netwins" className="arrow" onChange={handleChange}>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>

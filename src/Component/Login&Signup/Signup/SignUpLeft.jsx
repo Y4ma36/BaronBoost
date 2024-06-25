@@ -3,6 +3,7 @@ import styled from "styled-components";
 import img from "../../../assets/LoginBaron.png";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import SignUp from "../../../Context/SignUpContext";
 import axios from "axios";
 
 const SignUpLeftWrappar = styled.div`
@@ -108,35 +109,18 @@ const SignUpLeftNoAccount = styled.div`
 `;
 
 const SignUpLeft = () => {
-  const [nameCheck, setNameCheck] = useState("");
-  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
     getValues,
   } = useForm();
-
-  const getHost = "http://localhost:8080";
+  const navigate = useNavigate();
   const onValid = async (data) => {
-    let user = {
-      username: data.username,
-      password: data.password,
-      email: data.email,
-      role: "CUSTOMER",
-      boostStatus: "NONE",
-    };
     try {
-      const response = await axios.post(
-        "http://localhost:8080/authenticate/signup",
-        user,
-        {
-          "Content-Type": "application/json",
-        }
-      );
-      navigate("/signup/successful");
+      await SignUp(data, navigate);
     } catch (error) {
-      console.error("error", error.message);
+      console.log(error.message);
     }
   };
 
@@ -188,7 +172,7 @@ const SignUpLeft = () => {
         {errors?.password ? (
           <ErrorMessage>{errors.password.message}</ErrorMessage>
         ) : null}
-        {nameCheck ? <ErrorMessage>{nameCheck}</ErrorMessage> : null}
+        {/* {nameCheck ? <ErrorMessage>{nameCheck}</ErrorMessage> : null} */}
         <label>Confirm Password</label>
         <input
           {...register("passwordConfirm", {

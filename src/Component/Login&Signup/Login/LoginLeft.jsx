@@ -1,9 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import img from "../../../assets/LoginBaron.png";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import { LoginContext } from "../../../Context/LoginContext";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../../Context/LoginContext";
+import { color } from "framer-motion";
 
 const LoginLeftWrapper = styled.div`
   flex: 1;
@@ -89,6 +90,10 @@ const LoginLeftForm = styled.form`
     text-decoration-thickness: 3px;
     margin-bottom: 20px;
   }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
 
 const LoginLeftNoAccount = styled.div`
@@ -120,14 +125,15 @@ const LoginLeft = () => {
   const { register, handleSubmit, watch } = useForm();
   const [infoCheck, setInfoCheck] = useState("");
 
-  const { login } = useContext(LoginContext);
+  const { login } = useAuth();
 
-  const onValid = (data) => {
+  const location = useLocation();
+  const from = location?.state?.redirectFrom.pathname || "/";
+
+  const onValid = async (data) => {
     try {
-      login(data);
-    } catch (error) {
-      setInfoCheck("Invalid login credentials");
-    }
+      await login(data, from);
+    } catch (error) {}
   };
 
   return (
@@ -150,7 +156,9 @@ const LoginLeft = () => {
           placeholder="Password"
           type="password"
         />
-        <h3>Forgot Password</h3>
+        <h3>
+          <Link to="forgot-password">Forgot Password</Link>
+        </h3>
         <input type="submit" value="Sign In" />
       </LoginLeftForm>
       {infoCheck && <ErrorMessage>{infoCheck}</ErrorMessage>}

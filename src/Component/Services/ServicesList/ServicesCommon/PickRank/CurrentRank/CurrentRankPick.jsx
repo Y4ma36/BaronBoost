@@ -2,8 +2,12 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import rankData from "../../../../RankData";
 import { motion } from "framer-motion";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { isCurrentRank, isDesireRank } from "../../../../../../Data/atoms";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  isCurrentRank,
+  isDesireRank,
+  setCurrentPickRank,
+} from "../../../../../../Data/atoms";
 
 const Wrapper = styled.div`
   display: grid;
@@ -34,6 +38,7 @@ const CurrentRankPickContainer = styled(motion.div)`
 
 const CurrentRankPick = () => {
   const [currentRank, setCurrentRank] = useRecoilState(isCurrentRank);
+  const setCurrentRankName = useSetRecoilState(setCurrentPickRank);
   const desireRank = useRecoilValue(isDesireRank);
 
   useEffect(() => {
@@ -42,9 +47,10 @@ const CurrentRankPick = () => {
     }
   }, [currentRank, desireRank]);
 
-  const clickRank = (id) => {
+  const clickRank = (id, rank) => {
     if (id <= desireRank) {
       setCurrentRank(id);
+      setCurrentRankName(rank);
     } else {
       return;
     }
@@ -57,7 +63,7 @@ const CurrentRankPick = () => {
       {rankDataExceptLast.map((item, index) => (
         <CurrentRankPickContainer
           key={item.id}
-          onClick={() => clickRank(item.id)}
+          onClick={() => clickRank(item.id, item.name)}
           isSelected={currentRank == item.id}
         >
           <img src={item.icon} />

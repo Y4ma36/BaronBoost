@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { LoginContext } from "../../../Context/LoginContext";
+
 import { FaRegUser } from "react-icons/fa";
+import { isLoginSelector } from "../../../Data/atomsLogin";
+import { useRecoilValue } from "recoil";
 
 const Wrapper = styled.div`
   background-color: ${(props) => props.theme.colors.purple};
@@ -62,7 +64,7 @@ const LoginButton = styled.button`
 `;
 
 const NavBarSideMenuFooter = () => {
-  const { isLogin, logout } = useContext(LoginContext);
+  const isLogin = useRecoilValue(isLoginSelector);
   return (
     <Wrapper>
       <Title>Login to Your Account</Title>

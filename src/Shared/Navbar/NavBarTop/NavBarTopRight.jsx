@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { isNavHover } from "../../../Data/atoms";
-import { LoginContext } from "../../../Context/LoginContext";
 import { FaRegUser } from "react-icons/fa";
+import { isLoginSelector } from "../../../Data/atomsLogin";
+import useAuth from "../../../Context/LoginContext";
 
 const NavBarRight = styled.div`
   display: flex;
@@ -93,8 +94,9 @@ const NavBarLoginCart = styled.div`
 
 const NavBarTopRight = () => {
   const [hoverdItem, setHoveredItem] = useRecoilState(isNavHover);
+  const isLogin = useRecoilValue(isLoginSelector);
 
-  const { isLogin, logout } = useContext(LoginContext);
+  const { logout } = useAuth();
 
   useEffect(() => {
     if (hoverdItem === "services") {
