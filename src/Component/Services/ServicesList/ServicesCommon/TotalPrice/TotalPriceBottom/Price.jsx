@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import useAllPriceData from "../../AllPriceData";
-import { color } from "framer-motion";
 
 const Wrapper = styled.div`
   display: flex;

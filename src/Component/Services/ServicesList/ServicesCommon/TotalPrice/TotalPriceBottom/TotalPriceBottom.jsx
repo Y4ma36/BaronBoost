@@ -51,13 +51,16 @@ const BuyButton = styled.button`
 `;
 
 const TotalPriceBottom = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <Wrapper>
       <Container>
         <OrderOverview />
         <BottonContainer>
           <Price />
-          <BuyButton>Get Started</BuyButton>
+          <BuyButton onClick={handleSubmit}>Get Started</BuyButton>
         </BottonContainer>
       </Container>
     </Wrapper>

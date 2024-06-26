@@ -39,11 +39,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 /*---------------------------------------------------*/
 
 /*---------------------[Orders]------------------------*/
-import AllOrders from "./Component/Order/OrderMain/OrderList/AllOrders/AllOrders";
-import SoloOrders from "./Component/Order/OrderMain/OrderList/SoloOrders/SoloOrders";
-import DuoOrders from "./Component/Order/OrderMain/OrderList/DuoOrders/DuoOrders";
-import NetWinsOrders from "./Component/Order/OrderMain/OrderList/NetWinsOrders/NetWinsOrders";
-import CoachOrders from "./Component/Order/OrderMain/OrderList/CoachOrders/CoachOrders";
+import OrderCategory from "./Component/Order/OrderMain/OrderList/OrderCategory/OrderCategory";
+import useOrderData from "./Component/Order/OrderData";
+import PaymentSuccessful from "./Component/Services/ServicesList/ServicesCommon/TotalPrice/Payment/PaymentSuccessful";
 
 /*---------------------------------------------------*/
 
@@ -70,11 +68,11 @@ const App = () => {
             </Route>
             <Route path="coaching" element={<Coaching />} />
             <Route path="orders" element={<Order />}>
-              <Route path="all-orders" element={<AllOrders />} />
-              <Route path="solo-orders" element={<SoloOrders />} />
-              <Route path="duo-orders" element={<DuoOrders />} />
-              <Route path="netwins-orders" element={<NetWinsOrders />} />
-              <Route path="coach-orders" element={<CoachOrders />} />
+              <Route path="all-orders" element={<OrderCategory />} />
+              <Route path="solo-orders" element={<OrderCategory />} />
+              <Route path="duo-orders" element={<OrderCategory />} />
+              <Route path="netwins-orders" element={<OrderCategory />} />
+              <Route path="coach-orders" element={<OrderCategory />} />
             </Route>
             <Route path="support" element={<Support />} />
             {supportRoutes.map((route) => (
@@ -95,10 +93,11 @@ const App = () => {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="signup/successful" element={<SignUpSuccess />} />
+          <Route path="login/forgot-password" element={<ForgotPassword />} />
           <Route
-            path="login/forgot-password"
-            element={<ForgotPassword />}
-          ></Route>
+            path="order/payment-sucessful"
+            element={<PaymentSuccessful />}
+          />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>

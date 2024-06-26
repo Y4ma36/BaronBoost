@@ -39,24 +39,25 @@ const Items = styled.ul`
   width: 100%;
   padding: 0;
   margin: 0;
-`;
-
-const Item = styled(motion.li)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: black;
-  width: 100%;
-  height: 100%;
-  border-radius: 20px;
-  list-style: none;
-  cursor: pointer;
-  position: relative;
-  z-index: 1;
   a {
     text-decoration: none;
     color: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    list-style: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
   }
+`;
+
+const Item = styled(motion.li)`
+  color: black;
 `;
 
 const Background = styled(motion.div)`
@@ -103,13 +104,15 @@ const OrderHeader = () => {
           </AnimatePresence>
           <Items>
             {items.map((item, index) => (
-              <Item
-                key={index}
-                onClick={() => handleClick(index)}
-                isClick={isClick === index}
-              >
-                <Link to={item.link}>{item.name}</Link>
-              </Item>
+              <Link to={item.link}>
+                <Item
+                  key={index}
+                  onClick={() => handleClick(index)}
+                  isClick={isClick === index}
+                >
+                  {item.name}{" "}
+                </Item>
+              </Link>
             ))}
           </Items>
         </FilterContainer>

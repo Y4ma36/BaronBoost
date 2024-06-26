@@ -4,6 +4,7 @@ import api from "../Utils/api";
 import * as auth from "../Utils/auth.jsX";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { accessToken, userInfoAtom } from "../Data/atomsLogin";
+import Cookies from "js-cookie";
 
 /**🔐 Login
  * Login Check
@@ -60,6 +61,8 @@ const useAuth = () => {
 
     setAccessToken(accessToken);
 
+    Cookies.set("accessToken", accessToken);
+
     navigate(from);
   };
 
@@ -70,6 +73,8 @@ const useAuth = () => {
 
     setAccessToken(undefined);
 
+    Cookies.remove("accessToken");
+
     location.reload(true);
   };
 
@@ -78,6 +83,7 @@ const useAuth = () => {
   const getUserInfo = async (username) => {
     const response = await auth.info(username);
     const data = response.data;
+    localStorage.setItem("role", data.role);
     setUserInfo(data);
   };
 

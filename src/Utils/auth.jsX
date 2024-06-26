@@ -43,3 +43,19 @@ export const duoPrice = (orderInfo) =>
 
 export const netwinsPrice = (orderInfo) =>
   api.post("api/leaguePrices/netWinOrder", orderInfo);
+
+/*---------------------------------------------------*/
+
+/*--------------------Order-----------------------*/
+
+export const allOrders = () => api.get("api/orders");
+
+export const soloOrders = () => api.get("api/orders/soloOrders");
+
+export const duoOrders = () => api.get("api/orders/duoOrders");
+
+export const netWinsOrders = () => api.get("api/orders/netWinOrders");
+
+export const coachOrders = () => api.get("api/orders/coachOrders");
+
+/*---------------------------------------------------*/
