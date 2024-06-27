@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
-import useAllPriceData from "../../AllPriceData";
 import Price from "./Price";
 import OrderOverview from "./OrderOverview";
 
@@ -51,16 +49,41 @@ const BuyButton = styled.button`
 `;
 
 const TotalPriceBottom = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleClick = (e) => {
+    fetch("/create-checkout-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        item: [
+          { id: 1, quantity: 1 },
+          { id: 2, quantity: 2 },
+        ],
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return res.json().then((json) => Promise.reject(json));
+      })
+      .then(({ url }) => {
+        console.log(url);
+        // window.location = url;
+      })
+      .catch((e) => {
+        console.error(e.error);
+      });
   };
+
   return (
     <Wrapper>
       <Container>
         <OrderOverview />
         <BottonContainer>
           <Price />
-          <BuyButton onClick={handleSubmit}>Get Started</BuyButton>
+          <BuyButton onClick={handleClick}>Get Started</BuyButton>
         </BottonContainer>
       </Container>
     </Wrapper>

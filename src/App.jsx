@@ -42,6 +42,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import OrderCategory from "./Component/Order/OrderMain/OrderList/OrderCategory/OrderCategory";
 import useOrderData from "./Component/Order/OrderData";
 import PaymentSuccessful from "./Component/Services/ServicesList/ServicesCommon/TotalPrice/Payment/PaymentSuccessful";
+import PaymentCancel from "./Component/Services/ServicesList/ServicesCommon/TotalPrice/Payment/PaymentCancel";
 
 /*---------------------------------------------------*/
 
@@ -98,6 +99,7 @@ const App = () => {
             path="order/payment-sucessful"
             element={<PaymentSuccessful />}
           />
+          <Route path="order/payment-failed" element={<PaymentCancel />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>
