@@ -7,6 +7,8 @@ import ServicesFAQ from "./ServicesFAQ/ServicesFAQ";
 import ExperienceFlow from "../Home/ExperienceFlow/ExperienceFlow";
 import StartNow from "../Home/StartNow/StartNow";
 
+const Wrapper = styled.div``;
+
 const ServicesListContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -61,7 +63,7 @@ const Services = () => {
   const currentLocation = location.pathname.split("/").pop();
 
   return (
-    <div>
+    <Wrapper>
       <Overview />
       <ServicesListContainer>
         <ul>
@@ -90,7 +92,7 @@ const Services = () => {
       <ServicesFAQ />
       <ExperienceFlow />
       <StartNow />
-    </div>
+    </Wrapper>
   );
 };
 

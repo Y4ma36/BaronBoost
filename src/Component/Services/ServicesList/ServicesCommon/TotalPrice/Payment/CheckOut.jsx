@@ -6,6 +6,7 @@ import styled from "styled-components";
 import CheckOutForm from "./CheckOutForm";
 import { useRecoilValue } from "recoil";
 import { priceState } from "../../../../../../Data/atoms";
+import Loading from "../../../../../../Shared/Loading/Loading";
 
 const LoadingWrapper = styled.div`
   background-color: black;
@@ -63,9 +64,7 @@ const Checkout = () => {
   return (
     <div>
       {clientSecretSettings.loading ? (
-        <LoadingWrapper>
-          <h1>Loading...</h1>
-        </LoadingWrapper>
+        <Loading />
       ) : (
         <Wrapper>
           <Container>

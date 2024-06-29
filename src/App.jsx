@@ -44,6 +44,7 @@ import useOrderData from "./Component/Order/OrderData";
 import PaymentSuccessful from "./Component/Services/ServicesList/ServicesCommon/TotalPrice/Payment/PaymentSuccessful";
 import PaymentCancel from "./Component/Services/ServicesList/ServicesCommon/TotalPrice/Payment/PaymentCancel";
 import CheckOut from "./Component/Services/ServicesList/ServicesCommon/TotalPrice/Payment/CheckOut";
+import Loading from "./Shared/Loading/Loading";
 
 /*---------------------------------------------------*/
 
@@ -60,6 +61,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+        {/*---------------------[Home Route]------------------------*/}
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
@@ -84,6 +86,8 @@ const App = () => {
                 element={route.element}
               />
             ))}
+            {/*---------------------------------------------------*/}
+            {/*---------------------[Dashboard Route]------------------------*/}
 
             <Route element={<ProtectedRoutes />}>
               <Route path="user-dashboard" element={<UserDashboard />}>
@@ -92,17 +96,21 @@ const App = () => {
               </Route>
             </Route>
           </Route>
+          {/*---------------------------------------------------*/}
+          {/*---------------------[Login & Signup Route]------------------------*/}
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
-
           <Route path="signup/successful" element={<SignUpSuccess />} />
           <Route path="login/forgot-password" element={<ForgotPassword />} />
+
+          {/*---------------------[Orders Route]------------------------*/}
           <Route path="order/checkout" element={<CheckOut />} />
           <Route
             path="/order/payment-sucessful"
             element={<PaymentSuccessful />}
           />
           <Route path="order/payment-failed" element={<PaymentCancel />} />
+          {/*---------------------------------------------------*/}
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>

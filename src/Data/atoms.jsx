@@ -21,7 +21,7 @@ export const setDesirePickRank = atom({
 
 export const setCurrentPickRank = atom({
   key: "currentRankName",
-  default: "BRONZE",
+  default: "IRON",
 });
 
 /*-------------------------------------------------------*/
@@ -51,7 +51,7 @@ const divisionList = ["IV", "III", "II", "I"];
 
 export const isDesireDivision = atom({
   key: "isDesireDivision",
-  default: divisionList[0],
+  default: divisionList[3],
 });
 
 export const isCurrentDivision = atom({

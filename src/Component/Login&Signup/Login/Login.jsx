@@ -10,6 +10,7 @@ const LoginWrapper = styled.div`
     flex-direction: column;
     width: 100%;
     overflow-x: hidden;
+    scroll-behavior: smooth;
   }
 `;
 

@@ -129,18 +129,22 @@ const OrderOverview = () => {
             {currentRankName} {currentRankDivision}
           </RankName>
         </RankContainer>
-        <ArrowIcon>
-          <IconCircle>
-            <FaArrowRight className="icon" />
-          </IconCircle>
-        </ArrowIcon>
-        <RankContainer>
-          <img src={rankDataList[desireRankImg].icon} alt="" />
-          <RankName>
-            {desireRankName}{" "}
-            {desireRankName === "MASTER" ? null : desireRankDivision}
-          </RankName>
-        </RankContainer>
+        {currentLocation === "netwins" ? null : (
+          <>
+            <ArrowIcon>
+              <IconCircle>
+                <FaArrowRight className="icon" />
+              </IconCircle>
+            </ArrowIcon>
+            <RankContainer>
+              <img src={rankDataList[desireRankImg].icon} alt="" />
+              <RankName>
+                {desireRankName}{" "}
+                {desireRankName === "MASTER" ? null : desireRankDivision}
+              </RankName>
+            </RankContainer>
+          </>
+        )}
       </OverViewRank>
     </Wrapper>
   );

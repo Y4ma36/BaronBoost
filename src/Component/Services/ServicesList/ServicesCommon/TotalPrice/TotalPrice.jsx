@@ -31,18 +31,12 @@ const Container = styled.div`
 `;
 
 const TotalPrice = () => {
-  const { totalSoloPrice } = useAllPriceData();
-
   return (
     <Wrapper>
-      {totalSoloPrice !== null ? (
-        <Container>
-          <TotalPriceTop />
-          <TotalPriceBottom />
-        </Container>
-      ) : (
-        <p>Loading...</p>
-      )}
+      <Container>
+        <TotalPriceTop />
+        <TotalPriceBottom />
+      </Container>
     </Wrapper>
   );
 };

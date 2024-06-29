@@ -108,6 +108,7 @@ const Price = () => {
   }, [totalSoloPrice, totalDuoPrice, totalNetWinsPrice, currentLocation]);
 
   /*-------------------------------------------------------*/
+
   return (
     <Wrapper>
       <Title>Total Price: </Title>

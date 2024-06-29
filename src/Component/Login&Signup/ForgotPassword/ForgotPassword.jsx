@@ -26,6 +26,7 @@ const Container = styled.div`
   align-items: center;
   @media ${(props) => props.theme.device.tablet} {
     width: 80%;
+    gap: 10px;
   }
 `;
 
@@ -37,11 +38,12 @@ const Title = styled.h1`
   font-size: 4rem;
   font-weight: 800;
   margin-bottom: 10px;
+  text-align: center;
   @media ${(props) => props.theme.device.tablet} {
     font-size: 3.5rem;
   }
   @media ${(props) => props.theme.device.mobile} {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 `;
 
@@ -60,6 +62,12 @@ const SubTitle = styled.h1`
 const ForgotPasswordForm = styled.form`
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  @media ${(props) => props.theme.device.mobile} {
+    gap: 10px;
+  }
   label {
     font-size: ${(props) => props.theme.fontSize.lg};
     font-weight: 800;
@@ -71,6 +79,9 @@ const ForgotPasswordForm = styled.form`
     font-size: ${(props) => props.theme.fontSize.md};
     border: none;
     border-radius: 5px;
+    @media ${(props) => props.theme.device.mobile} {
+      width: 80%;
+    }
   }
   button {
     background-color: ${(props) => props.theme.colors.purple};
@@ -165,8 +176,8 @@ const ForgotPassword = () => {
           <button type="submit">Submit</button>
         </ForgotPasswordForm>
         <GoBackHome>
-          <Link to="/">
-            <h1>Home</h1>
+          <Link to="/login">
+            <h1>Back to Login</h1>
             <FaArrowLeft className="icon" />
           </Link>
         </GoBackHome>

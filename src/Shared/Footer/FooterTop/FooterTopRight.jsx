@@ -97,9 +97,6 @@ const FooterTopRight = () => {
               Policy
             </Link>
           </FooterTopItem>
-          <FooterTopItem>
-            <Link>Term of Service</Link>
-          </FooterTopItem>
         </ul>
       </FooterTopList>
     </FooterTopRightWrapper>
