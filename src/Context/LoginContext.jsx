@@ -84,6 +84,7 @@ const useAuth = () => {
     const response = await auth.info(username);
     const data = response.data;
     localStorage.setItem("role", data.role);
+    localStorage.setItem("email", data.email);
     setUserInfo(data);
   };
 

@@ -1,3 +1,4 @@
+import axios from "axios";
 import api from "./api";
 
 /*------------------Login & SignUp-------------------------*/
@@ -36,13 +37,13 @@ export const signUp = (userInfo) => api.post(`authenticate/signup`, userInfo);
 /*--------------------Price Data-----------------------*/
 
 export const soloPrice = (orderInfo) =>
-  api.post("api/leaguePrices/soloOrder", orderInfo);
+  axios.post("http://localhost:8080/api/leaguePrices/soloOrder", orderInfo);
 
 export const duoPrice = (orderInfo) =>
-  api.post("api/leaguePrices/duoOrder", orderInfo);
+  axios.post("http://localhost:8080/api/leaguePrices/duoOrder", orderInfo);
 
 export const netwinsPrice = (orderInfo) =>
-  api.post("api/leaguePrices/netWinOrder", orderInfo);
+  axios.post("http://localhost:8080/api/leaguePrices/netWinOrder", orderInfo);
 
 /*---------------------------------------------------*/
 

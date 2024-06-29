@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import useAllPriceData from "../../AllPriceData";
+import { useRecoilState } from "recoil";
+import { priceState } from "../../../../../../Data/atoms";
 
 const Wrapper = styled.div`
   display: flex;
@@ -74,6 +76,8 @@ const Sale = styled.div`
 `;
 
 const Price = () => {
+  /*---------------------[Price Data]------------------------*/
+
   const {
     totalSoloPrice,
     totalDuoPrice,
@@ -87,6 +91,23 @@ const Price = () => {
   } = useAllPriceData();
   const currentLocation = useLocation().pathname.split("/").pop();
 
+  /*-------------------------------------------------------*/
+
+  /*---------------------[Check out Price]------------------------*/
+
+  const [price, setPrice] = useRecoilState(priceState);
+
+  useEffect(() => {
+    if (currentLocation === "solo") {
+      setPrice(totalSoloPrice);
+    } else if (currentLocation === "duo") {
+      setPrice(totalDuoPrice);
+    } else if (currentLocation === "netwins") {
+      setPrice(totalNetWinsPrice);
+    }
+  }, [totalSoloPrice, totalDuoPrice, totalNetWinsPrice, currentLocation]);
+
+  /*-------------------------------------------------------*/
   return (
     <Wrapper>
       <Title>Total Price: </Title>

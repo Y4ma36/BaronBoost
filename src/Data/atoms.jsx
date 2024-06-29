@@ -1,4 +1,5 @@
-import { atom } from "recoil";
+import { atom, selector } from "recoil";
+import useAllPriceData from "../Component/Services/ServicesList/ServicesCommon/AllPriceData";
 
 //Services
 
@@ -70,6 +71,30 @@ export const isCoachingRegion = atom({
 export const isCoachingRoles = atom({
   key: "isCoachingRoles",
   default: "",
+});
+
+/*-------------------------------------------------------*/
+
+/*---------------------[Price]------------------------*/
+
+export const priceState = atom({
+  key: "priceState",
+  default: selector({
+    key: "priceStateDefault",
+    get: ({ get }) => {
+      const { totalSoloPrice, totalDuoPrice, totalNetWinsPrice } =
+        useAllPriceData();
+      const currentLocation = window.location.pathname.split("/").pop();
+
+      if (currentLocation === "solo") {
+        return totalSoloPrice;
+      } else if (currentLocation === "duo") {
+        return totalDuoPrice;
+      } else {
+        return totalNetWinsPrice;
+      }
+    },
+  }),
 });
 
 /*-------------------------------------------------------*/

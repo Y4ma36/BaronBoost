@@ -126,33 +126,6 @@ const HeroButton = styled.button`
 `;
 
 const Hero = () => {
-  const handleClick = (e) => {
-    fetch("/create-checkout-session", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        item: [
-          { id: 1, quantity: 1 },
-          { id: 2, quantity: 2 },
-        ],
-      }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return res.json().then((json) => Promise.reject(json));
-      })
-      .then(({ url }) => {
-        console.log(url);
-        // window.location = url;
-      })
-      .catch((e) => {
-        console.error(e.error);
-      });
-  };
   return (
     <HeroWrapper>
       <HeroDisplayContainer>
@@ -168,10 +141,8 @@ const Hero = () => {
           <Link to="/services/solo">
             <HeroButton index={0}>Rank Up</HeroButton>
           </Link>
-          <Link>
-            <HeroButton index={1} onClick={handleClick}>
-              First Time?
-            </HeroButton>
+          <Link to="order/checkout">
+            <HeroButton index={1}>First Time?</HeroButton>
           </Link>
         </HeroButtonContainer>
       </HeroDisplayContainer>

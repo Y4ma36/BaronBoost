@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Price from "./Price";
 import OrderOverview from "./OrderOverview";
+import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -49,33 +51,7 @@ const BuyButton = styled.button`
 `;
 
 const TotalPriceBottom = () => {
-  const handleClick = (e) => {
-    fetch("/create-checkout-session", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        item: [
-          { id: 1, quantity: 1 },
-          { id: 2, quantity: 2 },
-        ],
-      }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return res.json().then((json) => Promise.reject(json));
-      })
-      .then(({ url }) => {
-        console.log(url);
-        // window.location = url;
-      })
-      .catch((e) => {
-        console.error(e.error);
-      });
-  };
+  const accessToken = Cookies.get("accessToken");
 
   return (
     <Wrapper>
@@ -83,7 +59,9 @@ const TotalPriceBottom = () => {
         <OrderOverview />
         <BottonContainer>
           <Price />
-          <BuyButton onClick={handleClick}>Get Started</BuyButton>
+          <Link to={accessToken ? "/order/checkout" : "/login"}>
+            <BuyButton>Get Started</BuyButton>
+          </Link>
         </BottonContainer>
       </Container>
     </Wrapper>
