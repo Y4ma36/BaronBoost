@@ -54,6 +54,7 @@ const OverViewRank = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  height: 100%;
   @media ${(props) => props.theme.device.mobile} {
     padding: 10px 0px;
     flex-direction: column;
@@ -67,11 +68,11 @@ const RankContainer = styled.div`
   justify-content: center;
   align-items: center;
   img {
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
     @media ${(props) => props.theme.device.mobile} {
-      width: 50px;
-      height: 50px;
+      width: 65px;
+      height: 65px;
     }
   }
 `;

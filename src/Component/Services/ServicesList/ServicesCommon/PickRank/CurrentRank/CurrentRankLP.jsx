@@ -35,12 +35,12 @@ const CurrentLpForm = styled.div`
     -moz-appearance: none;
     width: 170px;
     padding: 10px 15px 10px 10px;
-    background-color: inherit;
     border: 2px solid white;
     color: ${(props) => props.theme.colors.white};
     font-size: 16px;
     background: url(${arrow_down}) no-repeat right center;
     background-size: 30px;
+    background-color: inherit;
   }
 
   select::-ms-expand {

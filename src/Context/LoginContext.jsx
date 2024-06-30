@@ -61,7 +61,7 @@ const useAuth = () => {
 
     setAccessToken(accessToken);
 
-    Cookies.set("accessToken", accessToken);
+    localStorage.setItem("accessToken", accessToken);
 
     navigate(from);
   };
@@ -75,6 +75,8 @@ const useAuth = () => {
 
     Cookies.remove("accessToken");
 
+    localStorage.clear();
+
     location.reload(true);
   };
 
@@ -82,7 +84,6 @@ const useAuth = () => {
 
   const getUserInfo = async (username) => {
     const response = await auth.info(username);
-    const data = response.data;
     localStorage.setItem("role", data.role);
     localStorage.setItem("email", data.email);
     setUserInfo(data);

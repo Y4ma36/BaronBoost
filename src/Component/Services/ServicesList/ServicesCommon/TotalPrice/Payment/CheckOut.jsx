@@ -8,11 +8,6 @@ import { useRecoilValue } from "recoil";
 import { priceState } from "../../../../../../Data/atoms";
 import Loading from "../../../../../../Shared/Loading/Loading";
 
-const LoadingWrapper = styled.div`
-  background-color: black;
-  height: 100vh;
-`;
-
 const Wrapper = styled.div`
   background-color: ${(props) => props.theme.colors.purple};
   height: 100vh;
@@ -46,6 +41,7 @@ const Checkout = () => {
     loading: true,
   });
 
+  console.log(totalPriceState);
   useEffect(() => {
     async function createPaymentIntent() {
       const response = await axios.post("/api/create-payment-intent", {
@@ -62,7 +58,7 @@ const Checkout = () => {
   }, []);
 
   return (
-    <div>
+    <>
       {clientSecretSettings.loading ? (
         <Loading />
       ) : (
@@ -80,7 +76,7 @@ const Checkout = () => {
           </Container>
         </Wrapper>
       )}
-    </div>
+    </>
   );
 };
 

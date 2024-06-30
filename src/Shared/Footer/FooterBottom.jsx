@@ -48,17 +48,22 @@ const FooterBottom = () => {
         <p>CopyRight &#169; 2024 BaronBoost. All rights reserved.</p>
       </FooterBottomLeft>
       <FooterBottomRight>
-        <Link to="https://discord.gg/WnBcfvc9bJ">
+        <Link to="https://discord.gg/6jmfq4AqYV">
           <FooterSNSIconBox>
             <FaDiscord className="icon" />
           </FooterSNSIconBox>
         </Link>
-        <FooterSNSIconBox>
-          <FaInstagram className="icon" />
-        </FooterSNSIconBox>
-        <FooterSNSIconBox>
-          <FaXTwitter className="icon" />
-        </FooterSNSIconBox>
+        <Link to="https://www.instagram.com/baronboostservice/">
+          {" "}
+          <FooterSNSIconBox>
+            <FaInstagram className="icon" />
+          </FooterSNSIconBox>
+        </Link>
+        <Link to="https://x.com/BaronBoost">
+          <FooterSNSIconBox>
+            <FaXTwitter className="icon" />
+          </FooterSNSIconBox>
+        </Link>
       </FooterBottomRight>
     </FooterBottomWrapper>
   );

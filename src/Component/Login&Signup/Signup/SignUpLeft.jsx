@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import img from "../../../assets/LoginBaron.png";
 import { useForm } from "react-hook-form";
@@ -109,6 +109,7 @@ const SignUpLeftNoAccount = styled.div`
 `;
 
 const SignUpLeft = () => {
+  const [errorMessage, setErrorMessage] = useState("");
   const {
     register,
     handleSubmit,
@@ -116,9 +117,10 @@ const SignUpLeft = () => {
     getValues,
   } = useForm();
   const navigate = useNavigate();
+
   const onValid = async (data) => {
     try {
-      await SignUp(data, navigate);
+      await SignUp(data, navigate, setErrorMessage);
     } catch (error) {
       console.log(error.message);
     }
@@ -157,6 +159,7 @@ const SignUpLeft = () => {
         {errors?.username ? (
           <ErrorMessage>{errors.username.message}</ErrorMessage>
         ) : null}
+        {errorMessage ? <ErrorMessage>{errorMessage}</ErrorMessage> : null}
         <label>Password</label>
         <input
           {...register("password", {

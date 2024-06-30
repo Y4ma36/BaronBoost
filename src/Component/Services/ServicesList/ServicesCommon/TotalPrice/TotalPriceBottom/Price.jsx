@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import useAllPriceData from "../../AllPriceData";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { priceState } from "../../../../../../Data/atoms";
 
 const Wrapper = styled.div`
@@ -95,7 +95,7 @@ const Price = () => {
 
   /*---------------------[Check out Price]------------------------*/
 
-  const [price, setPrice] = useRecoilState(priceState);
+  const setPrice = useSetRecoilState(priceState);
 
   useEffect(() => {
     if (currentLocation === "solo") {

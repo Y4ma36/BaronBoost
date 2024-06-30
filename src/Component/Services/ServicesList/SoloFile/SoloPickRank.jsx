@@ -9,6 +9,7 @@ const SoloPickRankWrapper = styled.div`
   border: 5px solid white;
   border-radius: 2px;
   background-color: #011638;
+  padding-bottom: 15px;
   @media ${(props) => props.theme.device.tablet} {
     flex-direction: column;
   }

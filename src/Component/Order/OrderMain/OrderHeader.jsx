@@ -22,13 +22,16 @@ const Container = styled.div`
 `;
 
 const FilterContainer = styled.div`
-  width: 50%;
+  width: 80%;
   height: 80%;
   border-radius: 20px;
   background-color: #c3bdbdeb;
   position: relative;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
     rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  @media ${(props) => props.theme.device.tablet} {
+    width: 95%;
+  }
 `;
 
 const Items = styled.ul`
@@ -36,9 +39,9 @@ const Items = styled.ul`
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  width: 100%;
   padding: 0;
   margin: 0;
+  text-align: center;
   a {
     text-decoration: none;
     color: inherit;
@@ -53,6 +56,8 @@ const Items = styled.ul`
     cursor: pointer;
     position: relative;
     z-index: 1;
+  }
+  @media ${(props) => props.theme.device.tablet} {
   }
 `;
 

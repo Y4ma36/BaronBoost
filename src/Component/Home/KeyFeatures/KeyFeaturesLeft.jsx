@@ -59,9 +59,9 @@ const KeyFeaturesLeft = () => {
       </KeyFeaturesLeftSubTitle>
       <KeyFeaturesLeftDescription>
         At BaronBoost, our skilled players, including former pros and top-ranked
-        challengers, will play the games for you, making it quick and easy to
-        reach your desired tier. With our wide-ranging expertise, your account
-        will stay safe from suspensions, and we promise to offer you the best
+        players, will play the games for you, making it quick and easy to reach
+        your desired tier. With our wide-ranging expertise, your account will
+        stay safe from suspensions, and we promise to offer you the best
         experience at the most affordable prices.
       </KeyFeaturesLeftDescription>
     </KeyFeaturesLeftWrapper>

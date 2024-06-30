@@ -1,85 +1,15 @@
-import coachingImg from "../../assets/ornn.jpg";
+import Yama_Img from "../../assets/ChokChok.jpg";
 
 const coachingData = [
   {
     id: 1,
-    name: "Yama",
+    name: "ChokChok",
     server: "NA",
-    description:
-      "DfoOx2W7E8CbOUJAMGNQsZuK2cxnE28iLsZoTcPfAmMOj7JvY0MxrLanU638dxncBRF9aSGJ5Oi90hCGCrVen3JFp5fcr6K9mHcG",
+    description: "Season S8,S9,S10,S13 Challenger Support Main",
     role: "Support",
-    language: "korean",
-    img: coachingImg,
-  },
-  {
-    id: 2,
-    name: "Yama",
-    server: "NA",
-    description:
-      "DfoOx2W7E8CbOUJAMGNQsZuK2cxnE28iLsZoTcPfAmMOj7JvY0MxrLanU638dxncBRF9aSGJ5Oi90hCGCrVen3JFp5fcr6K9mHcG",
-    role: "ADC",
-    language: "English",
-    img: coachingImg,
-  },
-  {
-    id: 3,
-    name: "Yama",
-    server: "EUW",
-    description:
-      "DfoOx2W7E8CbOUJAMGNQsZuK2cxnE28iLsZoTcPfAmMOj7JvY0MxrLanU638dxncBRF9aSGJ5Oi90hCGCrVen3JFp5fcr6K9mHcG",
-    role: "MID",
-    language: "English",
-    img: coachingImg,
-  },
-  {
-    id: 4,
-    name: "Yama",
-    server: "EUW",
-    description:
-      "DfoOx2W7E8CbOUJAMGNQsZuK2cxnE28iLsZoTcPfAmMOj7JvY0MxrLanU638dxncBRF9aSGJ5Oi90hCGCrVen3JFp5fcr6K9mHcG",
-    role: "JG",
-    language: "Japanese",
-    img: coachingImg,
-  },
-  {
-    id: 1,
-    name: "Yama",
-    server: "NA",
-    description:
-      "DfoOx2W7E8CbOUJAMGNQsZuK2cxnE28iLsZoTcPfAmMOj7JvY0MxrLanU638dxncBRF9aSGJ5Oi90hCGCrVen3JFp5fcr6K9mHcG",
-    role: "Support",
-    language: "korean",
-    img: coachingImg,
-  },
-  {
-    id: 2,
-    name: "Yama",
-    server: "NA",
-    description:
-      "DfoOx2W7E8CbOUJAMGNQsZuK2cxnE28iLsZoTcPfAmMOj7JvY0MxrLanU638dxncBRF9aSGJ5Oi90hCGCrVen3JFp5fcr6K9mHcG",
-    role: "ADC",
-    language: "English",
-    img: coachingImg,
-  },
-  {
-    id: 3,
-    name: "Yama",
-    server: "EUW",
-    description:
-      "DfoOx2W7E8CbOUJAMGNQsZuK2cxnE28iLsZoTcPfAmMOj7JvY0MxrLanU638dxncBRF9aSGJ5Oi90hCGCrVen3JFp5fcr6K9mHcG",
-    role: "MID",
-    language: "English",
-    img: coachingImg,
-  },
-  {
-    id: 4,
-    name: "Yama",
-    server: "EUW",
-    description:
-      "DfoOx2W7E8CbOUJAMGNQsZuK2cxnE28iLsZoTcPfAmMOj7JvY0MxrLanU638dxncBRF9aSGJ5Oi90hCGCrVen3JFp5fcr6K9mHcG",
-    role: "JG",
-    language: "Japanese",
-    img: coachingImg,
+    language: "English, Korean",
+    img: Yama_Img,
+    price: 15.5,
   },
 ];
 

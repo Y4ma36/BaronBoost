@@ -16,6 +16,9 @@ const Container = styled.div`
 const TotalPriceTitle = styled.h1`
   font-size: 1.75rem;
   font-weight: 700;
+  @media ${(props) => props.theme.device.mobile} {
+    text-align: center;
+  }
 `;
 
 const DicountCodeContainer = styled.div`
@@ -29,14 +32,13 @@ const DiscountCode = styled.label`
   display: flex;
   input {
     width: 100%;
-    padding: 10px 10px;
-
+    padding: 15px 10px;
     border-radius: 5px;
     border: none;
   }
   button {
     position: absolute;
-    top: 8px;
+    top: 15px;
     right: 5px;
     border: none;
     background: inherit;

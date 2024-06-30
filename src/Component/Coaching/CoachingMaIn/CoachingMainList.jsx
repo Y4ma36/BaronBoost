@@ -1,9 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import coachingData from "../\bCoachingData";
-import { color } from "framer-motion";
-import { useRecoilValue } from "recoil";
-import { isCoachingRegion, isCoachingRoles } from "../../../Data/atoms";
+
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  isCoachingRegion,
+  isCoachingRoles,
+  priceState,
+} from "../../../Data/atoms";
+import { Link } from "react-router-dom";
 
 const Wrapper = styled.div`
   display: grid;
@@ -86,6 +91,7 @@ const CoachingOrderButton = styled.button`
 const CoachingMainList = () => {
   const currentRegion = useRecoilValue(isCoachingRegion);
   const currentRoles = useRecoilValue(isCoachingRoles);
+  const setCoachPrice = useSetRecoilState(priceState);
 
   const filteredData = coachingData.filter((item) => {
     // region과 roles이 모두 선택되지 않았거나 선택된 값과 일치하는 경우 필터링
@@ -95,6 +101,10 @@ const CoachingMainList = () => {
       (!currentRoles || item.role.toLowerCase() === currentRoles.toLowerCase())
     );
   });
+
+  const handleCoachPrice = (price) => {
+    setCoachPrice(price);
+  };
 
   return (
     <Wrapper>
@@ -112,7 +122,11 @@ const CoachingMainList = () => {
             <h3>{item.language}</h3>
           </CoachingInformation>
           <CoachingDescription>{item.description}</CoachingDescription>
-          <CoachingOrderButton>Book Now</CoachingOrderButton>
+          <Link to="/order/checkout">
+            <CoachingOrderButton onClick={() => handleCoachPrice(item.price)}>
+              Book Now
+            </CoachingOrderButton>
+          </Link>
         </CoachingBox>
       ))}
     </Wrapper>

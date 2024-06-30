@@ -2,8 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import Price from "./Price";
 import OrderOverview from "./OrderOverview";
-import { Link } from "react-router-dom";
-import Cookies from "js-cookie";
+import { Link, useLocation } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { isLoginSelector } from "../../../../../../Data/atomsLogin";
+import LeagueInformation from "../../LeagueInformation/LeagueInformation";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -51,15 +53,19 @@ const BuyButton = styled.button`
 `;
 
 const TotalPriceBottom = () => {
-  const accessToken = Cookies.get("accessToken");
-
+  const isLogin = useRecoilValue(isLoginSelector);
+  const location = useLocation();
   return (
     <Wrapper>
       <Container>
         <OrderOverview />
         <BottonContainer>
           <Price />
-          <Link to={accessToken ? "/order/checkout" : "/login"}>
+          <Link
+            to={isLogin ? "/order/checkout" : "/login"}
+            replace
+            state={{ redirectFrom: location }}
+          >
             <BuyButton>Get Started</BuyButton>
           </Link>
         </BottonContainer>

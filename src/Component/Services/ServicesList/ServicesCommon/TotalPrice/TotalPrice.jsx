@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
-
 import styled from "styled-components";
-import useAllPriceData from "../AllPriceData";
-import TotalPriceTop from "./TotalPriceTop";
 import TotalPriceBottom from "./TotalPriceBottom/TotalPriceBottom";
+import TotalPriceTop from "./TotalPriceTop/TotalPriceTop";
 
 const Wrapper = styled.div`
   flex: 1;

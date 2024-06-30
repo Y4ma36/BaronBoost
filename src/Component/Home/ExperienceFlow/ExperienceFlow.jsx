@@ -34,7 +34,7 @@ const ExperienceFlowBox = styled(motion.div)`
   align-items: center;
   text-align: center;
   border-radius: 10px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)),
     url(${(props) => props.bgImg});
   background-position: center center;
   background-size: cover;

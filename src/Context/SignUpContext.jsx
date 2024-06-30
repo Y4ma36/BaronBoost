@@ -1,7 +1,7 @@
 import React from "react";
 import * as auth from "../Utils/auth.jsX";
 
-const SignUp = async (data, navigate) => {
+const SignUp = async (data, navigate, setErrorMessage) => {
   const userInfo = {
     username: data.username,
     password: data.password,
@@ -15,7 +15,7 @@ const SignUp = async (data, navigate) => {
       navigate("successful");
     }
   } catch (error) {
-    console.log(error);
+    setErrorMessage("Username already exists");
   }
 };
 

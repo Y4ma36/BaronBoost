@@ -60,3 +60,18 @@ export const netWinsOrders = () => api.get("api/orders/netWinOrders");
 export const coachOrders = () => api.get("api/orders/coachOrders");
 
 /*---------------------------------------------------*/
+
+/*--------------------Send Order-----------------------*/
+export const setSoloOrder = (orderInfo) =>
+  api.post("api/orders/soloOrder", orderInfo);
+
+export const setDuoOrder = (orderInfo) =>
+  api.post("api/orders/duoOrder", orderInfo);
+
+export const setNetWinOrder = (orderInfo) =>
+  api.post("api/orders/netWinOrder", orderInfo);
+
+export const setCoachOrder = (orderInfo) =>
+  api.post("/api/orders/coachOrder", orderInfo);
+
+/*---------------------------------------------------*/

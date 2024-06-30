@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import img from "../../../assets/LoginBaron.png";
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../../Context/LoginContext";
 import { color } from "framer-motion";
+import { useRecoilValue } from "recoil";
+import { isLoginSelector } from "../../../Data/atomsLogin";
 
 const LoginLeftWrapper = styled.div`
   flex: 1;
@@ -130,6 +132,8 @@ const LoginLeft = () => {
   const location = useLocation();
   const from = location?.state?.redirectFrom.pathname || "/";
 
+  const isLogin = useRecoilValue(isLoginSelector);
+
   const onValid = async (data) => {
     try {
       await login(data, from);
@@ -137,38 +141,48 @@ const LoginLeft = () => {
   };
 
   return (
-    <LoginLeftWrapper>
-      <Link to="/">
-        <LoginLeftImg>
-          <img src={img} alt="" />
-        </LoginLeftImg>
-      </Link>
-      <LoginLeftTitleContainer>
-        <LoginLeftTitle>Welcome Back</LoginLeftTitle>
-        <LoginLeftSubTitle>please enter your detail</LoginLeftSubTitle>
-      </LoginLeftTitleContainer>
-      <LoginLeftForm onSubmit={handleSubmit(onValid)}>
-        <label>Username</label>
-        <input {...register("username")} placeholder="username" type="text" />
-        <label>Password</label>
-        <input
-          {...register("password")}
-          placeholder="Password"
-          type="password"
-        />
-        <h3>
-          <Link to="forgot-password">Forgot Password</Link>
-        </h3>
-        <input type="submit" value="Sign In" />
-      </LoginLeftForm>
-      {infoCheck && <ErrorMessage>{infoCheck}</ErrorMessage>}
-      <LoginLeftNoAccount>
-        Don't have an account?
-        <Link to="/signup">
-          <span>Sign Up!</span>
-        </Link>
-      </LoginLeftNoAccount>
-    </LoginLeftWrapper>
+    <>
+      {isLogin ? (
+        <Navigate to="/" />
+      ) : (
+        <LoginLeftWrapper>
+          <Link to="/">
+            <LoginLeftImg>
+              <img src={img} alt="" />
+            </LoginLeftImg>
+          </Link>
+          <LoginLeftTitleContainer>
+            <LoginLeftTitle>Welcome Back</LoginLeftTitle>
+            <LoginLeftSubTitle>please enter your detail</LoginLeftSubTitle>
+          </LoginLeftTitleContainer>
+          <LoginLeftForm onSubmit={handleSubmit(onValid)}>
+            <label>Username</label>
+            <input
+              {...register("username")}
+              placeholder="username"
+              type="text"
+            />
+            <label>Password</label>
+            <input
+              {...register("password")}
+              placeholder="Password"
+              type="password"
+            />
+            <h3>
+              <Link to="forgot-password">Forgot Password</Link>
+            </h3>
+            <input type="submit" value="Sign In" />
+          </LoginLeftForm>
+          {infoCheck && <ErrorMessage>{infoCheck}</ErrorMessage>}
+          <LoginLeftNoAccount>
+            Don't have an account?
+            <Link to="/signup">
+              <span>Sign Up!</span>
+            </Link>
+          </LoginLeftNoAccount>
+        </LoginLeftWrapper>
+      )}
+    </>
   );
 };
 

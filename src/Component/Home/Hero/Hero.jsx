@@ -133,7 +133,7 @@ const Hero = () => {
           Unlock Your <span>Dream</span> Rank Today!
         </HeroMainTitle>
         <HeroSubTitle>
-          Welcome to the premier destination for all your Elo boosting needs.
+          Welcome to the best place for all your Elo boosting needs.
           <br /> At <span>B</span>aron<span>B</span>oost, we're committed to
           delivering the ultimate League of Legends experience.
         </HeroSubTitle>
