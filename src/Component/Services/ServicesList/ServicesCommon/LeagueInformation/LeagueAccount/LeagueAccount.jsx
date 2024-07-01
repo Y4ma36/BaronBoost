@@ -26,8 +26,12 @@ const LeagueAccount = () => {
   return (
     <Wrapper>
       <Cotainer>
-        <label htmlFor="user-name">Riot ID: </label>
-        <input type="text" id="user-name" placeholder="Enter your Riot ID" />
+        <label htmlFor="user-name">Riot Username: </label>
+        <input
+          type="text"
+          id="user-name"
+          placeholder="Enter your Riot username"
+        />
       </Cotainer>
       <Cotainer>
         <label htmlFor="password">Riot Password: </label>

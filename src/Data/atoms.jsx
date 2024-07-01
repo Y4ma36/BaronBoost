@@ -99,6 +99,25 @@ export const priceState = atom({
 
 /*-------------------------------------------------------*/
 
+/*---------------------[Champion Select]------------------------*/
+
+export const firstChampion = atom({
+  key: "firstChampion",
+  default: "",
+});
+
+export const secondChampion = atom({
+  key: "secondChampion",
+  default: "",
+});
+
+export const thirdChampion = atom({
+  key: "thirdChampion",
+  default: "",
+});
+
+/*-------------------------------------------------------*/
+
 //Navigation
 
 export const isHoverNav = atom({

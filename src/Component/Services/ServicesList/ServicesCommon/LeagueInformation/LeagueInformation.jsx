@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-import LeagueChamps from "./LeagueChamps";
 import LeagueAccount from "./LeagueAccount/LeagueAccount";
 import LeagueAccountQuestion from "./LeagueAccount/LeagueAccountQuestion";
 import LeagueRole from "./LeagueRole/LeagueRole";
+import LeagueChamps from "./LeagueChamps/LeagueChamps";
+import LeagueSpell from "./LeagueSpell/LeagueSpell";
 
 const Wrapper = styled.div`
   display: flex;
@@ -21,12 +22,14 @@ const Wrapper = styled.div`
 
 const Container = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 5px;
   position: relative;
+  padding: 20px;
   @media ${(props) => props.theme.device.tablet} {
     padding: 20px 0px;
   }
@@ -46,6 +49,7 @@ const LeagueInformation = () => {
       </Container>
       <Container>
         <LeagueChamps />
+        <LeagueSpell />
       </Container>
     </Wrapper>
   );
