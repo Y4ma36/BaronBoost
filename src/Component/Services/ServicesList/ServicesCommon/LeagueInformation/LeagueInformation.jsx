@@ -33,6 +33,9 @@ const Container = styled.div`
   @media ${(props) => props.theme.device.tablet} {
     padding: 20px 0px;
   }
+  &:last-child {
+    flex-direction: row;
+  }
 `;
 
 const LeagueInfo = styled.div``;

@@ -41,7 +41,6 @@ const Checkout = () => {
     loading: true,
   });
 
-  console.log(totalPriceState);
   useEffect(() => {
     async function createPaymentIntent() {
       const response = await axios.post("/api/create-payment-intent", {

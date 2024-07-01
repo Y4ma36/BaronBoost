@@ -2,12 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { leagueChampionList } from "./LeagueChampionList";
 import blank_Img from "../../../../../../assets/Role/noProfile.jpeg";
-import { useSetRecoilState } from "recoil";
-import {
-  firstChampion,
-  secondChampion,
-  thirdChampion,
-} from "../../../../../../Data/atoms";
 
 const Wrapper = styled.div`
   display: ${(props) => (props.isChampSelectOpen ? "flex" : "none")};
@@ -79,9 +73,7 @@ const LeagueChampSelect = ({
   handleChampAdd,
 }) => {
   const [champSelect, setChampSelect] = useState(false);
-  const setFristChamp = useSetRecoilState(firstChampion);
-  const setSecondChamp = useSetRecoilState(secondChampion);
-  const setThirdChamp = useSetRecoilState(thirdChampion);
+
   useEffect(() => {
     if (isChampSelectOpen) {
       document.body.style.overflow = "hidden";
@@ -102,7 +94,7 @@ const LeagueChampSelect = ({
 
   const champData = Object.values(leagueChampionList.map((item) => item.data));
 
-  const champchamp = Object.values(champData[0]);
+  const champInformation = Object.values(champData[0]);
 
   const handleChampClick = (name) => {
     setChampSelect(name);
@@ -113,11 +105,11 @@ const LeagueChampSelect = ({
       <Container>
         <Title>Champion Select</Title>
         <ChampItems>
-          {champchamp.map((item, index) => (
+          {champInformation.map((item, index) => (
             <ChampItem
               key={index}
-              isSelected={champSelect === item.name}
-              onClick={() => handleChampClick(item.name)}
+              isSelected={champSelect === item.id}
+              onClick={() => handleChampClick(item.id)}
             >
               <img
                 src={`https://ddragon.leagueoflegends.com/cdn/14.11.1/img/champion/${item.id}.png`}

@@ -43,6 +43,11 @@ export const setNetWins = atom({
   default: 1,
 });
 
+export const setRegion = atom({
+  key: "setRegion",
+  default: "NA",
+});
+
 /*-------------------------------------------------------*/
 
 /*---------------------[Rank Division]------------------------*/

@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import arrow_down from "../../../../../../assets/arrowDown.png";
+import { useSetRecoilState } from "recoil";
+import { setRegion } from "../../../../../../Data/atoms";
 
 const Wrapper = styled.div`
   @media ${(props) => props.theme.device.mobile} {
@@ -40,12 +42,17 @@ const DesireLpForm = styled.div`
 `;
 
 const DesireRankLp = () => {
+  const setRankRegion = useSetRecoilState(setRegion);
+
+  const handleChange = (e) => {
+    setRankRegion(e.target.value);
+  };
   return (
     <Wrapper>
       <DesireLpContainer>
         <DesireLpForm>
           <label>Server</label>
-          <select name="server" className="arrow">
+          <select name="server" className="arrow" onChange={handleChange}>
             <option value="NA">NA</option>
             <option value="EUW">EUW</option>
           </select>

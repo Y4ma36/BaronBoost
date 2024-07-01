@@ -2,6 +2,8 @@ import React from "react";
 import Hero_BackgroundImage from "../../../assets/HeroBackground.jpeg";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { userInfoAtom } from "../../../Data/atomsLogin";
 
 const HeroWrapper = styled.div`
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1)),

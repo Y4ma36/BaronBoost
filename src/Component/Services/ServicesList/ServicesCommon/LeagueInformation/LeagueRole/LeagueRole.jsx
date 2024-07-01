@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import leagueRoleData from "./LeagueRoleData";
+import { useSetRecoilState } from "recoil";
+import { mainRole, secondaryRole } from "../../../../../../Data/atomsOrder";
 
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 10px;
+  padding: 0px 10px;
 `;
 
 const Container = styled.div``;
@@ -45,12 +47,22 @@ const LeagueRole = () => {
   const [mainSelected, setMainSelected] = useState(null);
   const [secondarySelected, setSecondarySelected] = useState(null);
 
-  const handleMainSelected = (index) => {
-    setMainSelected(index);
+  const setMainRole = useSetRecoilState(mainRole);
+  const setSecondaryRole = useSetRecoilState(secondaryRole);
+  const handleMainSelected = (role) => {
+    if (role === secondarySelected) {
+      return;
+    }
+    setMainSelected(role);
+    setMainRole(role);
   };
 
-  const handleSecondarySelected = (index) => {
-    setSecondarySelected(index);
+  const handleSecondarySelected = (role) => {
+    if (role === mainSelected) {
+      return;
+    }
+    setSecondarySelected(role);
+    setSecondaryRole(role);
   };
   return (
     <Wrapper>
@@ -59,8 +71,8 @@ const LeagueRole = () => {
         <RoleContainer>
           {leagueRoleData.map((item, index) => (
             <RoleBox
-              isSelected={index === mainSelected}
-              onClick={() => handleMainSelected(index)}
+              isSelected={item.role === mainSelected}
+              onClick={() => handleMainSelected(item.role)}
             >
               <img src={item.icon} alt="" />
             </RoleBox>
@@ -72,8 +84,8 @@ const LeagueRole = () => {
         <RoleContainer>
           {leagueRoleData.map((item, index) => (
             <RoleBox
-              isSelected={index === secondarySelected}
-              onClick={() => handleSecondarySelected(index)}
+              isSelected={item.role === secondarySelected}
+              onClick={() => handleSecondarySelected(item.role)}
             >
               <img src={item.icon} alt="" />
             </RoleBox>

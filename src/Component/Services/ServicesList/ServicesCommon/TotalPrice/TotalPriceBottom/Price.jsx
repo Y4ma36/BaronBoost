@@ -9,7 +9,6 @@ const Wrapper = styled.div`
   display: flex;
   gap: 10px;
   background-color: ${(props) => props.theme.colors.white};
-  margin-bottom: 10px;
   border-radius: 5px;
   height: 70px;
   display: flex;

@@ -1,5 +1,7 @@
 import React from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
+import { riotPassword, riotUsername } from "../../../../../../Data/atomsOrder";
 
 const Wrapper = styled.div`
   display: flex;
@@ -23,6 +25,16 @@ const Cotainer = styled.div`
   }
 `;
 const LeagueAccount = () => {
+  const setRiotUsername = useSetRecoilState(riotUsername);
+  const setRiotPassword = useSetRecoilState(riotPassword);
+
+  const onChangeRiotUsername = (e) => {
+    setRiotUsername(e.target.value);
+  };
+  const onChangeRiotPassword = (e) => {
+    setRiotPassword(e.target.value);
+  };
+
   return (
     <Wrapper>
       <Cotainer>
@@ -31,6 +43,7 @@ const LeagueAccount = () => {
           type="text"
           id="user-name"
           placeholder="Enter your Riot username"
+          onChange={onChangeRiotUsername}
         />
       </Cotainer>
       <Cotainer>
@@ -39,6 +52,7 @@ const LeagueAccount = () => {
           type="password"
           id="password"
           placeholder="Enter your Riot password"
+          onChange={onChangeRiotPassword}
         />
       </Cotainer>
     </Wrapper>

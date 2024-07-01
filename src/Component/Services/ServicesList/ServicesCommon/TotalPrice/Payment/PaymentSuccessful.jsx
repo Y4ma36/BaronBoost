@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import Lottie from "react-lottie";
 import success_Lotti from "../../../../../../assets/successAnimation.json";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useAllOrder from "../../../../../../Context/OrderContext";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -83,13 +84,28 @@ const PaymentSuccessful = () => {
   };
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const orderType = searchParams.get("orderType");
+
+  const { getSoloOrder, getDuoOrder, getNetwinsOrder } = useAllOrder();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      navigate("/");
-    }, 15000);
-    return () => clearTimeout(timer);
-  }, [navigate]);
+    const sendOrderInfo = async () => {
+      try {
+        if (orderType === "solo") {
+          await getSoloOrder;
+        } else if (orderType === "duo") {
+          await getDuoOrder;
+        } else if (orderType === "netwins") {
+          await getNetwinsOrder;
+        }
+      } catch (err) {
+        console.error("Error sending order info: ", err);
+      }
+    };
+    sendOrderInfo();
+  }, [orderType, getSoloOrder, getDuoOrder, getNetwinsOrder]);
   return (
     <Wrapper>
       <Container>

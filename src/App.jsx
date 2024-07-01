@@ -106,7 +106,7 @@ const App = () => {
           {/*---------------------[Orders Route]------------------------*/}
           <Route path="order/checkout" element={<CheckOut />} />
           <Route
-            path="/order/payment-sucessful"
+            path="/order/payment-successful/*"
             element={<PaymentSuccessful />}
           />
           <Route path="order/payment-failed" element={<PaymentCancel />} />

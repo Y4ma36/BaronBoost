@@ -6,6 +6,7 @@ import {
 import React, { useState } from "react";
 import styled from "styled-components";
 import logo_img from "../../../../../../assets/BaronBoostLogo.png";
+import { useLocation } from "react-router-dom";
 
 const PayButton = styled.button`
   width: 100%;
@@ -49,6 +50,8 @@ const TotalPriceNumber = styled.span`
 `;
 
 const CheckOutForm = ({ totalPrice }) => {
+  const location = useLocation();
+  const orderType = location?.state?.orderType;
   const newTotalPrice = totalPrice / 100;
   const email = localStorage.getItem("email");
 
@@ -70,7 +73,9 @@ const CheckOutForm = ({ totalPrice }) => {
       //`Elements` instance that was used to create the Payment Element
       elements,
       confirmParams: {
-        return_url: "http://localhost:4242/order/payment-sucessful",
+        return_url: `http://localhost:4242/order/payment-successful?orderType=${encodeURIComponent(
+          orderType
+        )}`,
         receipt_email: email,
       },
     });
